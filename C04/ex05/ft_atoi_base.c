@@ -1,11 +1,11 @@
 int	g_len;
 
-int is_space(char ch)
+int	is_space(char ch)
 {
 	if (ch == ' ' || ('\t' <= ch && ch <= '\r'))
-            return (1);
+		return (1);
 	else
-			return (0);
+		return (0);
 }
 
 int	base_ck(char *base)
@@ -37,7 +37,7 @@ int	base_ck(char *base)
 	return (1);
 }
 
-int is_base_str(char ch, char *base)
+int	is_base_str(char ch, char *base)
 {
 	while (*base)
 	{
@@ -51,7 +51,7 @@ int is_base_str(char ch, char *base)
 int	str_to_base(char ch, char *base)
 {
 	int	i;
-	
+
 	i = 0;
 	while (base[i])
 	{
@@ -85,5 +85,4 @@ int	ft_atoi_base(char *str, char *base)
 		str++;
 	}
 	return (nb * pm);
-}	
-	
+}

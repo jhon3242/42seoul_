@@ -1,6 +1,7 @@
 void	ft_putnbr(int nb)
 {
 	char	c;
+
 	if (nb < 0)
 	{
 		if (nb == -2147483648)

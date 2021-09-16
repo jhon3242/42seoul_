@@ -1,6 +1,6 @@
 int	g_pm;
 
-int is_pm(char c)
+int	is_pm(char c)
 {
 	if (c == '-' || c == '+')
 	{
