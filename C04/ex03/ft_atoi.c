@@ -14,7 +14,7 @@ int	is_pm(char c)
 
 int	is_space(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' || c == ' ')
+	if (('\t' <= c && c <= '\r') || c == ' ')
 		return (1);
 	else
 		return (0);
