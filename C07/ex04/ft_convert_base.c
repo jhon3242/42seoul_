@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/20 14:14:54 by wonjchoi          #+#    #+#             */
+/*   Updated: 2021/09/20 16:36:07 by wonjchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+
+extern int	ft_strlen(char *str);
 int		g_pm;
 int		g_index;
 char	*g_ret;
@@ -41,16 +55,6 @@ int	base_ck(char *base)
 	return (1);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 long long	base_to_i(char *nbr, char *base_from)
 {
 	int			i;
@@ -58,7 +62,7 @@ long long	base_to_i(char *nbr, char *base_from)
 
 	g_pm = 1;
 	ret = 0;
-	while(is_space_pm(*nbr))
+	while (is_space_pm(*nbr))
 		nbr++;
 	while (*nbr)
 	{
@@ -66,7 +70,7 @@ long long	base_to_i(char *nbr, char *base_from)
 		while (base_from[i])
 		{
 			if (base_from[i] == *nbr)
-				break ;	
+				break ;
 			i++;
 		}
 		if (!base_from[i])
@@ -95,10 +99,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	long long	i_nb;
 	long long	tmp;
 	int			count;
+
 	if (!base_ck(base_from) || !base_ck(base_to))
 		return (0);
 	g_index = 0;
-	i_nb = base_to_i(nbr, base_from); // 10진수
+	i_nb = base_to_i(nbr, base_from);
 	tmp = i_nb;
 	count = 0;
 	while (tmp > 0)
