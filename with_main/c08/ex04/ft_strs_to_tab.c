@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.fr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 14:04:11 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/09/21 14:04:12 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:32:57 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ char	*ft_strdup(char *str)
 
 struct	s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	t_stock_str	*p;
+	t_strock_str	*p;
 	int			i;
 
 	i = 0;
-	p = (t_strock_str *)malloc(sizeof(t_stock_str) * (ac + 1));
+	p = (t_strock_str *)malloc(sizeof(t_strock_str) * (ac + 1));
 	if (!p)
 		return (0);
 	while (i < ac)
