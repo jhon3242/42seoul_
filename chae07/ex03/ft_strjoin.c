@@ -41,7 +41,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*a;
 	int		i;
 	int		total;
-
+	
+	if (size == 0)
+	{
+		a = malloc(sizeof(char) * 1);
+		a[0] = 0;
+		return (a);
+	}
 	i = 0;
 	total = 0;
 	while (i < size)
@@ -50,11 +56,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	a = (char *)malloc(sizeof(char) * total + 1);
 	if (!a)
 		return (0);
-	if (size == 0)
-	{
-		a = malloc(sizeof(char) * 1);
-		a[0] = 0;
-		return (a);
-	}
+	
 	return (sumup(size, a, strs, sep));
 }
