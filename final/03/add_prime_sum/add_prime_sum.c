@@ -86,7 +86,7 @@ void	ft_op(char *str)
 	{
 		if (is_prime(nb))
 			ret += nb;
-		nb--;
+	./.	nb--;
 	}
 	ft_putnbr(ret);
 }
