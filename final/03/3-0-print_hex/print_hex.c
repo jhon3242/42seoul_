@@ -32,24 +32,28 @@ int ct(int nb)
 	return (ret);
 }
 
-void	print_hex(int n)
-{
-	if (n >= 16)
-		print_hex(n / 16);
-	n = n % 16;
-	if (n >= 10)
-		n = n + 'a' - 10;
-	else
-		n = n + '0';
-	write(1, &n, 1);
-}
 
 void	ft_op(char *str)
 {
 	int	nb;
+	int len;
+	char hex[] = "0123456789abcdef";
+	int result[100];
+	int i;
 
+	i = 0;
 	nb = ft_atoi(str);
-	print_hex(nb);
+	len = ct(nb);
+	int lend = len;
+	while (len--)
+	{
+		result[len] = hex[nb % 16];
+		nb /= 16;
+	}
+	while(lend--)
+	{
+		write(1, &result[lend], 1);
+	}
 }
 
 

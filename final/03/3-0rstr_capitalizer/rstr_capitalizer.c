@@ -1,13 +1,13 @@
 #include <unistd.h>
 
-int	is_low(char c)
+int	is_up(char c)
 {
 	if ('a' <= c && c <= 'z')
 		return (1);
 	return (0);
 }
 
-int is_up(char c)
+int is_low(char c)
 {
 	if ('A' <= c && c <= 'Z')
 		return (1);
@@ -16,7 +16,7 @@ int is_up(char c)
 
 int	is_char(char c)
 {
-	if (is_up(c) || is_low(c))
+	if (is_up(c) && is_low(c))
 		return (1);
 	return (0);
 }
@@ -36,17 +36,14 @@ void	ft_op(char *str)
 	len = 0;
 	while (str[len])
 		len++;
-	while (0 <= --len)
+	while (0 < --len)
 	{
 		if (is_char(str[len]))
 		{
 			if (flag == 0)
 			{
 				if (is_low(str[len]))
-				{
 					str[len] = str[len] - 32;
-					//write(1, &str[len], 1);
-				}
 			}
 			else
 			{
@@ -58,7 +55,6 @@ void	ft_op(char *str)
 		else
 			flag = 0;
 	}
-	
 	ft_putstr(str);
 }
 
