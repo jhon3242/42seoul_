@@ -2,17 +2,18 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 TARGET = a.out
-SOURCE = main.c ft_isalpha.c ft.h 
+HEAD = ft.h
+SOURCE = main.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
 OBJECTS = $(SOURCE:.c=.o)
 
 all = $(TARGET)
 
 %.o : %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $<
 
 
 $(TARGET) : $(OBJECTS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ $(HEAD)
 	
 clean :
 	rm -f $(OBJECTS)
