@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:59:14 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/13 19:44:47 by choewonju        ###   ########.fr       */
+/*   Updated: 2021/11/16 13:30:32 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	
 	if (*needle == 0)
 		return ((char *)haystack);
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:04:03 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/14 21:00:18 by choewonjun       ###   ########.fr       */
+/*   Updated: 2021/11/16 13:35:05 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = -1;
 	if (!s1)
 		return (0);
-	if (!(re = ft_strdup(s1)))
+	re = ft_strdup(s1);
+	if (!re)
 		return (0);
 	while (re[++i])
 	{

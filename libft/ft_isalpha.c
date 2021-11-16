@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 23:40:01 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/12 23:32:04 by choewonju        ###   ########.fr       */
+/*   Created: 2021/11/14 19:48:22 by choewonjun        #+#    #+#             */
+/*   Updated: 2021/11/16 13:25:31 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_isalpha(int c)
 {
-	char	find;
-	char	*back;
-	int				i;
-
-	i = ft_strlen(s);
-	back = (char*)s;
-	find = (char)c;
-	while (i > 0)
-	{
-		if(back[i] == find)
-			return (back + i);
-		i--;
-	}
-	if (back[i] == find)
-		return (back);
+	if ('a' <= c && c <= 'z')
+		return (2);
+	if ('A' <= c && c <= 'Z')
+		return (1);
 	return (0);
 }
-
-

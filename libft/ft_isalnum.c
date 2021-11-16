@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 19:48:22 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/11/14 19:51:17 by choewonjun       ###   ########.fr       */
+/*   Created: 2021/11/11 17:43:48 by choewonju         #+#    #+#             */
+/*   Updated: 2021/11/16 13:25:00 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isalpha(int c)
+int	ft_isalnum(int c)
 {
-    if ('a' <= c && c <= 'z')
-        return (2);
-    if ('A' <= c && c <= 'Z')
-        return (1);
-    return (0);
+	if ('a' <= c && c <= 'z')
+		return (c);
+	if ('A' <= c && c <= 'Z')
+		return (c);
+	if ('0' <= c && c <= '9')
+		return (c);
+	return (0);
 }

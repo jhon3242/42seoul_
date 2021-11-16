@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 17:51:54 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/11 18:43:57 by choewonju        ###   ########.fr       */
+/*   Created: 2021/11/13 18:41:47 by choewonju         #+#    #+#             */
+/*   Updated: 2021/11/16 13:35:05 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*restrict dst, const void *restrict src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*new_dst;
-	unsigned char	*new_src;
+	unsigned char	*c1;
+	unsigned char	*c2;
 	size_t			i;
 
-	if (!dst && !src)
-		return (0);
-	new_dst = dst;
-	new_src = (unsigned char *)src;
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
 	i = 0;
-	while (i++ < n)
-		*new_dst++ = *new_src++;
-	return (dst);
+	while (n--)
+	{
+		if (c1[i] != c2[i] || c1[i] == 0 || c2[i] == 0)
+			return (c1[i] - c2[i]);
+		i++;
+	}
+	return (0);
 }

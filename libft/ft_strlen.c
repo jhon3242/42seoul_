@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 17:44:05 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/11 17:44:09 by choewonju        ###   ########.fr       */
+/*   Created: 2021/11/11 17:44:26 by choewonju         #+#    #+#             */
+/*   Updated: 2021/11/16 13:28:16 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_strlen(const char *str)
 {
-	return (0 >= c && c <= 127);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

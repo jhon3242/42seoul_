@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 17:43:48 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:53 by choewonju        ###   ########.fr       */
+/*   Created: 2021/11/11 23:40:01 by choewonju         #+#    #+#             */
+/*   Updated: 2021/11/16 13:30:32 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	if ('a' <= c && c <= 'z')
-		return (c);
-	if ('A' <= c && c <= 'Z')
-		return (c);
-	if ('0' <= c && c <= '9')
-		return (c);
+	char	find;
+	char	*back;
+	int		i;
+
+	i = ft_strlen(s);
+	back = (char *)s;
+	find = (char)c;
+	while (i > 0)
+	{
+		if (back[i] == find)
+			return (back + i);
+		i--;
+	}
+	if (back[i] == find)
+		return (back);
 	return (0);
 }

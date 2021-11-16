@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:23:50 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/14 19:51:18 by choewonjun       ###   ########.fr       */
+/*   Updated: 2021/11/16 13:27:32 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 	}
 	if (s[i] == find)
-			return ((char *)s + i);
+		return ((char *)s + i);
 	return (0);
 }
-

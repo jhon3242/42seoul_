@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 18:01:56 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/14 18:12:26 by choewonju        ###   ########.fr       */
+/*   Created: 2021/11/13 18:53:50 by choewonju         #+#    #+#             */
+/*   Updated: 2021/11/16 13:26:33 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		len;
-	int		i;
-	char	*re;
+	unsigned char	*c1;
+	unsigned char	*c2;
+	size_t			i;
 
-	len = ft_strlen(s1);
-	re = (char *)malloc(sizeof(char) * (len + 1));
-	if (!re)
-		return (0);
-	i = -1;
-	while (++i < len)
-		re[i] = s1[i];
-	re[i] = 0;
-	return (re);
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	i = 0;
+	while (n--)
+	{
+		if (c1[i] != c2[i])
+			return (c1[i] - c2[i]);
+		i++;
+	}
+	return (0);
 }
