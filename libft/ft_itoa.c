@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:46:05 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/11/17 00:28:30 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/17 13:36:18 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,14 @@ int	ft_intlen(int n)
 	return (ret);
 }
 
-char	*ft_itoa(int n)
+char	*ft_op(char *re, int len, long nb)
 {
-	long	nb;
-	int		len;
-	char	*re;
-
-	len = ft_intlen(n);
-	re = (char *)malloc(sizeof(char) * (len + 1));
-	if (!re)
-		return (0);
 	re[len--] = 0;
-	nb = n;
 	if (nb == 0)
-    {
-        re[0] = '0';
-        return (re);
-    }
+	{
+		re[0] = '0';
+		return (re);
+	}
 	if (nb < 0)
 	{
 		nb *= -1;
@@ -61,4 +52,19 @@ char	*ft_itoa(int n)
 		nb /= 10;
 	}
 	return (re);
+}
+
+char	*ft_itoa(int n)
+{
+	long	nb;
+	int		len;
+	char	*re;
+	char	*tmp;
+
+	len = ft_intlen(n);
+	tmp = (char *)malloc(sizeof(char) * (len + 1));
+	if (!tmp)
+		return (0);
+	nb = n;
+	re = ft_op(tmp, len, nb);
 }
