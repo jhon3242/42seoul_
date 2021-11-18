@@ -6,11 +6,16 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:46:05 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/11/17 13:36:18 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:52:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_abs(int n)
+{
+	return ((n < 0) ? -n : n);
+}
 
 int	ft_intlen(int n)
 {
@@ -42,13 +47,10 @@ char	*ft_op(char *re, int len, long nb)
 		return (re);
 	}
 	if (nb < 0)
-	{
-		nb *= -1;
 		re[0] = '-';
-	}
-	while (len >= 0)
+	while (nb != 0)
 	{
-		re[len--] = '0' + nb % 10;
+		re[len--] = '0' + ft_abs(nb % 10);
 		nb /= 10;
 	}
 	return (re);
@@ -67,4 +69,5 @@ char	*ft_itoa(int n)
 		return (0);
 	nb = n;
 	re = ft_op(tmp, len, nb);
+	return (re);
 }

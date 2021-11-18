@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/11/16 14:23:20 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:01:57 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ct_wd(char const *s, char c)
 	return (re);
 }
 
-char	wd_split(char *dst, char *from, char *untill)
+void	wd_split(char *dst, char *from, char *untill)
 {
 	while (from < untill)
 		*(dst++) = *(from++);
@@ -52,25 +52,26 @@ char	**ft_split(char const *s, char c)
 {
 	char	**re;
 	char	*from;
+	char	*start;
 	int		wd_ct;
 	int		i;
 
 	wd_ct = ct_wd(s, c);
 	i = 0;
-	re = (char **)malloc(sizeof(char *) * (wd_ct + 1));
-	if (!re)
+	start = (char *)s;
+	if (!(re = (char **)malloc(sizeof(char *) * (wd_ct + 1))))
 		return (0);
-	while (*s)
+	while (*start)
 	{
-		if (!is_sep(s, c))
+		if (!is_sep(start, c))
 		{
-			from = s;
-			while (*s && !is_sep(s, c))
-				s++;
-			re[i] = (char *)malloc(s - from + 1);
-			wd_split(re[i++], from, s);
+			from = start;
+			while (*start && !is_sep(start, c))
+				start++;
+			re[i] = (char *)malloc(start - from + 1);
+			wd_split(re[i++], from, start);
 		}
-		s++;
+		start++;
 	}
 	re[i] = 0;
 	return (re);

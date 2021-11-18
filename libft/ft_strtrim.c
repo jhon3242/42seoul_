@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:04:03 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/17 13:37:34 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:26:35 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,63 @@ int	is_set(char const *p, char const *set)
 	return (0);
 }
 
+char	*ft_from(char const *s1, char const *set)
+{
+	char	*tmp;
+
+	tmp = (char *)s1;
+	while (*tmp && is_set(tmp, set))
+		tmp++;
+	return (tmp);
+}
+
+char	*ft_end(char const *s1, char const *set)
+{
+	char	*tmp;
+
+	tmp = (char *)s1;
+	while (*tmp)
+		tmp++;
+	tmp--;
+	while (*tmp && is_set(tmp, set))
+		tmp--;
+	if (!is_set(tmp, set))
+		tmp++;
+	return (tmp);
+}
+
+char	*ft_from_end_split(char const *s1, char const *set)
+{
+	char	*from;
+	char	*end;
+	char	*re;
+	int		i;
+
+	from = ft_from(s1, set);
+	end = ft_end(s1, set);
+	i = -1;
+	if (from >= end)
+		return (ft_strdup(s1));
+	re = (char *)malloc(sizeof(char) * (end - from + 1));
+	if (!re)
+		return (0);
+	while (++i < end - from)
+		re[i] = from[i];
+	re[i] = 0;
+	return (re);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*re;
 	int		i;
-	int		j;
 
 	i = -1;
 	if (!s1)
 		return (0);
 	re = ft_strdup(s1);
-	if (!re)
-		return (0);
-	while (re[++i])
-	{
-		if (is_set(re + i, set))
-		{
-			j = 0;
-			while (re[i + j])
-			{
-				re[i + j] = re[i + j + 1];
-				j++;
-			}
-			i--;
-		}
-	}
+	if (!set)
+		return (re);
+	re = ft_from_end_split(s1, set);
 	return (re);
 }
