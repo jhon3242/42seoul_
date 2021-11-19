@@ -6,12 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/11/17 17:01:57 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/19 18:35:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	is_sep(char const *s, char c)
 {
@@ -22,23 +21,20 @@ int	is_sep(char const *s, char c)
 
 int	ct_wd(char const *s, char c)
 {
-	int	i;
-	int	flag;
-	int	re;
+	int	ret;
 
-	i = 0;
-	flag = 0;
-	re = 0;
-	while (s[i])
+	ret = 0;
+	while (*s)
 	{
-		while (s[i] && is_sep(s + i, c))
-			i++;
-		if (s[i] && !is_sep(s + i, c))
-			re++;
-		while (s[i] && !is_sep(s + i, c))
-			i++;
+		if (!is_sep(s, c))
+		{
+			ret++;
+			while (is_sep(s, c))
+				s++;
+		}
+		s++;
 	}
-	return (re);
+	return (ret);
 }
 
 void	wd_split(char *dst, char *from, char *untill)
@@ -48,18 +44,30 @@ void	wd_split(char *dst, char *from, char *untill)
 	*dst = 0;
 }
 
+char	**ft_free(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**re;
 	char	*from;
 	char	*start;
-	int		wd_ct;
 	int		i;
 
-	wd_ct = ct_wd(s, c);
 	i = 0;
 	start = (char *)s;
-	if (!(re = (char **)malloc(sizeof(char *) * (wd_ct + 1))))
+	if (!s || !(re = (char **)malloc(sizeof(char *) * (ct_wd(s, c) + 1))))
 		return (0);
 	while (*start)
 	{
@@ -68,7 +76,8 @@ char	**ft_split(char const *s, char c)
 			from = start;
 			while (*start && !is_sep(start, c))
 				start++;
-			re[i] = (char *)malloc(start - from + 1);
+			if(!(re[i] = (char *)malloc(start - from + 1)))
+				return (ft_free(re));
 			wd_split(re[i++], from, start);
 		}
 		start++;
