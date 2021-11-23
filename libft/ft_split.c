@@ -6,11 +6,14 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/11/19 18:35:27 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:48:22 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*g_start;
+char	*g_from;
 
 int	is_sep(char const *s, char c)
 {
@@ -61,26 +64,27 @@ char	**ft_free(char **tab)
 char	**ft_split(char const *s, char c)
 {
 	char	**re;
-	char	*from;
-	char	*start;
 	int		i;
 
 	i = 0;
-	start = (char *)s;
-	if (!s || !(re = (char **)malloc(sizeof(char *) * (ct_wd(s, c) + 1))))
+	g_start = (char *)s;
+	re = (char **)malloc(sizeof(char *) * (ct_wd(s, c) + 1));
+	if (!s || !re)
 		return (0);
-	while (*start)
+	while (*g_start)
 	{
-		if (!is_sep(start, c))
+		if (*g_start && !is_sep(g_start, c))
 		{
-			from = start;
-			while (*start && !is_sep(start, c))
-				start++;
-			if(!(re[i] = (char *)malloc(start - from + 1)))
+			g_from = g_start;
+			while (*g_start && !is_sep(g_start, c))
+				g_start++;
+			re[i] = (char *)malloc(g_start - g_from + 1);
+			if (!re[i])
 				return (ft_free(re));
-			wd_split(re[i++], from, start);
+			wd_split(re[i++], g_from, g_start);
 		}
-		start++;
+		else
+			g_start++;
 	}
 	re[i] = 0;
 	return (re);

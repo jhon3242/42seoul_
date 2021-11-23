@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:46:05 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/11/17 17:52:52 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/23 10:52:55 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	ft_abs(int n)
 {
-	return ((n < 0) ? -n : n);
+	if (n < 0)
+		return (-n);
+	return (n);
 }
 
 int	ft_intlen(int n)
