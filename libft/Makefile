@@ -39,7 +39,19 @@ SOURCE = ft_atoi.c\
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 
+SOURCE_B = ft_lstnew \
+			ft_lstadd_front \
+			ft_lstsize \
+			ft_lstlast \
+			ft_lstadd_back \
+			ft_lstdelone \
+			ft_lstclear \
+			ft_lstiter \
+			ft_lstmap
+
+
 OBJECTS = $(SOURCE:.c=.o)
+OBJECTS_b = $(SOURCE_B:.c=.o)
 
 all : $(NAME)
 
@@ -49,6 +61,9 @@ all : $(NAME)
 $(NAME) : $(OBJECTS)
 	ar rc $@ $^
 
+bonus : $(OBJECTS) $(OBJECTS_b)
+	ar rc $(NAME) $^
+
 clean :
 	rm -f $(OBJECTS)
 
@@ -56,3 +71,5 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
+
+.PHONY: bonus all clean fclean re

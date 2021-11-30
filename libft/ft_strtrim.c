@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:04:03 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/17 19:26:35 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:37:53 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_from_end_split(char const *s1, char const *set)
 	end = ft_end(s1, set);
 	i = -1;
 	if (from >= end)
-		return (ft_strdup(s1));
+		return (ft_strdup(""));
 	re = (char *)malloc(sizeof(char) * (end - from + 1));
 	if (!re)
 		return (0);

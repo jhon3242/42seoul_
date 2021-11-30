@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 18:45:22 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/29 14:27:39 by wonjchoi         ###   ########.fr       */
+/*   Created: 2021/11/29 15:03:06 by wonjchoi          #+#    #+#             */
+/*   Updated: 2021/11/29 18:17:39 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int		s1_len;
-	int		s2_len;
-	char	*re;
+	t_list	*last;
 
-	if (!s1 && !s2)
-		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	re = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (!re)
-		return (0);
-	ft_strlcpy(re, s1, s1_len + 1);
-	ft_strlcat(re + s1_len, s2, s2_len + 1);
-	return (re);
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+		*lst = new;
+		return ;
+	last = ft_lstlast(*lst);
+	new->next = last->next;
+	last->next = new;
 }
