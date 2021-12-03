@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:19:06 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/12/02 17:03:02 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:53:39 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	re = 0;
 	if (!lst || !f || !del)
 		return (0);
-	re = ft_lstnew(lst->content);
+	re = ft_lstnew(f(lst->content));
 	if (re == 0)
 		return (0);
 	cur = re;
 	lst = lst->next;
 	while (lst)
 	{
-		tmp = ft_lstnew(lst->content);
+		tmp = ft_lstnew(f(lst->content));
 		if (tmp == 0)
 		{
 			ft_lstclear(&re, del);
