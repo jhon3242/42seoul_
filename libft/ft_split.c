@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/11/23 14:48:22 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:43:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ct_wd(char const *s, char c)
 		if (!is_sep(s, c))
 		{
 			ret++;
-			while (is_sep(s, c))
+			while (*s && !is_sep(s, c))
 				s++;
 		}
 		s++;

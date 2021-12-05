@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
 
 NAME = libft.a
 HEAD = ft.h
@@ -59,10 +60,10 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJECTS)
-	ar rc $@ $^
+	$(AR) $@ $^
 
 bonus : $(OBJECTS) $(OBJECTS_b)
-	ar rc $(NAME) $^
+	$(AR) $(NAME) $^
 
 clean :
 	rm -f $(OBJECTS) $(OBJECTS_b)
