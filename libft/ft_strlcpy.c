@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:18:27 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/17 17:07:03 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:48:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	i = 0;
 	src_len = 0;
-	if (!dest || !src)
-		return (0);
 	while (src[src_len])
 		src_len++;
 	if (size != 0)
