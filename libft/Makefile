@@ -3,7 +3,6 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 
 NAME = libft.a
-HEAD = ft.h
 INCLUDES = ./libft.h
 SOURCE = ft_atoi.c\
 			ft_bzero.c \

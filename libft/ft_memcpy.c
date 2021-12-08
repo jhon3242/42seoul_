@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:51:54 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/16 14:34:13 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:48:23 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memcpy(void	*dst, const void *src, size_t n)
 
 	if (!dst && !src)
 		return (0);
-	new_dst = dst;
+	new_dst = (unsigned char *)dst;
 	new_src = (unsigned char *)src;
 	i = 0;
 	while (i++ < n)

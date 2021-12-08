@@ -6,14 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/12/07 02:23:07 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:02:37 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*g_start;
-char	*g_from;
+
 
 int	is_sep(char const *s, char c)
 {
@@ -67,6 +66,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**re;
 	int		i;
+	char	*g_start;
+	char	*g_from;
 
 	i = 0;
 	g_start = (char *)s;
