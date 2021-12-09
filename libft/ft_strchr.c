@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:23:50 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/16 13:27:32 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/08 20:53:13 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	char	find;
 	int		i;
 
-	find = (unsigned char)c;
+	find = (char)c;
 	i = -1;
 	while (s[++i])
 	{

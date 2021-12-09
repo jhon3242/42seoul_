@@ -5,14 +5,6 @@
 
 int main(void)
 {
-
-
-    char s1[] = ",,,this,is,my,lif,e,,,";
-    //char s2[] = "this";
-    ft_split(s1, ',');
-
-
-
-
+	printf("%d, %d\n", sizeof(char), sizeof(const char))
 	return (0);
 }

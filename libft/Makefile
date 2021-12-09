@@ -53,16 +53,22 @@ SOURCE_B = ft_lstnew.c \
 OBJECTS = $(SOURCE:.c=.o)
 OBJECTS_b = $(SOURCE_B:.c=.o)
 
+ifdef WITH_BONUSE
+	OBJECT_FILES = $(OBJECTS) $(OBJECTS_b)
+else
+	OBJECT_FILES = $(OBJECTS)
+endif
+
 all : $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJECT_FILES)
 	$(AR) $@ $^
 
-bonus : $(OBJECTS) $(OBJECTS_b)
-	$(AR) $(NAME) $^
+bonus : 
+	make WITH_BONUSE=1 all
 
 clean :
 	rm -f $(OBJECTS) $(OBJECTS_b)
@@ -72,4 +78,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: bonus all clean fclean re
+ .PHONY: bonus all clean fclean re

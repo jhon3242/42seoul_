@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:04:03 by choewonju         #+#    #+#             */
-/*   Updated: 2021/12/08 14:55:25 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:02:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		while (s1[rear - 1] && ft_strchr(set, s1[rear - 1]) && front < rear)
 			rear--;
 		re = (char *)malloc(sizeof(char) * (rear - front + 1));
-		if (re)
-			strlcpy(re, &s1[front], rear - front + 1);
+		if (!re)
+			return (0);
+		strlcpy(re, &s1[front], rear - front + 1);
 	}
 	return (re);
 }
