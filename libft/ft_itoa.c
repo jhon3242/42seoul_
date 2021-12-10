@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:46:05 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 10:52:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:29:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ char	*ft_op(char *re, int len, long nb)
 		return (re);
 	}
 	if (nb < 0)
+	{
 		re[0] = '-';
+	}
 	while (nb != 0)
 	{
 		re[len--] = '0' + ft_abs(nb % 10);

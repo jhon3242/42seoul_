@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 17:43:48 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/16 13:25:00 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:29:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if ('a' <= c && c <= 'z')
-		return (c);
-	if ('A' <= c && c <= 'Z')
-		return (c);
-	if ('0' <= c && c <= '9')
-		return (c);
-	return (0);
+	return (ft_isdigit(c) || ft_isalpha(c));
 }

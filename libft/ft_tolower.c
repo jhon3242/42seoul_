@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:21:27 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/17 13:37:34 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:09:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_up(int c)
 {
-	return (('A' <= c) && (c <= 'Z'));
+	return ((65 <= c) && (c <= 90));
 }
 
 int	ft_tolower(int c)

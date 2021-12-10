@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:40:01 by choewonju         #+#    #+#             */
-/*   Updated: 2021/11/17 13:37:34 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:05:59 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ char	*ft_strrchr(const char *s, int c)
 	i = ft_strlen(s);
 	back = (char *)s;
 	find = (char)c;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (back[i] == find)
 			return (back + i);
 		i--;
 	}
-	if (back[i] == find)
-		return (back);
 	return (0);
 }
