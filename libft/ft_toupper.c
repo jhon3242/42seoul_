@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:36:56 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/12/10 19:09:32 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:07:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_low(int c)
+static int	is_low(int c)
 {
 	return ((97 <= c) && (c <= 122));
 }

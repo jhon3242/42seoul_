@@ -6,20 +6,20 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 20:08:33 by choewonjun        #+#    #+#             */
-/*   Updated: 2021/12/08 20:30:33 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:07:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_sep(char const *s, char c)
+static int	is_sep(char const *s, char c)
 {
 	if (*s == c)
 		return (1);
 	return (0);
 }
 
-int	ct_wd(char const *s, char c)
+static int	ct_wd(char const *s, char c)
 {
 	int	ret;
 
@@ -39,14 +39,14 @@ int	ct_wd(char const *s, char c)
 	return (ret);
 }
 
-void	wd_split(char *dst, char *from, char *untill)
+static void	wd_split(char *dst, char *from, char *untill)
 {
 	while (from < untill)
 		*(dst++) = *(from++);
 	*dst = 0;
 }
 
-char	**ft_free(char **tab)
+static char	**ft_free(char **tab)
 {
 	int	i;
 

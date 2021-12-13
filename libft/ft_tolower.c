@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:21:27 by choewonju         #+#    #+#             */
-/*   Updated: 2021/12/10 19:09:36 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:07:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_up(int c)
+static int	is_up(int c)
 {
 	return ((65 <= c) && (c <= 90));
 }
