@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:07 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/03 16:08:16 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/03 18:18:13 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,34 +60,30 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+static char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*re;
-	int		s1_len;
-	int		len;
-	int		i;
+	size_t	i;
+	size_t	s1_len;
+	size_t	len;
+	char	*str;
 
-	if (!s1 && !s2)
-		return (NULL);
-	else if (!s1 || !s2)
-		return (!s1 ? ft_strdup((char *)s2) : ft_strdup((char *)s1));
 	s1_len = ft_strlen(s1);
 	len = s1_len + ft_strlen(s2);
-	re = (char *)malloc(sizeof(char) * (len + 1));
-	if (!re)
+	str = (char *) malloc(sizeof(char) * (len + 1));
+	if (str == 0)
 		return (0);
 	i = 0;
 	while (i < len)
 	{
 		if (i < s1_len)
-			re[i] = s1[i];
+			str[i] = s1[i];
 		else
-			re[i] = s2[i - s1_len];
+			str[i] = s2[i - s1_len];
 		i++;
 	}
-	re[i] = '\0';
+	str[i] = '\0';
 	free(s1);
-	return (re);
+	return (str);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
