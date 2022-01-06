@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/06 20:42:44 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:16:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	count_len(char *str)
 {
@@ -100,6 +100,11 @@ char	*get_next_line(int fd)
 	if (backup[fd] == 0)
 		backup[fd] = ft_strdup("");
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+	{
+		free(backup[fd]);
+		return (0);
+	}
 	if (!update_backup(backup, fd, buff))
 		return (0);
 	free(buff);
