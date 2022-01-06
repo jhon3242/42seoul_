@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/03 19:01:32 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/06 23:15:26 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line.h"ls
 
 static int	count_len(char *str)
 {
@@ -92,10 +92,10 @@ static int	update_backup(char **backup, int fd, char *buff)
 
 char	*get_next_line(int fd)
 {
-	static char		*backup[OPEN_MAX];
+	static char		*backup[10240];
 	char			*buff;
 
-	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE < 1)
+	if (fd < 0 || fd >= 10240 || BUFFER_SIZE < 1)
 		return (0);
 	if (backup[fd] == 0)
 		backup[fd] = ft_strdup("");

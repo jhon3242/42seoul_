@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:00 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/03 18:56:15 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:40:17 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
