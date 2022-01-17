@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/03 17:59:51 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/04 23:02:37 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,4 @@ char *get_next_line(int fd)
 		return (0);
 	free(buff);
 	return (split_str(backup, fd));
-}
-
-int main()
-{
-	int	a;
-
-	a = open('a.txt', O_RDONLY);
-	printf("%s\n", get_next_line(a));
 }
