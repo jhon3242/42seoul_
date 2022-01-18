@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 15:25:04 by wonjchoi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/04 23:02:37 by wonjchoi         ###   ########.fr       */
-=======
-/*   Updated: 2022/01/07 00:15:28 by wonjchoi         ###   ########.fr       */
->>>>>>> 2d39a8aa5afe967570804c2eeefeaad10b14ab14
+/*   Updated: 2022/01/07 00:16:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	count_len(char *str)
 {
