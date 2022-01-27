@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 21:14:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/24 21:33:33 by wonjchoi         ###   ########.fr       */
+/*   Created: 2021/11/17 00:49:52 by wonjchoi          #+#    #+#             */
+/*   Updated: 2021/11/17 13:18:02 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static int is_conversions(const char *p)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*cvs;
+	unsigned int	i;
 
-
-	if (*p != '%')
-		return (0);
-	p++;
-	
-	return (0);
-}
-
-int ft_printf(const char *str, ...)
-{
-	va_list ap;
-	va_start(ap, str);
-	while (*str)
-	{
-		if (is_conversions(str))
-		{
-
-		}
-		write(1, str, 1);
-	}
+	if (s == 0 || f == 0)
+		return ;
+	i = -1;
+	while (s[++i])
+		f(i, s + i);
 }
