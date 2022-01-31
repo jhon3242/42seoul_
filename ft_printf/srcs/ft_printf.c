@@ -6,36 +6,55 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:14:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/27 22:53:49 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/01/30 17:27:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+// #include <stdio.h>
 
-void op(const char *str, va_list ap)
+static int	print_format(const char fmt, va_list *ap)
 {
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			str ++;
-			if (*str == 'c')
-				ft_putchar_fd(va_arg(ap, ))
-			else if (*str == 'd')
-				ft_putnbr_fd(va_arg(ap, int), 1);
-			else
-				write(1, str++, 1);
-		}
-		else
-			write(1, str++, 1);
-	}
+	int	ret;
+
+	ret = 0;
+	if (fmt == 'c')
+		ret += print_char(va_arg(*ap, int));
+	else if (fmt == 's')
+		ret += print_str(va_arg(*ap, char *));
+	// else if (fmt == 'p')
+	// 	ret += print_pointer(va_arg(ap, unsigned long));
+	else if (fmt == 'd' || fmt == 'i')
+		ret += print_nub(va_arg(*ap, int));
+	else if (fmt == 'u')
+		ret += ft_unsigned_int(va_arg(*ap, unsigned int));
+	else if (fmt == 'x' || fmt == 'X')
+		ret += print_hex(va_arg(*ap, long long), fmt);
+	else
+		ret += print_persent();
+	return (ret);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	va_list ap;
+	int		ret;
+	int		i;
+	va_list	ap;
+	
+	
+	ret = 0;
+	i = -1;
 	va_start(ap, str);
-	op(str, ap);
+	while (str[++i])
+	{
+		if (str[i] == '%')
+		{
+			ret += print_format(str[i + 1], &ap);
+			i++;
+		}
+		else
+			ret += write(1, str + i, 1);
+	}
 	va_end(ap);
-	return (0);
+	return (ret);
 }

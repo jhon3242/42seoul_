@@ -6,9 +6,9 @@ SRC_NAME = ft_printf.c
 SRC_PATH = ./srcs
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
-OBJ_PATH = ./objs
-OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
+# OBJ_NAME = $(SRC_NAME:.c=.o)
+# OBJ_PATH = ./objs
+OBJ = $(SRC:.c=.o)
 
 INC_LINK = -I./includes
 
