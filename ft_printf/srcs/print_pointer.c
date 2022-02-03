@@ -1,55 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 17:11:27 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/01 21:08:37 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/02/03 21:44:04 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/02/03 22:13:58 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int op(long long num, const char *cmp)
+static int	put_pointer(unsigned long long n)
 {
 	int	ret;
 
 	ret = 0;
-	
-	
-	if (num < 0)
+	if (n >= 16)
 	{
-		if (num == LLONG_MIN)
-		{
-			ret += write(1, "-9223372036854775808", 20);
-			return (ret);
-		}
-		ret += write(1, "-", 1);
-		num *= -1;
-	}
-	if (num >= 16)
-	{
-		ret += op(num / 16, cmp);
-		ret += op(num % 16, cmp);
+		ret += put_pointer(n / 16);
+		ret += put_pointer(n % 16);
 	}
 	else
-	{
-		ret += write(1, cmp + num, 1);
-	}
+		ret += write(1, &"0123456789ABCDEF" + n, 1);
 	return (ret);
 }
 
-int print_hex(long long num, char fmt)
+int	print_pointer(unsigned long long n)
 {
 	int	ret;
 
 	ret = 0;
-	// printf(" num : %lld ", num);
-	if (fmt == 'x')
-		ret += op(num,"0123456789abcdef");
-	else
-		ret += op(num,"0123456789ABCDEF");
+	if (n == 0)
+	{
+		ret += write(1, "0", 1);
+		return (ret);
+	}
+	ret += write(1, "0x", 2);
+	ret += put_pointer(n);
 	return (ret);
 }

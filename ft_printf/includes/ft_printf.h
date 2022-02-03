@@ -24,5 +24,6 @@ int print_str(char *str);
 int print_char(int n);
 int print_nub(int n);
 int print_hex(long long num, char fmt);
+int	print_pointer(unsigned long long n);
 
 #endif

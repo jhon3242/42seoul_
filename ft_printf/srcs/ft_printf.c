@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:14:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/30 17:27:36 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/03 22:09:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	print_format(const char fmt, va_list *ap)
 		ret += print_char(va_arg(*ap, int));
 	else if (fmt == 's')
 		ret += print_str(va_arg(*ap, char *));
-	// else if (fmt == 'p')
-	// 	ret += print_pointer(va_arg(ap, unsigned long));
+	else if (fmt == 'p')
+		ret += print_pointer(va_arg(*ap, unsigned long long));
 	else if (fmt == 'd' || fmt == 'i')
 		ret += print_nub(va_arg(*ap, int));
 	else if (fmt == 'u')
