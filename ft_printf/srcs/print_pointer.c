@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:44:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/03 22:13:58 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/05 20:22:11 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	put_pointer(unsigned long long n)
 		ret += put_pointer(n % 16);
 	}
 	else
-		ret += write(1, &"0123456789ABCDEF" + n, 1);
+		ret += write(1, &"0123456789abcdef"[n], 1);
 	return (ret);
 }
 
