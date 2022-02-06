@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:44:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/05 20:22:11 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/06 21:45:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	print_pointer(unsigned long long n)
 	ret = 0;
 	if (n == 0)
 	{
-		ret += write(1, "0", 1);
+		ret += write(1, "0x0", 3);
 		return (ret);
 	}
 	ret += write(1, "0x", 2);

@@ -6,12 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:14:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/03 22:09:47 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:21:49 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-// #include <stdio.h>
 
 static int	print_format(const char fmt, va_list *ap)
 {
@@ -40,8 +39,7 @@ int	ft_printf(const char *str, ...)
 	int		ret;
 	int		i;
 	va_list	ap;
-	
-	
+
 	ret = 0;
 	i = -1;
 	va_start(ap, str);

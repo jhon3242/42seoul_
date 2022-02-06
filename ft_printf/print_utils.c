@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unsigned_int.c                               :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 19:34:50 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/01/30 17:11:06 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/01/29 18:46:42 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/02/06 21:48:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	u_num_len(unsigned int n)
+static int	num_len(int n)
 {
 	int	ret;
 
 	ret = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n /= 10;
+		n *= -1;
+		ret += 2;
+	}
 	while (n != 0)
 	{
 		n /= 10;
@@ -25,19 +33,40 @@ static int	u_num_len(unsigned int n)
 	return (ret);
 }
 
-int ft_unsigned_int(unsigned int n)
+int	print_persent(void)
+{
+	int	ret;
+
+	ret = write(1, "%", 1);
+	return (ret);
+}
+
+int	print_str(char *str)
 {
 	int	ret;
 
 	ret = 0;
-	if (n == 0)
-		ret = write(1, "0", 1);
-	else
+	if (!str)
 	{
-		ret = u_num_len(n);
-		if (n >= 10)
-			ft_putnbr_fd(n / 10, 1);	// int 최대 범위를 넘었을 수 있기 때문에 나눠서 출력
-		ft_putnbr_fd(n % 10, 1);
+		ft_putstr_fd("(null)", 1);
+		return (6);
 	}
+	ft_putstr_fd(str, 1);
+	ret = ft_strlen(str);
+	return (ret);
+}
+
+int	print_char(int n)
+{
+	write(1, &n, 1);
+	return (1);
+}
+
+int	print_nub(int n)
+{
+	int	ret;
+
+	ret = num_len(n);
+	ft_putnbr_fd(n, 1);
 	return (ret);
 }
