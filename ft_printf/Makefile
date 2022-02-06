@@ -2,12 +2,12 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 
-SRC_NAME = ft_printf.c
-SRC_PATH = ./srcs
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+SRC = ft_printf.c\
+		print_hex.c\
+		print_pointer.c\
+		print_unsigned_int.c\
+		print_utils.c\
 
-# OBJ_NAME = $(SRC_NAME:.c=.o)
-# OBJ_PATH = ./objs
 OBJ = $(SRC:.c=.o)
 
 INC_LINK = -I./includes
