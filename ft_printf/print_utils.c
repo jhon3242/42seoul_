@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 18:46:42 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/06 21:48:43 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/07 15:04:31 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 static int	num_len(int n)
 {

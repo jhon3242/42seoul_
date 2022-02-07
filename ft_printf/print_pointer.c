@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 21:44:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/06 21:45:27 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/07 15:04:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 static int	put_pointer(unsigned long long n)
 {

@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 19:34:50 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/06 20:14:58 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/07 15:04:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 static int	u_num_len(unsigned int n)
 {

@@ -6,11 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:14:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/02/06 20:21:49 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/07 15:04:17 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
 static int	print_format(const char fmt, va_list *ap)
 {
@@ -22,13 +22,13 @@ static int	print_format(const char fmt, va_list *ap)
 	else if (fmt == 's')
 		ret += print_str(va_arg(*ap, char *));
 	else if (fmt == 'p')
-		ret += print_pointer(va_arg(*ap, unsigned long long));
+		ret += print_pointer(va_arg(*ap,long long));
 	else if (fmt == 'd' || fmt == 'i')
 		ret += print_nub(va_arg(*ap, int));
 	else if (fmt == 'u')
 		ret += ft_unsigned_int(va_arg(*ap, unsigned int));
 	else if (fmt == 'x' || fmt == 'X')
-		ret += print_hex(va_arg(*ap, long long), fmt);
+		ret += print_hex(va_arg(*ap, unsigned int), fmt);
 	else
 		ret += print_persent();
 	return (ret);
