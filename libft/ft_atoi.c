@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:45:09 by choewonju         #+#    #+#             */
-/*   Updated: 2022/02/07 18:26:19 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:30:24 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	ft_atoi(const char *str)
 	while (str[i] && ft_isnum(str[i]))
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		if (sign > 0 && nb > 2147483647)
-		return (-1);
-		if (sign < 0 && nb > 2147483647)
-		return (0);
+		if (sign > 0 && nb > 9223372036854775807llu)
+			return (-1);
+		if (sign < 0 && nb > 9223372036854775808llu)
+			return (0);
 		i++;
 	}
 	return (nb * sign);

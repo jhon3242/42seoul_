@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:45:22 by choewonju         #+#    #+#             */
-/*   Updated: 2021/12/16 20:02:46 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:30:48 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	else if (!s1 || !s2)
-		return (!s1 ? ft_strdup((char *)s2) : ft_strdup((char *)s1));
+	{
+		if (!s1)
+			return (ft_strdup((char *)s2));
+		else
+			return (ft_strdup((char *)s1));
+	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	re = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
