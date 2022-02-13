@@ -1,6 +1,8 @@
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
+HEADER = includes/ft_printf.h
+LIBDIR = libft/
 
 SRC = ft_printf.c\
 		print_hex.c\
@@ -9,20 +11,18 @@ SRC = ft_printf.c\
 		print_utils.c\
 
 OBJ = $(SRC:.c=.o)
-
 INC_LINK = -I./includes
+
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) libft
-	cp libft/libft.a ./$(NAME)
-	ar rcs $(NAME) $(OBJ)
+$(NAME) : $(OBJ)
+	$(MAKE) -C $(LIBDIR) all
+	cp ./libft/libft.a ./$(NAME)
+	ar rcs $(NAME) $^
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	$(CC) $(FLAGS) $(INC_LINK) -c $< -o $@
-
-libft :
-	$(MAKE) -C ./libft all
 
 clean :
 	$(MAKE) -C ./libft clean
