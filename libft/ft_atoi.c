@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: choewonjun <wonjchoi@42seoul.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 19:45:09 by choewonju         #+#    #+#             */
-/*   Updated: 2022/02/09 17:30:24 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:57:56 by choewonju        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	ft_atoi(const char *str)
 	while (str[i] && ft_isnum(str[i]))
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		if (sign > 0 && nb > 9223372036854775807llu)
+		if (nb > 2147483647 && sign == 1)
 			return (-1);
-		if (sign < 0 && nb > 9223372036854775808llu)
+		if (nb > 2147483648 && sign == -1)
 			return (0);
 		i++;
 	}

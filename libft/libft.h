@@ -6,14 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:41:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2021/12/09 02:47:19 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:57:23 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_list
