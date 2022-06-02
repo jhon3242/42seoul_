@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:30:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 21:46:52 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:44:15 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int get_min_val(t_stack *a)
 	{
 		if (tmp->val < min_val)
 			min_val = tmp->val;
-		tmp = tmp->nxt
+		tmp = tmp->nxt;
 	}
 	return (min_val);
 }
@@ -39,7 +39,7 @@ int get_max_val(t_stack *a)
 	{
 		if (tmp->val > max_val)
 			max_val = tmp->val;
-		tmp = tmp->nxt
+		tmp = tmp->nxt;
 	}
 	return (max_val);
 }
@@ -55,7 +55,7 @@ int	get_stack_len(t_stack *a)
 	tail = a->prv;
 	while (a != tail)
 	{
-		a = a->nxt
+		a = a->nxt;
 		len++;
 	}
 	return (len);

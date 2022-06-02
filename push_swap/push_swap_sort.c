@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:30:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 22:14:43 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:43:55 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,25 @@ static void sort_minmax(t_stack **a, t_stack **b, int min_val)
 	}
 }
 
-void	sort_5(t_stack **a, t_stack **b, int len)
+static void	sort_3(t_stack **a, t_stack **b)
 {
-	int	min_val;
-	int	max_val;
-	int	pb_count;
-
-	min_val = get_min_val(*a);
-	max_val = get_max_val(*a);
-	pb_count = 0;
-	while (get_stack_len(*a) > 3)
+	if ((*a)->val == get_min_val(*a))
 	{
-		if ((*a)->val == min_val || (*a)->val == max_val)
-		{
-			do_op("pb", a, b);
-			pb_count++;
-		}
-		else
-			do_op("ra", a, b);
+		do_op("sa", a, b);
+		do_op("ra", a, b);
 	}
-	if (is_decend(*a, 3))
-		reverse_stack(a, b, 3)
-	else if (!is_accend(a, b, 3))
-		sort_3(a, b);
-	while (pb_count-- >0)
-		sort_minmax(a, b, min_val);
+	else if ((*a)->val == get_max_val(*a))
+		do_op("ra", a, b);
+	else
+	{
+		if ((*a)->nxt->val == get_min_val(*a))
+			do_op("sa", a, b);
+		else
+			do_op("rra", a, b);
+	}
 }
 
-void	sort_4(t_stack **a, t_stack **b, int len)
+void	sort_4(t_stack **a, t_stack **b)
 {
 	if ((*a)->val > (*a)->nxt->val)
 		do_op("sa", a, b);
@@ -72,22 +63,31 @@ void	sort_4(t_stack **a, t_stack **b, int len)
 		do_op("sa", a, b);
 }
 
-static void	sort_3(t_stack **a, t_stack **b, int len)
+void	sort_5(t_stack **a, t_stack **b)
 {
-	if ((*a)->val == get_min_val(*a))
+	int	min_val;
+	int	max_val;
+	int	pb_count;
+
+	min_val = get_min_val(*a);
+	max_val = get_max_val(*a);
+	pb_count = 0;
+	while (get_stack_len(*a) > 3)
 	{
-		do_op("sa", a, b);
-		do_op("ra", a, b);
+		if ((*a)->val == min_val || (*a)->val == max_val)
+		{
+			do_op("pb", a, b);
+			pb_count++;
+		}
+		else
+			do_op("ra", a, b);
 	}
-	else if ((*a)->val == get_max_val(*a))
-		do_op("ra", a, b);
-	else
-	{
-		if ((*a)->nxt->val == get_min_val(*a))
-			do_op("sa", a, b);
-		else:
-			do_op("rra", a, b);
-	}
+	if (is_decend(*a, 3))
+		reverse_stack(a, b, 3);
+	else if (!is_accend(*a, 3))
+		sort_3(a, b);
+	while (pb_count-- >0)
+		sort_minmax(a, b, min_val);
 }
 
 void	sort_by_len(t_stack **a, t_stack **b, int len)
@@ -99,5 +99,5 @@ void	sort_by_len(t_stack **a, t_stack **b, int len)
 	else if (len == 5)
 		sort_5(a, b);
 	else
-		a_to_b(a, b);
+		a_to_b(a, b, len);
 }

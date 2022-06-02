@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:47:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 23:22:38 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:40:46 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void	a_to_b(t_stack **a, t_stack **b, int len)
 		return ;
 	}
 	info = (t_info){0, };
-	set_pivot(a, len, 'a', &info);
+	set_pivot(*a, len, 'a', &info);
 	divide_a(a, b, len, &info);
 	both_rroll(a, b, info.cnt_rb);
+	a_to_b(a, b, info.cnt_ra);
+	b_to_a(a, b, info.cnt_rb);
+	b_to_a(a, b, info.cnt_pb - info.cnt_rb);
 }

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:35:44 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 20:16:27 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:46:44 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static void check_same_value(t_stack *a)
 		{
 			if (now == tail->nxt)
 				break;
-			if (a->val == cur->val)
+			if (a->val == now->val)
 				print_error();
 			now = now->nxt;
 		}
 		a = a->nxt;
-		now = a->nxt
+		now = a->nxt;
 	}
 }
 
@@ -67,7 +67,7 @@ int main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	// ++av;
+	++av;
 	len = get_len(av);
 	init_stack(av, &a, &b);
 	check_same_value(a);
