@@ -6,11 +6,17 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:02:03 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/05/31 17:58:58 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:44:03 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void apply_sign(int sign, long long *ret)
+{
+	if (sign < 0)
+		*ret =  ~(*ret) + 1;
+}
 
 static int is_nbr(char c)
 {
@@ -19,19 +25,30 @@ static int is_nbr(char c)
 	return (1);
 }
 
+static int put_sign(const char *str, int *sign)
+{
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			*sign *= -1;
+		return (1);
+	}
+	return (0);
+}
+
+
 int atoi_and_nullck(const char *str)
 {
 	int			sign;
 	long long	ret;
 
 	sign = 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
 	ret = 0;
+
+	if (put_sign(str, &sign))
+		str++;
+	if (!*str)
+		print_error();
 	while (*str)
 	{
 		if (is_nbr(*str))
@@ -43,7 +60,8 @@ int atoi_and_nullck(const char *str)
 			print_error();
 		str++;
 	}
-	if (ret > 2147483648 || (ret == 2147483648 && sign > 0))
+	apply_sign(sign, &ret);
+	if (ret > 2147483647 || ret < -2147483648)
 		print_error();
 	return (ret);
 }

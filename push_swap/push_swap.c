@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:35:44 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 23:46:44 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:21:32 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,10 @@ static void check_same_value(t_stack *a)
 	}
 }
 
-int print_error()
+void print_error()
 {
-	ft_putendl_fd("Error", 2);
+	write(2, "Error\n", 6);
 	exit(1);
-	return (-1);
 }
 
 int main(int ac, char **av)
@@ -75,5 +74,6 @@ int main(int ac, char **av)
 		reverse_stack(&a, &b, len);
 	else if (len >= 3 && !is_accend(a, len))
 		sort_by_len(&a, &b, len);
+	exit(0);
 	return (0);
 }

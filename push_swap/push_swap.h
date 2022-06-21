@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 23:41:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:18:08 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_info
 /* push_swap.c
 ## =====================================================
 */
-int			print_error();
+void		print_error();
 int			atoi_and_nullck(const char *str);
 int			get_len(char **av);
 

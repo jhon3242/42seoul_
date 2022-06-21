@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:47:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 23:40:46 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:10:05 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void sorting_a(t_stack **a, t_stack **b, int len)
 {
+	
 	if (len == 2 || len == 3)
 	{
 		if ((*a)->val > (*a)->nxt->val)
@@ -29,8 +30,10 @@ static void sorting_a(t_stack **a, t_stack **b, int len)
 	}
 	else if (len == 4)
 		sort_4(a, b);
+		
 	else if (len == 5)
 		sort_5(a, b);
+		
 }
 
 static void divide_a(t_stack **a, t_stack **b, int len, t_info *info)
