@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/21 20:18:08 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:10:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int			push_node(t_stack **dst, t_stack *src);
 ## =====================================================
 */
 void sort_by_len(t_stack **a, t_stack **b, int len);
-void	sort_4(t_stack **a, t_stack **b);
-void	sort_5(t_stack **a, t_stack **b);
 
 /* push_swap_do_op.c
 ## =====================================================

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:30:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 23:43:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:12:18 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,8 @@ static void	sort_3(t_stack **a, t_stack **b)
 	}
 }
 
-void	sort_4(t_stack **a, t_stack **b)
-{
-	if ((*a)->val > (*a)->nxt->val)
-		do_op("sa", a, b);
-	do_op("pb", a, b);
-	if ((*a)->val > (*a)->nxt->val)
-		do_op("sa", a, b);
-	do_op("pb", a, b);
-	if ((*a)->val > (*a)->nxt->val && (*b)->val < (*b)->nxt->val)
-		do_op("ss", a, b);
-	else if ((*a)->val > (*a)->nxt->val)
-		do_op("sa", a, b);
-	else if ((*b)->val < (*b)->nxt->val)
-		do_op("sb", a, b);
-	do_op("pb", a, b);
-	if ((*a)->val > (*a)->nxt->val)
-		do_op("sa", a, b);
-	do_op("pb", a, b);
-	if ((*a)->val > (*a)->nxt->val)
-		do_op("sa", a, b);
-}
 
-void	sort_5(t_stack **a, t_stack **b)
+static void	sort_4_5(t_stack **a, t_stack **b)
 {
 	int	min_val;
 	int	max_val;
@@ -94,10 +73,8 @@ void	sort_by_len(t_stack **a, t_stack **b, int len)
 {
 	if (len == 3)
 		sort_3(a, b);
-	else if (len == 4)
-		sort_4(a, b);
-	else if (len == 5)
-		sort_5(a, b);
+	else if (len == 4 || len == 5)
+		sort_4_5(a, b);
 	else
 		a_to_b(a, b, len);
 }
