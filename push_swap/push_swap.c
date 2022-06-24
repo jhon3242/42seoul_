@@ -6,19 +6,20 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:35:44 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/21 20:21:32 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:28 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void init_stack(char **av, t_stack **a, t_stack**b)
+static void init_stack(char **av, t_stack **a, t_stack**b, t_command **cmd)
 {
 	int		tmp_num;
 	t_stack	*new_node;
 
 	*a = 0;
 	*b = 0;
+	*cmd = 0;
 	while (*av)
 	{
 		tmp_num = atoi_and_nullck(*av);
@@ -63,17 +64,18 @@ int main(int ac, char **av)
 	int		len;
 	t_stack	*a;
 	t_stack	*b;
+	t_cmd *cmd;
 
 	if (ac < 2)
 		return (0);
 	++av;
 	len = get_len(av);
-	init_stack(av, &a, &b);
+	init_stack(av, &a, &b, &cmd);
 	check_same_value(a);
 	if (len >= 2 && is_decend(a, len))
 		reverse_stack(&a, &b, len);
 	else if (len >= 3 && !is_accend(a, len))
-		sort_by_len(&a, &b, len);
+		sort_by_len(&a, &b, len, &cmd);
 	exit(0);
 	return (0);
 }

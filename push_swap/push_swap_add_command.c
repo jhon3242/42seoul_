@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_parsing.c                                :+:      :+:    :+:   */
+/*   push_swap_add_command.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 17:22:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/24 20:15:26 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/06/24 18:57:29 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/06/24 20:15:24 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_len(char **av)
+void add_command(t_cmd **cmd, char *op)
 {
-	int		len;
-	char	*tmp;
+	t_cmd *tmp;
 
-	len = 0;
-	while (*av)
-	{
-		if (**av == 0)
-			print_error();
-		tmp = *av;
-		while (*tmp)
-		{
-			while (*tmp && *tmp == ' ')
-				tmp++;
-			if (*tmp && *tmp != ' ')
-				len++;
-			while (*tmp && *tmp != ' ')
-				tmp++;
-		}
-		av++;
-	}
-	return (len);
+	tmp = create_cmd(op);
+	append_new_cmd(cmd, tmp);
 }

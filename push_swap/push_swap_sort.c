@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:30:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/23 22:12:18 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:26 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	sort_3(t_stack **a, t_stack **b)
 	}
 }
 
-
 static void	sort_4_5(t_stack **a, t_stack **b)
 {
 	int	min_val;
@@ -69,12 +68,12 @@ static void	sort_4_5(t_stack **a, t_stack **b)
 		sort_minmax(a, b, min_val);
 }
 
-void	sort_by_len(t_stack **a, t_stack **b, int len)
+void	sort_by_len(t_stack **a, t_stack **b, int len, t_command **cmd)
 {
 	if (len == 3)
 		sort_3(a, b);
 	else if (len == 4 || len == 5)
 		sort_4_5(a, b);
 	else
-		a_to_b(a, b, len);
+		a_to_b(a, b, len, cmd);
 }

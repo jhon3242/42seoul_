@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:37:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/21 21:18:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int op_rroll(t_stack **a)
 	return (1);
 }
 
-void do_op(char	*op, t_stack **a, t_stack **b)
+
+void do_op(char	*op, t_stack **a, t_stack **b, t_cmd ** cmd)
 {
 	if (!ft_strcmp(op, "sa") && op_swap(*a))
 		ft_putstr_fd("sa\n", 1);
@@ -59,6 +60,7 @@ void do_op(char	*op, t_stack **a, t_stack **b)
 	else if (!ft_strcmp(op, "rrr") && op_rroll(a) && op_rroll(b))
 		ft_putstr_fd("rrr\n", 1);
 }
+
 
 void both_rroll(t_stack **a, t_stack **b, int len)
 {

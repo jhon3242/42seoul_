@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/23 22:10:43 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:29 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct s_info
 	int	cnt_pb;
 }				t_info;
 
+typedef struct	s_cmd
+{
+	char	*cmd;
+	struct s_cmd	*prv;
+	struct s_cmd	*nxt;
+}				t_cmd;
+
 /* push_swap.c
 ## =====================================================
 */
@@ -47,7 +54,10 @@ int			get_len(char **av);
 ## =====================================================
 */
 t_stack*	create_node(int num);
+t_command*	create_cmd(char *cmd);
 void		append_new_node(t_stack **stack, t_stack *node);
+void		append_new_cmd(t_stack **a, t_stack *node);
+
 
 /* push_swap_stack.c
 ## =====================================================
@@ -76,7 +86,6 @@ int get_min_val(t_stack *a);
 int get_max_val(t_stack *a);
 int	get_stack_len(t_stack *a);
 
-
 /* push_swap_pivot.c
 ## =====================================================
 */
@@ -92,4 +101,6 @@ void	a_to_b(t_stack **a, t_stack **b, int len);
 */
 void b_to_a(t_stack **a, t_stack **b, int len);
 
+
+void add_command(t_cmd **cmd, char *op);
 #endif

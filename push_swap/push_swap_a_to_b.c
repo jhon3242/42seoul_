@@ -6,68 +6,62 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:47:47 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/23 22:07:27 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:23 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void sorting_a(t_stack **a, t_stack **b, int len)
+static void sorting_a(t_stack **a, t_stack **b, int len, t_cmd **cmd)
 {
-	
 	if (len == 2 || len == 3)
 	{
 		if ((*a)->val > (*a)->nxt->val)
-			do_op("sa", a, b);
+			add_command(cmd, "sa");
 		if (len == 3 && !is_accend(*a, len))
 		{
-			do_op("ra", a, b);
-			do_op("sa", a, b);
-			do_op("rra", a, b);
+			add_command(cmd, "ra");
+			
+			add_command(cmd, "sa");
+			add_command(cmd, "rra");
 			if ((*a)->val > (*a)->nxt->val)
-				do_op("sa", a, b);
+				add_command(cmd, "sa");
 		}
 	}
-	// else if (len == 4)
-	// 	sort_4(a, b);
-		
-	// else if (len == 5)
-	// 	sort_5(a, b);
-		
 }
 
-static void divide_a(t_stack **a, t_stack **b, int len, t_info *info)
+static void divide_a(t_stack **a, t_stack **b, int len, t_info *i, t_cmd **t)
 {
 	while (len-- > 0)
 	{
-		if ((*a)->val > info->pvt_greater)
+		if ((*a)->val > i->pvt_greater)
 		{
-			do_op("ra", a, b);
-			(info->cnt_ra)++;
+			add_command(t, "ra");
+			(i->cnt_ra)++;
 		}
-		else if ((*a)->val <= info->pvt_less)
+		else if ((*a)->val <= i->pvt_less)
 		{
-			do_op("pb", a, b);
-			(info->cnt_pb)++;
+			add_command(t, "pb");
+			(i->cnt_pb)++;
 		}
 		else
 		{
-			do_op("pb", a, b);
-			do_op("rb", a, b);
-			(info->cnt_pb)++;
-			(info->cnt_rb)++;
+			add_command(t, "pb");
+			add_command(t, "rb");
+			(i->cnt_pb)++;
+			(i->cnt_rb)++;
 		}
 	}
 }
 
-void	a_to_b(t_stack **a, t_stack **b, int len)
+void	a_to_b(t_stack **a, t_stack **b, int len, t_cmd **cmd)
 {
 	t_info info;
 
 	if (len <= 3)
 	{
 		if (!is_accend(*a, len))
-			sorting_a(a, b, len);
+			sorting_a(a, b, len, cmd);
 		return ;
 	}
 	info = (t_info){0, };

@@ -6,53 +6,53 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 22:22:03 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/01 22:59:19 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void sorting_b(t_stack **a, t_stack **b, int len)
+static void sorting_b(t_stack **a, t_stack **b, int len, t_cmd ** cmd)
 {
 	if (len == 2 || len == 3)
 	{
 		if ((*b)->val < (*b)->nxt->val)
-			do_op("sb", a, b);
+			add_command(cmd, "sb");
 		if (len == 3)
 		{
 			if (!is_decend(*b, len))
 			{
-				do_op("rb", a, b);
-				do_op("sb", a, b);
-				do_op("rrb", a, b);
+				add_command(cmd, "rb");
+				add_command(cmd, "sb");
+				add_command(cmd, "rrb");
 				if ((*b)->val < (*b)->nxt->val)
-					do_op("sb", a, b);
+					add_command(cmd, "sb");
 			}
-			do_op("pa", a, b);
+			add_command(cmd, "pa");
 		}
-		do_op("pa", a, b);
+		add_command(cmd, "pa");
 	}
-	do_op("pa", a, b);
+	add_command(cmd, "pa");
 }
 
-static void divide_b(t_stack **a, t_stack **b, int len, t_info *info)
+static void divide_b(t_stack **a, t_stack **b, int len, t_info *i, t_cmd **t)
 {
 	while (len-- > 0)
 	{
 		if ((*b)->val >= info->pvt_greater)
 		{
-			do_op("pa", a, b);
+			add_command(t, "pa");
 			++(info->cnt_pa);
 		}
 		else if ((*b)->val < info->pvt_less)
 		{
-			do_op("rb", a, b);
+			add_command(t, "rb");
 			++(info->cnt_rb);
 		}
 		else
 		{
-			do_op("pa", a, b);
-			do_op("ra", a, b);
+			add_command(t, "pa");
+			add_command(t, "ra");
 			++(info->cnt_pa);
 			++(info->cnt_ra);
 		}

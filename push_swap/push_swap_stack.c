@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:16:40 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/21 20:41:14 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,3 @@ int	push_node(t_stack **dst, t_stack *src)
 	*dst = src;
 	return (1);
 }
-
-

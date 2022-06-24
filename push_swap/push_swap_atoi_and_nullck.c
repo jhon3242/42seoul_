@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:02:03 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/02 16:44:03 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:15:24 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int put_sign(const char *str, int *sign)
 	return (0);
 }
 
-
 int atoi_and_nullck(const char *str)
 {
 	int			sign;
@@ -44,7 +43,6 @@ int atoi_and_nullck(const char *str)
 
 	sign = 1;
 	ret = 0;
-
 	if (put_sign(str, &sign))
 		str++;
 	if (!*str)
