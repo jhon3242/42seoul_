@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:45:22 by choewonju         #+#    #+#             */
-/*   Updated: 2022/06/25 21:41:13 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/25 22:51:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		s1_len;
 	int		s2_len;
 	char	*re;
-	
+
 	if (!s1 && !s2)
 		return (NULL);
 	else if (!s1 || !s2)
