@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:16:40 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/24 20:15:27 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:54:07 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,29 @@ int is_accend(t_stack *a, int len)
 	return (1);
 }
 
-void reverse_stack(t_stack **a, t_stack **b, int len)
+void reverse_stack(t_stack **a, t_stack **b, int len, t_cmd **cmd)
 {
 	int	pb_count;
 
 	if (len == 2)
-		do_op("sa", a, b);
+		do_op("sa", a, b, cmd);
 	else if (len == 3)
 	{
-		do_op("sa", a, b);
-		do_op("rra", a, b);
+		do_op("sa", a, b, cmd);
+		do_op("rra", a, b, cmd);
 	}
 	else
 	{
 		pb_count = 0;
 		while (pb_count < len - 1)
 		{
-			do_op("pb", a, b);
+			do_op("pb", a, b, cmd);
 			pb_count++;
 		}
 		while (pb_count > 0)
 		{
-			do_op("pa", a, b);
-			do_op("ra", a, b);
+			do_op("pa", a, b, cmd);
+			do_op("ra", a, b, cmd);
 			pb_count--;
 		}
 	}

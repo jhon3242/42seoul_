@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/24 20:15:29 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:38:21 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -48,36 +49,41 @@ typedef struct	s_cmd
 */
 void		print_error();
 int			atoi_and_nullck(const char *str);
+
+/* push_swap_parsing.c
+## =====================================================
+*/
 int			get_len(char **av);
+char		*get_line_num(int argc, char **argv);
 
 /* push_swap_node.c
 ## =====================================================
 */
 t_stack*	create_node(int num);
-t_command*	create_cmd(char *cmd);
+t_cmd*	create_cmd(char *cmd);
 void		append_new_node(t_stack **stack, t_stack *node);
-void		append_new_cmd(t_stack **a, t_stack *node);
+void		append_new_cmd(t_cmd **a, t_cmd *node);
 
 
 /* push_swap_stack.c
 ## =====================================================
 */
-int 		is_decend(t_stack *a, int len);
-int 		is_accend(t_stack *a, int len);
-void 		reverse_stack(t_stack **a, t_stack **b, int len);
+int			is_decend(t_stack *a, int len);
+int			is_accend(t_stack *a, int len);
+void		reverse_stack(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 t_stack		*pop_node(t_stack **a);
 int			push_node(t_stack **dst, t_stack *src);
 
 /* push_swap_sort.c
 ## =====================================================
 */
-void sort_by_len(t_stack **a, t_stack **b, int len);
+void sort_by_len(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 
 /* push_swap_do_op.c
 ## =====================================================
 */
-void do_op(char	*op, t_stack **a, t_stack **b);
-void both_rroll(t_stack **a, t_stack **b, int len);
+void do_op(char	*op, t_stack **a, t_stack **b, t_cmd **cmd);
+void both_rroll(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 
 /* push_swap_sort_utile.c
 ## =====================================================
@@ -94,13 +100,14 @@ void set_pivot(t_stack *a, int len, char target_stack, t_info *info);
 /* push_swap_a_to_b.c
 ## =====================================================
 */
-void	a_to_b(t_stack **a, t_stack **b, int len);
+void	a_to_b(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 
 /* push_swap_b_to_a.c
 ## =====================================================
 */
-void b_to_a(t_stack **a, t_stack **b, int len);
+void	b_to_a(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 
-
-void add_command(t_cmd **cmd, char *op);
+void	add_command(t_cmd **cmd, char *op);
+void	zip_command(t_cmd **head);
+void	do_cmd(t_stack **a, t_stack **b, t_cmd **cmd);
 #endif

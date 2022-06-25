@@ -15,6 +15,8 @@ SRC = push_swap.c\
 		push_swap_sort.c\
 		push_swap_sort_utile.c\
 		push_swap_atoi_and_nullck.c\
+		push_swap_command_add.c\
+		push_swap_command_zip.c\
 
 OBJ = $(SRC:.c=.o)
 
