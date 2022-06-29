@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:07:17 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:10:25 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:35:51 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	both_op(t_stack **a, t_stack **b, char *op)
 	}
 	else if (!ft_strncmp(op, "rr\n", 3))
 	{
-		 op_roll(a);
-		 op_roll(b);
+		op_roll(a);
+		op_roll(b);
 	}
 	else if (!ft_strncmp(op, "rrr\n", 4))
 	{

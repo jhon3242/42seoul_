@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:35:44 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:09:20 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:35:35 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	
 	len = get_len(av) - 1;
 	line = get_line_num(ac, av);
 	init_stack(line, &a, &b, &cmd);
