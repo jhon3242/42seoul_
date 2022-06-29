@@ -1,6 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/goinfre/wonjchoi/push_swap'
-make: Leaving directory `/goinfre/wonjchoi/push_swap'
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/choewonjun/Documents/coding/Github/42seoul_/push_swap_fail'
+make: Nothing to be done for `all'.
+make: Leaving directory `/Users/choewonjun/Documents/coding/Github/42seoul_/push_swap_fail'
  
-make: *** No targets specified and no makefile found.  Stop.
-

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:16:40 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/25 23:12:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:52:02 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_stack	*pop_node(t_stack **a)
 	t_stack	*tmp;
 
 	tmp = *a;
+	if (!*a)
+		return (0);
 	if (*a == (*a)->nxt)
 		*a = 0;
 	else
@@ -82,6 +84,8 @@ t_stack	*pop_node(t_stack **a)
 
 int	push_node(t_stack **dst, t_stack *src)
 {
+	if (!src)
+		return (1);
 	if (*dst != 0)
 	{
 		(*dst)->prv->nxt = src;

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:37:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/26 00:38:53 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:56:32 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	op_swap(t_stack *a)
 {
 	int	tmp;
 
+	if (!a)
+		return (0);
 	tmp = a->val;
 	a->val = a->nxt->val;
 	a->nxt->val = tmp;
@@ -24,12 +26,16 @@ int	op_swap(t_stack *a)
 
 int	op_roll(t_stack **a)
 {
+	if (!*a)
+		return (0);
 	*a = (*a)->nxt;
 	return (1);
 }
 
 int	op_rroll(t_stack **a)
 {
+	if (!*a)
+		return (0);
 	*a = (*a)->prv;
 	return (1);
 }

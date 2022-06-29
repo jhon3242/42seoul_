@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 23:52:28 by wonjchoi          #+#    #+#              #
-#    Updated: 2022/06/26 01:10:38 by wonjchoi         ###   ########.fr        #
+#    Updated: 2022/06/29 16:52:10 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ NAME = push_swap
 B_NAME = checker
 
 CC = gcc
-FLAG = -Wall -Wextra -Werror
+FLAG = 
 
-LIB_DIR = libft/
-GNL_DIR = get_next_line/
+LIB_DIR = lib/libft/
+GNL_DIR = lib/get_next_line/
+FPT_DIR = lib/ft_printf/
 SRC_DIR = src
 
 INCLUDE = -I./include
@@ -65,12 +66,14 @@ bonus : $(B_NAME)
 
 $(NAME) : $(OBJ)
 	$(MAKE) -C $(LIB_DIR)
-	$(CC) $(FLAG) -o $@ $^ -L $(LIB_DIR) -lft
+	$(MAKE) -C $(FPT_DIR)
+	$(CC) $(FLAG) -o $@ $^ -L $(LIB_DIR) -lft -L $(FPT_DIR) -lftprintf
 
 $(B_NAME) : $(B_OBJ)
 	$(MAKE) -C $(LIB_DIR)
 	$(MAKE) -C $(GNL_DIR)
-	$(CC) $(FLAG) -o $@ $^ -L $(LIB_DIR) -lft -L $(GNL_DIR) -lgnl
+	$(MAKE) -C $(FPT_DIR)
+	$(CC) $(FLAG) -o $@ $^ -L $(LIB_DIR) -lft -L $(GNL_DIR) -lgnl -L $(FPT_DIR) -lftprintf 
 
 %.o : %.c
 	$(CC) $(FLAG) $(INCLUDE) -c $< -o $@
@@ -78,13 +81,15 @@ $(B_NAME) : $(B_OBJ)
 clean :
 	$(MAKE) -C $(LIB_DIR) clean
 	$(MAKE) -C $(GNL_DIR) clean
-	rm -f $(OBJ)
+	$(MAKE) -C $(FPT_DIR) clean
+	rm -f $(OBJ) $(B_OBJ)
 
 fclean : clean
 	$(MAKE) -C $(LIB_DIR) fclean
-	$(MAKE) -C $(GNL_DIR) clean
-	rm -f $(NAME) $(OBJ)
+	$(MAKE) -C $(GNL_DIR) fclean
+	$(MAKE) -C $(FPT_DIR) fclean
+	rm -f $(NAME) $(B_NAME)
 
 re : fclean all
 
-.PHONY : all libft clean fclean re
+.PHONY : all clean fclean re bonus

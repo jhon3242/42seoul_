@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:45:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/26 01:14:00 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:00:22 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void	init_stack(char *line, t_stack **a, t_stack**b, t_cmd **cmd)
 		tmp_num = atoi_and_nullck(strs[i]);
 		new_node = create_node(tmp_num);
 		append_new_node(a, new_node);
+		free(strs[i]);
 		line++;
 	}
+	if (strs)
+		free(strs);
 }
 
 void	check_same_value(t_stack *a)

@@ -6,17 +6,17 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/26 00:45:56 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:11:14 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H 
 
-# include "../libft/libft.h"
+# include "../lib/libft/libft.h"
+# include "../lib/ft_printf/includes/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -112,7 +112,13 @@ void		a_to_b(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 */
 void		b_to_a(t_stack **a, t_stack **b, int len, t_cmd **cmd);
 
+/* push_swap_command_add.c
+## =====================================================
+*/
 void		add_command(t_cmd **cmd, char *op);
+
+/* push_swap_command_zip.c
+## =====================================================
+*/
 void		zip_command(t_cmd **head);
-void		do_cmd(t_stack **a, t_stack **b, t_cmd **cmd);
 #endif

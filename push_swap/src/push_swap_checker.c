@@ -6,37 +6,55 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:07:17 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/26 01:14:19 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:10:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+static void	both_op(t_stack **a, t_stack **b, char *op)
+{
+	if (!ft_strncmp(op, "ss\n", 3))
+	{
+		op_swap(*a);
+		op_swap(*b);
+	}
+	else if (!ft_strncmp(op, "rr\n", 3))
+	{
+		 op_roll(a);
+		 op_roll(b);
+	}
+	else if (!ft_strncmp(op, "rrr\n", 4))
+	{
+		op_rroll(a);
+		op_rroll(b);
+	}
+}
+
 static void	run_op(t_stack **a, t_stack **b, char *op)
 {
-	printf("###%s###\n", op);
-	if (!ft_strcmp(op, "sa"))
+	if (!ft_strncmp(op, "sa\n", 3))
 		op_swap(*a);
-	else if (!ft_strcmp(op, "sb"))
+	else if (!ft_strncmp(op, "sb\n", 3))
 		op_swap(*b);
-	else if (!ft_strcmp(op, "ss") && op_swap(*a))
-		op_swap(*b);
-	else if (!ft_strcmp(op, "pa"))
+	else if (!ft_strncmp(op, "ss\n", 3))
+		both_op(a, b, op);
+	else if (!ft_strncmp(op, "pa\n", 3))
 		push_node(a, pop_node(b));
-	else if (!ft_strcmp(op, "pb"))
+	else if (!ft_strncmp(op, "pb\n", 3))
 		push_node(b, pop_node(a));
-	else if (!ft_strcmp(op, "ra"))
+	else if (!ft_strncmp(op, "ra\n", 3))
 		op_roll(a);
-	else if (!ft_strcmp(op, "rb"))
+	else if (!ft_strncmp(op, "rb\n", 3))
 		op_roll(b);
-	else if (!ft_strcmp(op, "rr") && op_roll(a))
-		op_roll(b);
-	else if (!ft_strcmp(op, "rra"))
+	else if (!ft_strncmp(op, "rr\n", 3))
+		both_op(a, b, op);
+	else if (!ft_strncmp(op, "rra\n", 4))
 		op_rroll(a);
-	else if (!ft_strcmp(op, "rrb"))
+	else if (!ft_strncmp(op, "rrb\n", 4))
 		op_rroll(b);
-	else if (!ft_strcmp(op, "rrr") && op_rroll(a))
-		op_rroll(b);
+	else if (!ft_strncmp(op, "rrr\n", 4))
+		both_op(a, b, op);
 	else
 		print_error();
 }
