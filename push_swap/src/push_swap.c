@@ -6,26 +6,11 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:35:44 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:35:35 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:33:04 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	clear_lst(t_stack *stack_a)
-{
-	t_stack	*tmp;
-
-	if (stack_a == NULL)
-		return ;
-	stack_a->prv->nxt = NULL;
-	while (stack_a)
-	{
-		tmp = stack_a->nxt;
-		free(stack_a);
-		stack_a = tmp;
-	}
-}
 
 static void	print_cmd(t_cmd **cmd)
 {
@@ -69,5 +54,6 @@ int	main(int ac, char **av)
 	if (cmd)
 		print_cmd(&cmd);
 	clear_lst(a);
+	exit(0);
 	return (0);
 }

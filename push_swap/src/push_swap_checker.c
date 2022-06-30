@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:07:17 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:35:51 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:34:06 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	main(int ac, char **av)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
+	clear_lst(a);
+	clear_lst(b);
 	exit(0);
 	return (0);
 }

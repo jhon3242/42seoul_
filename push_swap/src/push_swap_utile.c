@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 00:45:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:00:22 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:37:21 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,20 @@ void	check_same_value(t_stack *a)
 		}
 		a = a->nxt;
 		now = a->nxt;
+	}
+}
+
+void	clear_lst(t_stack *stack_a)
+{
+	t_stack	*tmp;
+
+	if (stack_a == NULL)
+		return ;
+	stack_a->prv->nxt = NULL;
+	while (stack_a)
+	{
+		tmp = stack_a->nxt;
+		free(stack_a);
+		stack_a = tmp;
 	}
 }

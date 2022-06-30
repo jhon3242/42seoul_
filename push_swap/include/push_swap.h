@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/29 17:11:14 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:37:15 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_cmd
 int			atoi_and_nullck(const char *str);
 void		init_stack(char *line, t_stack **a, t_stack**b, t_cmd **cmd);
 void		check_same_value(t_stack *a);
+void		clear_lst(t_stack *stack_a);
 
 /* push_swap_parsing.c
 ## =====================================================
