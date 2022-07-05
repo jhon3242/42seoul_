@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 23:29:48 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:37:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:11:13 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	init_mlx_window(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		print_error("Failed init mlx");
-	game->window = mlx_new_window(game->mlx, game->map.size.x * PX,
-			game->map.size.y * PX, "so_long");
+	game->window = mlx_new_window(game->mlx, game->map.size.y * PX,
+			game->map.size.x * PX, "so_long");
 	if (!game->window)
 		print_error("Failed init window");
 }
 
 void	init_img(t_game *game)
 {
-	game->imgs.player = get_img(game, "./asset/player/Fox_Down.xpm");
+	game->imgs.player = get_img(game, "./asset/player.xpm");
 	game->imgs.wall = get_img(game, "./asset/wall.xpm");
 	game->imgs.item = get_img(game, "./asset/item.xpm");
 	game->imgs.exit = get_img(game, "./asset/exit.xpm");

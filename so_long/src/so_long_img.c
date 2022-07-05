@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:06:07 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:44:07 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:22:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	put_img(t_game *game, void *img, t_pos pos)
 
 	x = pos.x;
 	y = pos.y;
-	mlx_put_image_to_window(game->mlx, game->window, img, x * PX, y * PX);
+	mlx_put_image_to_window(game->mlx, game->window, img, y * PX, x * PX);
 }

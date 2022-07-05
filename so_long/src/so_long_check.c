@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 23:38:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:36:30 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:12:26 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void	check_component(t_map *map)
 		}
 		x++;
 	}
-	if (map->flags.exit < 1 || map->flags.item < 1 || map->flags.player < 1)
+	if (map->flags.exit < 1 || map->flags.item < 1 || map->flags.player != 1)
 		print_error("insufficient count of component");
 }

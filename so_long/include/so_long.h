@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:06:26 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:47:48 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 23:36:28 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,17 @@
 # include "../lib/libgnl/include/get_next_line.h"
 # include "../lib/libft/include/libft.h"
 
+# define MLX_KEY_PRESS 2
+# define MLX_KEY_EXIT 17
+
+# define KEY_ESC 53
+# define KEY_W 13
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_A 0
+
 # define PX 64
+
 
 typedef struct s_pos
 {
@@ -91,10 +101,11 @@ void	init_img(t_game *game);
 void	get_map_size(t_map *map);
 void	get_map_chunks(t_game *game, const char *path);
 
-/* so_long_util.c
+/* so_long_close.c
 ## =====================================================
 */
 void	print_error(const char *str);
+int		close_game(t_game *game);
 
 /* so_long_player.c
 ## =====================================================
@@ -111,5 +122,15 @@ void	put_img(t_game *game, void *img, t_pos pos);
 ## =====================================================
 */
 void	drawing(t_game *game);
+
+/* so_long_press.c
+## =====================================================
+*/
+int		key_press(int keycode, t_game *game);
+
+/* so_long_move.c
+## =====================================================
+*/
+void	move(t_game *game, const int dxdy[2]);
 
 #endif

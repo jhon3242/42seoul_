@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_util.c                                     :+:      :+:    :+:   */
+/*   so_long_close.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:35:50 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 02:29:29 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/07/05 23:16:57 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 23:59:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	print_error(const char *str)
 {
-	printf("Error : %s", str);
+	printf("Error : %s\n", str);
 	exit(1);
+}
+
+int	close_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->window);
+	printf("Game End!");
+	exit(0);
 }

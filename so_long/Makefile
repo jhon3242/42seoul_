@@ -6,16 +6,15 @@
 #    By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/02 21:18:27 by wonjchoi          #+#    #+#              #
-#    Updated: 2022/07/05 17:48:37 by wonjchoi         ###   ########.fr        #
+#    Updated: 2022/07/06 00:03:24 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = gcc
-FLAG = 
+FLAG = -Wall -Wextra -Werror
 MLX_FLAG = -framework OpenGL -framework AppKit
-
 
 SRC_DIR = src
 LIB_DIR = lib/libft/
@@ -23,15 +22,16 @@ GNL_DIR = lib/libgnl/
 MLX_DIX = lib/libmlx/
 INCLUDE = -I./include
 
-
 SRC = $(SRC_DIR)/so_long.c\
 		$(SRC_DIR)/so_long_map.c\
 		$(SRC_DIR)/so_long_init_game.c\
 		$(SRC_DIR)/so_long_check.c\
-		$(SRC_DIR)/so_long_util.c\
+		$(SRC_DIR)/so_long_close.c\
 		$(SRC_DIR)/so_long_player.c\
 		$(SRC_DIR)/so_long_img.c\
 		$(SRC_DIR)/so_long_draw.c\
+		$(SRC_DIR)/so_long_key_press.c\
+		$(SRC_DIR)/so_long_move.c\
 		
 OBJ = $(SRC:.c=.o)
 
@@ -45,8 +45,6 @@ $(NAME) : $(OBJ)
 		-L $(LIB_DIR) -lft \
 		-L $(GNL_DIR) -lgnl \
 		-L $(MLX_DIX) -lmlx $(MLX_FLAG)
-		
-
 
 %.o : %.c
 	$(CC) $(FLAG) $(INCLUDE) -c $< -o $@

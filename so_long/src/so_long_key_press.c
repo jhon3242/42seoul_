@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_key_press.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:11:59 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 23:50:39 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/07/05 23:14:14 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/07/05 23:51:17 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+int		key_press(int keycode, t_game *game)
 {
-	t_game	game;
-	if (ac != 2)
-		print_error("Input Error.");
-	init_game(&game, av[1]);
-	drawing(&game);
-	mlx_hook(game.window, MLX_KEY_PRESS, 0, &key_press, &game);
-	mlx_hook(game.window, MLX_KEY_EXIT, 0, &close_game, &game);
-	mlx_loop(game.mlx);
+	const int dxdy[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+	if (keycode == KEY_ESC)
+		close_game(game);
+	else if (keycode == KEY_W)
+		move(game, dxdy[0]);
+	else if (keycode == KEY_S)
+		move(game, dxdy[1]);
+	else if (keycode == KEY_A)
+		move(game, dxdy[2]);
+	else if (keycode == KEY_D)
+		move(game, dxdy[3]);
+	return (0);
 }

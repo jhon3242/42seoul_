@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 17:38:38 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 17:47:31 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:24:16 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	put_component(t_game *game, t_pos pos)
 {
+	
 	put_img(game, game->imgs.road, pos);
 	if (game->map.chunks[pos.x][pos.y] == '1')
 		put_img(game, game->imgs.wall, pos);
