@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 23:38:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 21:12:26 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/09 21:07:08 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_map_path(const char *path, const char *suffix)
 {
 	int	p_len;
 	int	s_len;
-	
+
 	p_len = ft_strlen(path);
 	s_len = ft_strlen(suffix);
 	if (p_len < 4)
@@ -29,7 +29,7 @@ void	check_shape(t_map *map)
 {
 	int	x;
 	int	y_len;
-	
+
 	x = 0;
 	while (x < map->size.x)
 	{
@@ -69,7 +69,7 @@ void	check_component(t_map *map)
 	const char	*componets = "10PCE";
 	int			x;
 	int			y;
-	
+
 	ft_bzero(&map->flags, sizeof(map->flags));
 	x = 0;
 	while (x < map->size.x)
@@ -81,9 +81,9 @@ void	check_component(t_map *map)
 				print_error("Invalid component.");
 			if (map->chunks[x][y] == 'C')
 				map->flags.item++;
-			else if(map->chunks[x][y] == 'E')
+			else if (map->chunks[x][y] == 'E')
 				map->flags.exit++;
-			else if(map->chunks[x][y] == 'P')
+			else if (map->chunks[x][y] == 'P')
 				map->flags.player++;
 			y++;
 		}

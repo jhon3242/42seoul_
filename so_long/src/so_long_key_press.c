@@ -6,15 +6,15 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:14:14 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 23:51:17 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/09 21:06:26 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		key_press(int keycode, t_game *game)
+int	key_press(int keycode, t_game *game)
 {
-	const int dxdy[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+	const int	dxdy[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
 	if (keycode == KEY_ESC)
 		close_game(game);

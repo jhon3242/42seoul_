@@ -6,12 +6,12 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:06:26 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 23:36:28 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/09 21:10:21 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -29,7 +29,6 @@
 # define KEY_A 0
 
 # define PX 64
-
 
 typedef struct s_pos
 {
@@ -51,7 +50,6 @@ typedef struct s_player
 	t_pos	pos;
 }				t_player;
 
-
 typedef struct s_map
 {
 	t_pos	size;
@@ -67,7 +65,6 @@ typedef struct s_img
 	void	*player;
 	void	*exit;
 }				t_img;
-
 
 typedef struct s_game
 {
@@ -89,7 +86,7 @@ void	check_component(t_map *map);
 /* so_long_init_game.c
 ## =====================================================
 */
-void	init_game(t_game* game, char *map_path);
+void	init_game(t_game *game, char *map_path);
 void	init_map(t_game *game, char *map_path);
 void	init_player(t_game *game);
 void	init_mlx_window(t_game *game);
