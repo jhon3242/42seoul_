@@ -1,0 +1,102 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long'
+gcc -Wall -Wextra -Werror -I./include -c src/so_long.c -o src/so_long.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_map.c -o src/so_long_map.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_init_game.c -o src/so_long_init_game.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_check.c -o src/so_long_check.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_close.c -o src/so_long_close.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_player.c -o src/so_long_player.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_img.c -o src/so_long_img.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_draw.c -o src/so_long_draw.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_key_press.c -o src/so_long_key_press.o
+gcc -Wall -Wextra -Werror -I./include -c src/so_long_move.c -o src/so_long_move.o
+/Library/Developer/CommandLineTools/usr/bin/make -C lib/libft/
+ 
+make[1]: Entering directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libft'
+gcc -Wall -Wextra -Werror -I./include -c src/ft_atoi.c -o src/ft_atoi.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_bzero.c -o src/ft_bzero.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_calloc.c -o src/ft_calloc.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_isalnum.c -o src/ft_isalnum.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_isalpha.c -o src/ft_isalpha.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_isascii.c -o src/ft_isascii.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_isdigit.c -o src/ft_isdigit.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_isprint.c -o src/ft_isprint.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_memchr.c -o src/ft_memchr.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_memcmp.c -o src/ft_memcmp.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_memcpy.c -o src/ft_memcpy.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_memmove.c -o src/ft_memmove.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_memset.c -o src/ft_memset.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_split.c -o src/ft_split.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strchr.c -o src/ft_strchr.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strdup.c -o src/ft_strdup.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strjoin.c -o src/ft_strjoin.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strlcat.c -o src/ft_strlcat.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strlcpy.c -o src/ft_strlcpy.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strlen.c -o src/ft_strlen.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strncmp.c -o src/ft_strncmp.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strcmp.c -o src/ft_strcmp.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strnstr.c -o src/ft_strnstr.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strrchr.c -o src/ft_strrchr.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strtrim.c -o src/ft_strtrim.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_substr.c -o src/ft_substr.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_tolower.c -o src/ft_tolower.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_toupper.c -o src/ft_toupper.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_itoa.c -o src/ft_itoa.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_strmapi.c -o src/ft_strmapi.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_striteri.c -o src/ft_striteri.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_putchar_fd.c -o src/ft_putchar_fd.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_putstr_fd.c -o src/ft_putstr_fd.o
+ 
+gcc -Wall -Wextra -Werror -I./include -c src/ft_putendl_fd.c -o src/ft_putendl_fd.o
+gcc -Wall -Wextra -Werror -I./include -c src/ft_putnbr_fd.c -o src/ft_putnbr_fd.o
+ar rcs libft.a src/ft_atoi.o src/ft_bzero.o src/ft_calloc.o src/ft_isalnum.o src/ft_isalpha.o src/ft_isascii.o src/ft_isdigit.o src/ft_isprint.o src/ft_memchr.o src/ft_memcmp.o src/ft_memcpy.o src/ft_memmove.o src/ft_memset.o src/ft_split.o src/ft_strchr.o src/ft_strdup.o src/ft_strjoin.o src/ft_strlcat.o src/ft_strlcpy.o src/ft_strlen.o src/ft_strncmp.o src/ft_strcmp.o src/ft_strnstr.o src/ft_strrchr.o src/ft_strtrim.o src/ft_substr.o src/ft_tolower.o src/ft_toupper.o src/ft_itoa.o src/ft_strmapi.o src/ft_striteri.o src/ft_putchar_fd.o src/ft_putstr_fd.o src/ft_putendl_fd.o src/ft_putnbr_fd.o
+make[1]: Leaving directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libft'
+ 
+/Library/Developer/CommandLineTools/usr/bin/make -C lib/libgnl/
+ 
+make[1]: Entering directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libgnl'
+gcc -Wall -Wextra -Werror -I./include -c -o src/get_next_line.o src/get_next_line.c
+ar crsu libgnl.a src/get_next_line.o
+gcc -Wall -Wextra -Werror -I./include -c -o src/get_next_line_utils.o src/get_next_line_utils.c
+ar crsu libgnl.a src/get_next_line_utils.o
+make[1]: Leaving directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libgnl'
+ 
+/Library/Developer/CommandLineTools/usr/bin/make -C lib/libmlx/
+ 
+make[1]: Entering directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libmlx'
+cc -O2 -DSTRINGPUTX11   -c -o mlx_shaders.o mlx_shaders.c
+ 
+cc -O2 -DSTRINGPUTX11   -c -o mlx_new_window.o mlx_new_window.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_init_loop.o mlx_init_loop.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_new_image.o mlx_new_image.m
+cc -O2 -DSTRINGPUTX11   -c -o mlx_xpm.o mlx_xpm.c
+cc -O2 -DSTRINGPUTX11   -c -o mlx_int_str_to_wordtab.o mlx_int_str_to_wordtab.c
+cc -O2 -DSTRINGPUTX11   -c -o mlx_png.o mlx_png.c
+cc -O2 -DSTRINGPUTX11   -c -o mlx_mouse.o mlx_mouse.m
+ 
+ar -r libmlx.a mlx_shaders.o mlx_new_window.o mlx_init_loop.o mlx_new_image.o mlx_xpm.o mlx_int_str_to_wordtab.o mlx_png.o mlx_mouse.o
+ranlib libmlx.a
+ 
+make[1]: Leaving directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long/lib/libmlx'
+ 
+gcc -Wall -Wextra -Werror -o so_long src/so_long.o src/so_long_map.o src/so_long_init_game.o src/so_long_check.o src/so_long_close.o src/so_long_player.o src/so_long_img.o src/so_long_draw.o src/so_long_key_press.o src/so_long_move.o \
+		-L lib/libft/ -lft \
+		-L lib/libgnl/ -lgnl \
+		-L lib/libmlx/ -lmlx -framework OpenGL -framework AppKit
+ 
+make: Leaving directory `/Users/choewonjun/Documents/coding/Github/42seoul_/so_long'
+ 
