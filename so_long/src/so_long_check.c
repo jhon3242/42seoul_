@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 23:38:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/09 21:07:08 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/14 12:56:06 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_map_path(const char *path, const char *suffix)
 
 	p_len = ft_strlen(path);
 	s_len = ft_strlen(suffix);
-	if (p_len < 4)
+	if (p_len <= 4)
 		print_error("invalid file path.");
 	if (ft_strncmp(suffix, &path[p_len - s_len], s_len))
 		print_error("invalid file type.");
@@ -90,5 +90,5 @@ void	check_component(t_map *map)
 		x++;
 	}
 	if (map->flags.exit < 1 || map->flags.item < 1 || map->flags.player != 1)
-		print_error("insufficient count of component");
+		print_error("Invalid count of component");
 }

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 23:20:29 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/07/05 23:56:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/07/14 13:10:52 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	move_to_item(t_game *game, t_pos tmp)
 	put_img(game, game->imgs.road, game->player.pos);
 	put_img(game, game->imgs.road, tmp);
 	put_img(game, game->imgs.player, tmp);
-	game->map.chunks[tmp.x][tmp.y] = '0';
+	game->map.chunks[tmp.x][tmp.y] = 'P';
 	game->map.chunks[game->player.pos.x][game->player.pos.y] = '0';
 	game->player.pos = tmp;
 	printf("movement count : %d\n", game->player.move_count);
@@ -30,7 +30,6 @@ static void	move_to_road(t_game *game, t_pos tmp)
 	game->player.move_count++;
 	put_img(game, game->imgs.road, game->player.pos);
 	put_img(game, game->imgs.player, tmp);
-	game->map.chunks[tmp.x][tmp.y] = '1';
 	game->map.chunks[game->player.pos.x][game->player.pos.y] = '0';
 	game->player.pos = tmp;
 	printf("movement count : %d\n", game->player.move_count);
