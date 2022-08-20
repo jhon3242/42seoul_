@@ -6,41 +6,49 @@
 /*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:49:53 by choewonjun        #+#    #+#             */
-/*   Updated: 2022/08/17 20:34:39 by choewonjun       ###   ########.fr       */
+/*   Updated: 2022/08/20 13:38:30 by choewonjun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void redirect(t_info *info)
+void	redirect(t_info *info)
 {
-    int fd;
+	int	fd;
 
-    if (info->count == 2)
-    {
-        fd = open(info->first_arg, O_RDONLY);
-        if (fd < 0)
-            error_exit("Open error", EXIT_FAILURE);
-        dup2_with_errorck(fd, STDIN_FILENO);
-        dup2_with_errorck(info->b[WRITE], STDOUT_FILENO);
-    }
+	if (info->count == 2)
+	{
+		fd = open(info->first_arg, O_RDONLY);
+		if (fd < 0)
+			error_exit("Infile Open Error", EXIT_FAILURE);
+		dup2_with_errorck(fd, STDIN_FILENO);
+		dup2_with_errorck(info->b[WRITE], STDOUT_FILENO);
+	}
+	else if (info->count == info->argc - 2)
+	{
+		fd = open(info->last_arg, info->open_flag, 0644);
+		if (fd < 0)
+			error_exit("Outfile Open Error", EXIT_FAILURE);
+		dup2_with_errorck(info->a[READ], STDIN_FILENO);
+		dup2_with_errorck(fd, STDOUT_FILENO);
+	}
 }
 
-void    close_unused_fd(t_info *info)
+void	close_unused_fd(t_info *info)
 {
-    int wr_a;
-    int wr_b;
+	int	wr_a;
+	int	wr_b;
 
-    if (info->pid == 0) // 자식
-    {
-        wr_a = WRITE;
-        wr_b = READ;
-    }
-    else    // 부모
-    {
-        wr_a = READ;
-        wr_b = WRITE;
-    }
-    close_with_errorck(info->a[wr_a]);
-    close_with_errorck(info->b[wr_b]);
+	if (info->pid == 0)
+	{
+		wr_a = WRITE;
+		wr_b = READ;
+	}
+	else
+	{
+		wr_a = READ;
+		wr_b = WRITE;
+	}
+	close_with_errorck(info->a[wr_a]);
+	close_with_errorck(info->b[wr_b]);
 }

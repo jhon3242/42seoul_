@@ -10,6 +10,7 @@ FT = ft
 
 M_SRC = \
 	./mandatory/pipex.c\
+	./mandatory/path.c\
 	./mandatory/fd_handling.c\
 	./mandatory/error_handling.c\
 
@@ -29,11 +30,11 @@ $(NAME) : $(OBJ)
 		-L$(FT_DIR) -l$(FT)
 
 clean : 
-	$(MAKE) clean -C ($FT_DIR)
+	$(MAKE) clean -C $(FT_DIR)
 	$(RM) $(M_OBJ)
 
 fclean : clean
-	$(MAKE) fclean -C ($FT_DIR)
+	$(MAKE) fclean -C $(FT_DIR)
 	$(RM) $(NAME)
 
 re : fclean all
