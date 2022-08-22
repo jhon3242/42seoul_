@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 19:25:25 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/28 19:25:28 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:37:02 by choewonjun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 23:10:18 by choewonjun        #+#    #+#             */
-/*   Updated: 2022/08/22 16:41:45 by choewonjun       ###   ########.fr       */
+/*   Updated: 2022/08/20 17:19:20 by choewonjun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static void	operation(t_info *info)
 {
@@ -60,15 +60,23 @@ static void	init(t_info *info, int argc, char **argv, char **envp)
 	info->open_flag = O_RDWR | O_CREAT | O_TRUNC;
 }
 
+static void wait_child(void)
+{
+	while(wait(0) != -1)
+		;
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_info	info;
 
-	if (argc != 5)
+	if (argc < 5)
 		error_exit("Wrong argument.", EXIT_FAILURE);
 	if (pipe(info.a) < 0)
 		error_exit("Pipe error.", EXIT_FAILURE);
 	init(&info, argc, argv, envp);
+	here_doc(&info);
 	fork_with_exec(&info);
+	wait_child();
 	exit(EXIT_SUCCESS);
 }
