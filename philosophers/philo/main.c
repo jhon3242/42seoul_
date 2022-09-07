@@ -6,7 +6,7 @@
 /*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:23:13 by choewonjun        #+#    #+#             */
-/*   Updated: 2022/09/06 20:36:21 by choewonjun       ###   ########.fr       */
+/*   Updated: 2022/09/07 16:18:15 by choewonjun       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,18 @@ static enum e_exit exit_with(enum e_exit exit_status)
 
 int main(int argc, char *argv[])
 {
-	t_info info;
+	t_info	info;
+	t_philo	*philos;
+	t_mutex	mutex;
 
 	if (parsing_argv(&info, argc, argv))
 		return (exit_with(PARSE_FAIL));
-	
+	if (malloc_t_philo(&philos, &info))
+		return (exit_with(MALLOC_FAIL));
+	init_philos(philos, &info, &mutex);
+	if (init_mutex(philos, &info, &mutex))
+	{
+		free(philos);
+		exit_with(MUTEX_FAIL);
+	}
 }

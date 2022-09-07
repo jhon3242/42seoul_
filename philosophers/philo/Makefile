@@ -6,7 +6,7 @@
 #    By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:11:20 by choewonjun        #+#    #+#              #
-#    Updated: 2022/09/06 20:24:04 by choewonjun       ###   ########.fr        #
+#    Updated: 2022/09/07 16:14:09 by choewonjun       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ RM		= rm -f
 SRCS =	main.c\
 		parsing.c\
 		util.c\
+		initialize.c\
 
 OBJS = $(SRCS:.c=.o)
 
