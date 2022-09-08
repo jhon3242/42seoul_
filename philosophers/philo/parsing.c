@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:24:37 by choewonjun        #+#    #+#             */
-/*   Updated: 2022/09/06 20:34:03 by choewonjun       ###   ########.fr       */
+/*   Updated: 2022/09/08 18:11:29 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	long	ret;
 	int		sign;
 
 	ret = 0;
 	sign = 1;
-	while (*str == ' ' || (9 <= *str || *str <= 13))
+	while (*str == ' ' || (9 <= *str && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
@@ -39,17 +39,17 @@ static int ft_atoi(const char *str)
 
 static int	check_argv(int argc, char *argv[])
 {
-	int	i;
-	int	j;
-	long long result;
+	int			i;
+	int			j;
+	long long	result;
 
 	if (argc != 5 && argc != 6)
 		return (1);
 	i = 1;
-	result = 0;
 	while (i < argc)
 	{
 		j = 0;
+		result = 0;
 		while ('0' <= argv[i][j] && argv[i][j] <= '9')
 		{
 			result = result * 10 + (argv[i][j] - '0');

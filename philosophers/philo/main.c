@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choewonjun <choewonjun@student.42.fr>      +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:23:13 by choewonjun        #+#    #+#             */
-/*   Updated: 2022/09/07 16:18:15 by choewonjun       ###   ########.fr       */
+/*   Updated: 2022/09/08 17:45:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static enum e_exit exit_with(enum e_exit exit_status)
+static enum	e_exit	exit_with(enum e_exit exit_status)
 {
-	const char* msg[] = \
+	const char	*msg[] = \
 	{
 		"",
 		"Input must be like './philo phc ttd tte tts (npe)'\n",
@@ -22,13 +22,14 @@ static enum e_exit exit_with(enum e_exit exit_status)
 		"Error : Failed to init mutex\n",
 		"Error : Runtime Error\n"
 	};
+
 	if (exit_status == SUCCESS)
 		return (SUCCESS);
 	write(STDERR_FILENO, msg[exit_status], ft_strlen(msg[exit_status]));
 	return (exit_status);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_info	info;
 	t_philo	*philos;
@@ -42,6 +43,15 @@ int main(int argc, char *argv[])
 	if (init_mutex(philos, &info, &mutex))
 	{
 		free(philos);
-		exit_with(MUTEX_FAIL);
+		return (exit_with(MUTEX_FAIL));
 	}
+	if (running(philos, &info))
+	{
+		free(philos);
+		destory_mutex(philos);
+		return (RUNTIME_FAIL);
+	}
+	free(philos);
+	destory_mutex(philos);
+	return (exit_with(SUCCESS));
 }
