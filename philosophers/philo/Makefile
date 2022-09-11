@@ -6,14 +6,14 @@
 #    By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:11:20 by choewonjun        #+#    #+#              #
-#    Updated: 2022/09/08 16:49:37 by wonjchoi         ###   ########.fr        #
+#    Updated: 2022/09/11 15:21:10 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= philo
 
 CC		= gcc
-CFLAGS	= #-Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
 SRCS =	main.c\

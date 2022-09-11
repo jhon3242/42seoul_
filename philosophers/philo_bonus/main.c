@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:19:59 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/09/09 17:10:31 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:24:27 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static enum	e_exit	exit_with(enum e_exit exit_status)
 	return (exit_status);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_philo		philo;
 	t_info		info;
 	t_shared	shared;
-	
+
 	if (parsing_argv(&info, argc, argv))
 		return (exit_with(PARSE_FAIL));
 	memset(&philo, 0, sizeof(t_philo));
@@ -41,5 +41,11 @@ int main(int argc, char *argv[])
 	if (init_semaphore(&shared, &info))
 		return (exit_with(SEMAPHORE_FAIL));
 	philo.shared = &shared;
-	
+	if (running(&philo))
+	{
+		destory_semaphore(&shared, &info);
+		return (exit_with(RUNTIME_FAIL));
+	}
+	destory_semaphore(&shared, &info);
+	return (exit_with(SUCCESS));
 }

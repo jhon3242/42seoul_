@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   observe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:06:22 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/09/09 18:32:39 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:24:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	broadcast_dead(t_philo *philo)
 	time_t	time_stamp;
 
 	sem_wait(philo->shared->end_key);
-	time_stamp = get_cur_time();
+	time_stamp = get_diff_time(philo->info->start_time);
 	printf(C_PRPL "%ld %u died\n" C_RESET, time_stamp, philo->id);
 }
 
@@ -47,12 +47,11 @@ void	*observe_dead(void *_philo)
 	int		is_dead;
 
 	philo = (t_philo *)_philo;
-	is_dead = 0;
 	while (1)
 	{
-		sem_wait(philo->shared->event_key);
+		sem_wait(philo->shared->event_key[philo->id]);
 		is_dead = philo->info->ttd <= get_diff_time(philo->last_eating_time);
-		sem_post(philo->shared->event_key);
+		sem_post(philo->shared->event_key[philo->id]);
 		if (is_dead)
 		{
 			broadcast_dead(philo);

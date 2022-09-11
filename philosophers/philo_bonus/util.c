@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:52:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/09/09 16:58:19 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:22:49 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,14 @@ void	print_log(t_philo *philo, enum e_log_type type)
 
 	time_stamp = get_diff_time(philo->info->start_time);
 	id = philo->id;
-	sem_wait(philo->shared->end_lock);
-	if (!philo->shared->end_lock)
-	{
-		if (type == FORK)
-			printf(C_GREN "%ld %u has taken a fork\n" C_RESET, time_stamp, id);
-		else if (type == EAT)
-			printf(C_YLLW "%ld %u is eating\n" C_RESET, time_stamp, id);
-		else if (type == SLEEP)
-			printf(C_BLUE "%ld %u is sleeping\n" C_RESET, time_stamp, id);
-		else if (type == THINK)
-			printf(C_RED "%ld %u is thinking\n" C_RESET, time_stamp, id);
-		else if (type == DEAD)
-			printf(C_PRPL "%ld %u died\n" C_RESET, time_stamp, id);
-	}
-	sem_post(philo->shared->end_lock);
+	sem_wait(philo->shared->end_key);
+	if (type == FORK)
+		printf(C_GREN "%ld %u has taken a fork\n" C_RESET, time_stamp, id);
+	else if (type == EAT)
+		printf(C_YLLW "%ld %u is eating\n" C_RESET, time_stamp, id);
+	else if (type == SLEEP)
+		printf(C_BLUE "%ld %u is sleeping\n" C_RESET, time_stamp, id);
+	else if (type == THINK)
+		printf(C_RED "%ld %u is thinking\n" C_RESET, time_stamp, id);
+	sem_post(philo->shared->end_key);
 }

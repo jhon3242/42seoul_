@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 17:43:16 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/09/09 18:23:21 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:24:02 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	eating(t_philo *philo)
 	philo->last_eating_time = get_cur_time();
 	sem_post(philo->shared->event_key[philo->id]);
 	print_log(philo, EAT);
-	automic_sleep(CONTEXT_SWITCHING_TIME);
-	if (philo->eat_count++ >= philo->info->npe)
+	automic_sleep(philo->info->tte);
+	if (philo->eat_count++ == philo->info->npe)
 		sem_post(philo->shared->full_philos);
 	return_fork(philo);
 }
@@ -28,13 +28,13 @@ static void	eating(t_philo *philo)
 static void	sleeping(t_philo *philo)
 {
 	print_log(philo, SLEEP);
-	automic_sleep(CONTEXT_SWITCHING_TIME);
+	automic_sleep(philo->info->tts);
 }
 
 static void	thinking(t_philo *philo)
 {
 	print_log(philo, THINK);
-	automic_sleep(CONTEXT_SWITCHING_TIME);
+	usleep(CONTEXT_SWITCHING_TIME);
 }
 
 int	do_routine(t_philo *philo)

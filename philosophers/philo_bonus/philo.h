@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:26:34 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/09/09 18:34:05 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:27:17 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <string.h>
 # include <unistd.h>
 # include <semaphore.h>
-# include <fcntl.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <pthread.h>
+# include <signal.h>
 
 # define INT_MAX 2147483647
 # define CONTEXT_SWITCHING_TIME 1000
@@ -45,7 +46,6 @@ enum e_log_type
 	EAT,
 	SLEEP,
 	THINK,
-	DEAD,
 };
 
 typedef struct s_shared
@@ -57,7 +57,7 @@ typedef struct s_shared
 	sem_t	**event_key;
 }				t_shared;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	unsigned int	phc;
 	unsigned int	ttd;
@@ -76,12 +76,15 @@ typedef struct s_philo
 	t_shared		*shared;
 }				t_philo;
 
-
-
 /* parsing.c
 ## =====================================================
 */
 int		parsing_argv(t_info *info, int argc, char *argv[]);
+
+/* running.c
+## =====================================================
+*/
+int		running(t_philo *philo);
 
 /* semaphore_util.c
 ## =====================================================
@@ -91,7 +94,9 @@ void	set_sem_name(char *name_arr, unsigned int id);
 /* semaphore.c
 ## =====================================================
 */
-int	init_semaphore(t_shared *shared, t_info *info);
+int		open_semaphore(const char *name, unsigned int size, sem_t **sem_out);
+int		destory_semaphore(t_shared *shared, t_info *info);
+int		init_semaphore(t_shared *shared, t_info *info);
 
 /* observe.c
 ## =====================================================
@@ -105,6 +110,11 @@ int		observe_full(t_philo *philo);
 void	get_forks(t_philo *philo);
 void	return_fork(t_philo *philo);
 void	automic_sleep(time_t time_to_wait);
+
+/* routine.c
+## =====================================================
+*/
+int		do_routine(t_philo *philo);
 
 /* util.c
 ## =====================================================
