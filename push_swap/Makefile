@@ -15,7 +15,7 @@ NAME = push_swap
 B_NAME = checker
 
 CC = gcc
-FLAG = 
+CFLAG = -Wall -Wextra -Werror
 
 LIB_DIR = lib/libft/
 GNL_DIR = lib/get_next_line/
