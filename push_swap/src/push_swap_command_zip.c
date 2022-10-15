@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_command_zip.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 18:57:29 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/25 23:16:43 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:48:15 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	free_node(t_cmd *tmp)
 	if (!tmp)
 		return ;
 	tmp->cmd = 0;
-	tmp->nxt = 0;
-	tmp->prv = 0;
+	tmp->prev = 0;
+	tmp->next = 0;
 	free(tmp);
 }
 
@@ -27,16 +27,16 @@ static t_cmd	*delete_both(t_cmd *f, t_cmd *s, t_cmd **head)
 	t_cmd	*a;
 	t_cmd	*b;
 
-	a = f->prv;
-	b = s->nxt;
+	a = f->next;
+	b = s->prev;
 	if (f == (*head))
 		*head = a;
-	if (a->nxt == b && b->nxt == a)
+	if (a->prev == b && b->prev == a)
 		*head = 0;
 	else
 	{
-		a->nxt = b;
-		b->prv = a;
+		a->prev = b;
+		b->next = a;
 	}
 	free_node(f);
 	free_node(s);
@@ -68,8 +68,8 @@ static const char	*can_zip(t_cmd *f, t_cmd *s)
 static t_cmd	*new_command(t_cmd *f, t_cmd *s, char *cmd)
 {
 	f->cmd = cmd;
-	f->nxt = s->nxt;
-	s->nxt->prv = f;
+	f->prev = s->prev;
+	s->prev->next = f;
 	free(s);
 	return (f);
 }
@@ -81,7 +81,7 @@ void	zip_command(t_cmd **head)
 	char	*new_cmd;
 
 	f = (*head);
-	s = (*head)->nxt;
+	s = (*head)->prev;
 	if (!s || !f)
 		return ;
 	while (s != (*head) && s != f)
@@ -93,11 +93,11 @@ void	zip_command(t_cmd **head)
 				f = delete_both(f, s, head);
 			else
 				f = new_command(f, s, new_cmd);
-			s = f->nxt;
+			s = f->prev;
 			continue ;
 		}
 		f = s;
-		s = s->nxt;
+		s = s->prev;
 	}
 	if (f == s && !(f->cmd))
 		*head = 0;

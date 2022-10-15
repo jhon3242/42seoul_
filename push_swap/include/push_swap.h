@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:43 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/30 13:37:15 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:47:33 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 typedef struct s_stack
 {
 	int				val;
-	struct s_stack	*prv;
-	struct s_stack	*nxt;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }				t_stack;
 
 typedef struct s_info
 {
-	int	idx_pvt_less;
-	int	idx_pvt_greater;
-	int	pvt_less;
-	int	pvt_greater;
+	int	idx_next_less;
+	int	idx_next_greater;
+	int	next_less;
+	int	next_greater;
 	int	cnt_ra;
 	int	cnt_rb;
 	int	cnt_pa;
@@ -41,8 +41,8 @@ typedef struct s_info
 typedef struct s_cmd
 {
 	char			*cmd;
-	struct s_cmd	*prv;
-	struct s_cmd	*nxt;
+	struct s_cmd	*next;
+	struct s_cmd	*prev;
 }				t_cmd;
 
 /* push_swap_utile.c

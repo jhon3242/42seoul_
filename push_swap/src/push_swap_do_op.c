@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_do_op.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:37:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/28 17:56:32 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:48:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	op_swap(t_stack *a)
 	if (!a)
 		return (0);
 	tmp = a->val;
-	a->val = a->nxt->val;
-	a->nxt->val = tmp;
+	a->val = a->prev->val;
+	a->prev->val = tmp;
 	return (1);
 }
 
@@ -28,7 +28,7 @@ int	op_roll(t_stack **a)
 {
 	if (!*a)
 		return (0);
-	*a = (*a)->nxt;
+	*a = (*a)->prev;
 	return (1);
 }
 
@@ -36,7 +36,7 @@ int	op_rroll(t_stack **a)
 {
 	if (!*a)
 		return (0);
-	*a = (*a)->prv;
+	*a = (*a)->next;
 	return (1);
 }
 

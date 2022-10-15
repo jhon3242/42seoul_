@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utile.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:30:10 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/25 23:12:41 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:48:54 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	get_min_val(t_stack *a)
 	t_stack	*tmp;
 
 	min_val = a->val;
-	tmp = a->nxt;
+	tmp = a->prev;
 	while (tmp != a)
 	{
 		if (tmp->val < min_val)
 			min_val = tmp->val;
-		tmp = tmp->nxt;
+		tmp = tmp->prev;
 	}
 	return (min_val);
 }
@@ -34,12 +34,12 @@ int	get_max_val(t_stack *a)
 	t_stack	*tmp;
 
 	max_val = a->val;
-	tmp = a->nxt;
+	tmp = a->prev;
 	while (tmp != a)
 	{
 		if (tmp->val > max_val)
 			max_val = tmp->val;
-		tmp = tmp->nxt;
+		tmp = tmp->prev;
 	}
 	return (max_val);
 }
@@ -52,10 +52,10 @@ int	get_stack_len(t_stack *a)
 	if (!a)
 		return (0);
 	len = 1;
-	tail = a->prv;
+	tail = a->next;
 	while (a != tail)
 	{
-		a = a->nxt;
+		a = a->prev;
 		len++;
 	}
 	return (len);

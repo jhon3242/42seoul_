@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:16:40 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/06/28 17:52:02 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/10/16 00:49:13 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	is_decend(t_stack *a, int len)
 {
 	while (len-- > 1)
 	{
-		if (a->val < a->nxt->val)
+		if (a->val < a->prev->val)
 			return (0);
-		a = a->nxt;
+		a = a->prev;
 	}
 	return (1);
 }
@@ -27,9 +27,9 @@ int	is_accend(t_stack *a, int len)
 {
 	while (len-- > 1)
 	{
-		if (a->val > a->nxt->val)
+		if (a->val > a->prev->val)
 			return (0);
-		a = a->nxt;
+		a = a->prev;
 	}
 	return (1);
 }
@@ -69,15 +69,15 @@ t_stack	*pop_node(t_stack **a)
 	tmp = *a;
 	if (!*a)
 		return (0);
-	if (*a == (*a)->nxt)
+	if (*a == (*a)->prev)
 		*a = 0;
 	else
 	{
-		(*a)->prv->nxt = (*a)->nxt;
-		(*a)->nxt->prv = (*a)->prv;
-		*a = (*a)->nxt;
-		tmp->prv = tmp;
-		tmp->nxt = tmp;
+		(*a)->next->prev = (*a)->prev;
+		(*a)->prev->next = (*a)->next;
+		*a = (*a)->prev;
+		tmp->next = tmp;
+		tmp->prev = tmp;
 	}
 	return (tmp);
 }
@@ -88,10 +88,10 @@ int	push_node(t_stack **dst, t_stack *src)
 		return (1);
 	if (*dst != 0)
 	{
-		(*dst)->prv->nxt = src;
-		src->prv = (*dst)->prv;
-		(*dst)->prv = src;
-		src->nxt = *dst;
+		(*dst)->next->prev = src;
+		src->next = (*dst)->next;
+		(*dst)->next = src;
+		src->prev = *dst;
 	}
 	*dst = src;
 	return (1);
