@@ -16,7 +16,7 @@ typedef struct s_list
 	float	y;
 	float	width;
 	float	height;
-	char	coloer;
+	char	color;
 }	t_list;
 
 int ft_strlen(char *str)
@@ -100,21 +100,18 @@ void print_draw(char *draw, t_zone *zone)
 void	get_draw(char **draw, t_list *info, t_zone *zone)
 {
 	int x, y;
-	int res;
+	int rec;
 
 	x = -1;
-	// printf("@%c\n", info->coloer);
 	while (++x < zone->hight)
 	{
 		y = -1;
 		while (++y < zone->width)
 		{
-			res = is_rec(x, y, info);
-			// printf("%d %d %d %d\n", x, y, res, (x * zone->width) + y);
-			if ((info->type == 'r' && res == 2) || (info->type == 'R' && res)){
-				*(draw)[(x * zone->width) + y] = info->coloer;
+			rec = is_rec(x, y, info);
+			if ((info->type == 'r' && rec == 2) || (info->type == 'R' && rec)){
+				(*draw)[(x * zone->width) + y] = info->color;
 			}
-			printf("#%c#%c#\n", info->coloer, *(draw)[(x * zone->width) + y]);
 		}
 	}
 }
@@ -124,20 +121,16 @@ int drawing(FILE *file, char **draw, t_zone *zone)
 	t_list	info;
 	int count;
 
-	while ((count = fscanf(file, "%c %f %f %f %f %c\n", &info.type, &info.x, &info.y, &info.width, &info.height, &info.coloer)) == 6)
+	while ((count = fscanf(file, "%c %f %f %f %f %c\n", &info.type, &info.x, &info.y, &info.width, &info.height, &info.color)) == 6)
 	{
 		if (!check_info(&info))
 			return (1);
 		get_draw(draw, &info, zone);
-		print_draw(*draw, zone);
 	}
 	if (count == -1)
 		return (1);
 	return (0);
 }
-
-
-
 
 int main(int ac, char **av)
 {
@@ -151,7 +144,7 @@ int main(int ac, char **av)
 		return (print_err("Error: Operation file corrupted\n"));
 	if (!(draw = get_zone(file, &zone)))
 		return (free_all(file, NULL) && print_err("Error: Operation file corrupted\n"));
-	if (drawing(file, &draw, &zone))
+	if (!drawing(file, &draw, &zone))
 		return (free_all(file, draw) && print_err("Error: Operation file corrupted\n"));
 	print_draw(draw, &zone);
 	free_all(file, draw);
