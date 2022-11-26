@@ -5,31 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 15:31:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/25 22:50:24 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/11/25 22:59:09 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/11/25 23:08:31 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include <iostream>
+#include <fstream>
 
-int main()
-{
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+int main(int ac, char *av[]) {
+	if (ac != 4) {
+		std::cout << "Only <fileName> <string1> <string2> is allowed" << std::endl;
+		return (1);
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
+	std::string fileName = av[1];
+	std::string string1 = av[2];
+	std::string string2 = av[3];
+	std::string buffer = "";
+
+	std::ifstream file(fileName);
+	while (file.good()) {
+		char c = file.get();
+		if (c >= 0) 
+			buffer += c;
+		else
+			break;
 	}
-	return 0;
+	file.close();
 }
