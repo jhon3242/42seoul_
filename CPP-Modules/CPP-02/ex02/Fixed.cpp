@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 14:52:18 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/12/01 21:01:15 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:16:28 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,40 @@ int Fixed::toInt(void) const {
 float Fixed::toFloat(void) const {
 	return (float)_rawBits / (1 << _fractionalBits);
 }
+
+bool Fixed::operator>(const Fixed& obj) const {
+	return _rawBits > obj.getRawBits();
+}
+bool Fixed::operator<(const Fixed& obj) const {
+	return _rawBits < obj.getRawBits();
+}
+bool Fixed::operator>=(const Fixed& obj) const {
+	return _rawBits >= obj.getRawBits();
+}
+bool Fixed::operator<=(const Fixed& obj) const {
+	return _rawBits <= obj.getRawBits();
+}
+bool Fixed::operator==(const Fixed& obj) const {
+	return _rawBits == obj.getRawBits();
+}
+bool Fixed::operator!=(const Fixed& obj) const {
+	return _rawBits != obj.getRawBits();
+}
+
+Fixed operator+(const Fixed& obj) const;
+Fixed operator-(const Fixed& obj) const;
+Fixed operator*(const Fixed& obj) const;
+Fixed operator/(const Fixed& obj) const;
+
+Fixed& operator++();
+Fixed operator++(int);
+Fixed& operator--();
+Fixed operator--(int);
+
+static Fixed& min(Fixed& a, Fixed& b);
+static const Fixed& min(const Fixed& a, const Fixed& b);
+static Fixed& max(Fixed& a, Fixed& b);
+static const Fixed& max(const Fixed& a, const Fixed& b);
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
 	os << obj.toFloat();
