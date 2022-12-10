@@ -36,7 +36,7 @@ class Form {
 		int getGradeToExec(void) const;
 
 		void beSigned(const Bureaucrat& obj);
-		virtual void execute(const Bureaucrat& execute) const = 0;
+		virtual void execute(Bureaucrat const& execute) const = 0;
 
 		std::runtime_error GradeTooHighException() const;
 		std::runtime_error GradeTooLowException() const;

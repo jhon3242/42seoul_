@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name){
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name) {
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name), _grade(){
 	_grade = obj._grade;
 }
 
@@ -55,10 +55,10 @@ void Bureaucrat::decrementGrade(void) {
 }
 
 std::runtime_error Bureaucrat::GradeTooHighException() {
-	return std::runtime_error("Grade Too High");
+	return std::runtime_error("Grade too high");
 }
 std::runtime_error Bureaucrat::GradeTooLowException() {
-	return std::runtime_error("Grade Too Low");
+	return std::runtime_error("Grade too low");
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {

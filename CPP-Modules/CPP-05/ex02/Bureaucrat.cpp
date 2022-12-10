@@ -60,12 +60,12 @@ void Bureaucrat::signForm(Form& obj) {
 		obj.beSigned(*this);
 		std::cout << _name << " signed " << obj.getName() << std::endl;
 	} catch (std::exception& e) {
-		std::cout << _name << " couldn’t sign " << obj.getName() << " because "
+		std::cout << _name << " couldn't sign " << obj.getName() << " because "
 			<< e.what() << std::endl;
 	}
 }
 
-void Bureaucrat::executeForm(Form& obj) {
+void Bureaucrat::executeForm(Form const& obj) {
 	try {
 		obj.execute(*this);
 		std::cout << _name << " executed " << obj.getName() << std::endl;
@@ -76,10 +76,10 @@ void Bureaucrat::executeForm(Form& obj) {
 }
 
 std::runtime_error Bureaucrat::GradeTooHighException() {
-	return std::runtime_error("Grade Too High");
+	return std::runtime_error("Grade too high");
 }
 std::runtime_error Bureaucrat::GradeTooLowException() {
-	return std::runtime_error("Grade Too Low");
+	return std::runtime_error("Grade too low");
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
