@@ -6,20 +6,20 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:30:57 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:51:18 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:22:11 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() 
-	: Form("RobotomyRequestForm", 72, 45), _target("default") {}
+	: AForm("RobotomyRequestForm", 72, 45), _target("default") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target)
-	: Form("RobotomyRequestForm", 72, 45), _target(target) {}
+	: AForm("RobotomyRequestForm", 72, 45), _target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) 
-	: Form(obj), _target(obj._target) {}
+	: AForm(obj), _target(obj._target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {};
 
@@ -27,15 +27,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	if (this == &obj)
 		return *this;
 	_target = obj._target;
-	Form::operator=(obj);
+	AForm::operator=(obj);
 	return *this;
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const& excutor) const {
 	if (!getSigned())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else if (excutor.getGrade() > getGradeToExec())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else {
 		std::cout << "drrrrrrrrrrrrring noises" << std::endl;
 		srand(time(NULL));

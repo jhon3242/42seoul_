@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:42:24 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:05:11 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:22:48 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include <fstream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
 	private :
 		std::string _target;
 

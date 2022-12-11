@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 14:28:45 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:11:55 by wonjchoi         ###   ########.fr       */
+/*   Created: 2022/12/11 15:20:59 by wonjchoi          #+#    #+#             */
+/*   Updated: 2022/12/11 15:32:05 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 	private :
 		const std::string _name;
 		bool _sigend;
@@ -24,11 +24,11 @@ class Form {
 		const int _gradeToExec;
 	
 	public :
-		Form();
-		Form(const std::string& name, int gradeToSign, int gradeToExec);
-		Form(const Form& obj);
-		~Form();
-		Form& operator=(const Form& obj);
+		AForm();
+		AForm(const std::string& name, int gradeToSign, int gradeToExec);
+		AForm(const AForm& obj);
+		~AForm();
+		AForm& operator=(const AForm& obj);
 
 		const std::string getName(void) const;
 		bool getSigned(void) const;
@@ -36,12 +36,12 @@ class Form {
 		int getGradeToExec(void) const;
 
 		void beSigned(const Bureaucrat& obj);
-		virtual void execute(Bureaucrat const& execute) const = 0;
+		virtual void execute(Bureaucrat const& excutor) const = 0;
 
 		std::runtime_error GradeTooHighException() const;
 		std::runtime_error GradeTooLowException() const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& obj);
+std::ostream& operator<<(std::ostream& os, const AForm& obj);
 
 #endif

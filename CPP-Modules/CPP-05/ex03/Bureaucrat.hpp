@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:35:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 15:58:54 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:31:16 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <stdexcept>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private :
@@ -35,8 +35,8 @@ class Bureaucrat {
 		void incrementGrade(void);
 		void decrementGrade(void);
 
-		void signForm(Form& obj);
-		void executeForm(Form const& obj);
+		void signForm(AForm& obj);
+		void executeForm(AForm const& form);
 		
 		std::runtime_error GradeTooHighException();
 		std::runtime_error GradeTooLowException();

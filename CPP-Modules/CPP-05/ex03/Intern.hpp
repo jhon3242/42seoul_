@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:00:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 17:09:35 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:40:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -27,7 +27,7 @@ class Intern {
 		~Intern();
 		Intern& operator=(const Intern& obj);
 		
-		Form* makeForm(const std::string& formName, const std::string& target);
+		AForm* makeForm(const std::string& formName, const std::string& target);
 
 		std::runtime_error unknownFormException() const;
 };

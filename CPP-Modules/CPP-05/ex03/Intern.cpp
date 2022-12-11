@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:05:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 17:16:52 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:40:42 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Intern& Intern::operator=(const Intern& obj) {
   return (*this);
 }
 
-Form* Intern::makeForm(const std::string& formName, const std::string& target) {
+AForm* Intern::makeForm(const std::string& formName, const std::string& target) {
 	std::string formNames[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 	int i = 0;
 	for (; i < 3; i++){

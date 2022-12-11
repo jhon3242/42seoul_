@@ -6,12 +6,12 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:15:58 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 17:19:16 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:40:54 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -24,9 +24,9 @@ int main() {
 	{
 		try {
 			Intern newbie;
-			Form* scf;
-			Form* rrf;
-			Form* ppf;
+			AForm* scf;
+			AForm* rrf;
+			AForm* ppf;
 
 			scf = newbie.makeForm("shrubbery creation", "mike");
 			rrf = newbie.makeForm("robotomy request", "jack");
@@ -49,7 +49,7 @@ int main() {
 	{
 		try {
 			Intern newbie;
-			Form* notExist;
+			AForm* notExist;
 			
 			notExist = newbie.makeForm("what the hell", "name");
 			std::cout << *notExist << std::endl;

@@ -6,12 +6,12 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:15:58 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:56:07 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:36:40 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -69,7 +69,7 @@ int main() {
 		}
 	}
 	std::cout << std::endl;
-	std::cout << "TEST 2# : PresidentialPardonForm() test" << std::endl;
+	std::cout << "TEST 3# : PresidentialPardonForm() test" << std::endl;
 	{
 		try {
 			Bureaucrat disable = Bureaucrat("disable", 150);

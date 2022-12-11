@@ -6,16 +6,16 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:52:38 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:53:07 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:21:19 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESICENTIALPARDONFORM_HPP
 #define PRESICENTIALPARDONFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class PresidentialPardonForm : public Form {
+class PresidentialPardonForm : public AForm {
 	private :
 		std::string _target;
 

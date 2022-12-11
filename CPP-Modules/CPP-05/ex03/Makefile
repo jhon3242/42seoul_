@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:19:55 by wonjchoi          #+#    #+#              #
-#    Updated: 2022/11/30 17:20:06 by wonjchoi         ###   ########.fr        #
+#    Updated: 2022/12/11 15:41:05 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 SRCS = main.cpp\
 	   Bureaucrat.cpp\
-	   Form.cpp\
+	   AForm.cpp\
 	   ShrubberyCreationForm.cpp\
 	   RobotomyRequestForm.cpp\
 	   PresidentialPardonForm.cpp\

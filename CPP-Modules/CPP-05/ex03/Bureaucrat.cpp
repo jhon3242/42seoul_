@@ -6,12 +6,12 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:44:57 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:02:21 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:31:29 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {};
 
@@ -55,7 +55,7 @@ void Bureaucrat::decrementGrade(void) {
 	_grade++;
 }
 
-void Bureaucrat::signForm(Form& obj) {
+void Bureaucrat::signForm(AForm& obj) {
 	try {
 		obj.beSigned(*this);
 		std::cout << _name << " signed " << obj.getName() << std::endl;
@@ -64,12 +64,13 @@ void Bureaucrat::signForm(Form& obj) {
 			<< e.what() << std::endl;
 	}
 }
-void Bureaucrat::executeForm(Form& obj) {
+
+void Bureaucrat::executeForm(AForm const& form) {
 	try {
-		obj.execute(*this);
-		std::cout << _name << " executed " << obj.getName() << std::endl;
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
 	} catch (std::exception& e) {
-		std::cout << _name << " couldn't execute " << obj.getName() << " because "
+		std::cout << _name << " couldn't execute " << form.getName() << " because "
 			<< e.what() << std::endl;
 	}
 }

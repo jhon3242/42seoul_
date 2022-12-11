@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:37:07 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:14:44 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:16:57 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void Form:: beSigned(const Bureaucrat& obj) {
 }
 
 std::runtime_error Form::GradeTooHighException() const {
-	return std::runtime_error("Grade Too High");
+	return std::runtime_error("Grade too high");
 }
 std::runtime_error Form::GradeTooLowException() const {
-	return std::runtime_error("Grade Too Low");
+	return std::runtime_error("Grade too low");
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& obj) {

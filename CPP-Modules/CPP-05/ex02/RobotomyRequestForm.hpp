@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:16:41 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/30 16:50:12 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:22:18 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <cstdlib>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class RobotomyRequestForm : public Form {
+class RobotomyRequestForm : public AForm {
 	private :
 		std::string _target;
 
