@@ -6,17 +6,17 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:01:12 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/29 15:45:49 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:03:09 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 #define DOG_HPP
 
-#include "NewAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public NewAnimal {
+class Dog : public AAnimal {
 	private :
 		Brain* _brain;
 

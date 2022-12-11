@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 14:23:48 by wonjchoi          #+#    #+#              #
-#    Updated: 2022/11/29 15:49:44 by wonjchoi         ###   ########.fr        #
+#    Updated: 2022/12/11 13:03:19 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 SRCS = main.cpp\
-	   NewAnimal.cpp\
+	   AAnimal.cpp\
 	   Dog.cpp\
 	   Cat.cpp\
 	   Brain.cpp

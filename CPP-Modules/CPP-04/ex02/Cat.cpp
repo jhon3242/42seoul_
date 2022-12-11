@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:58:27 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/29 15:43:10 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:03:38 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : NewAnimal() {
+Cat::Cat() : AAnimal() {
 	_type = "Cat";
 	_brain = new Brain();
 	std::cout << "Cat constructor called" << std::endl;

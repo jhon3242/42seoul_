@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:00:48 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/11/29 15:43:17 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:03:30 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : NewAnimal() {
+Dog::Dog() : AAnimal() {
 	_type = "Dog";
 	_brain = new Brain();
 	std::cout << "Dog constructor called" << std::endl;
