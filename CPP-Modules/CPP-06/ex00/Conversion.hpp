@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:26:46 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/12/02 14:17:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:47:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ class Conversion {
 		~Conversion();
 
 		Conversion& operator=(const Conversion& obj);
-
-		char toChar(void) const;
-		int toInt(void) const;
-		float toFloat(void) const;
-		double toDouble(void) const;
 
 		void putChar();
 		void putInt();

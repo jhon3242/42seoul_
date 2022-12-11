@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:29:50 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/12/02 14:40:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:57:14 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,50 +38,38 @@ Conversion& Conversion::operator=(const Conversion& obj) {
 	return *this;
 }
 
-char Conversion::toChar(void) const {
-	return (static_cast<char>(_double));
-};
-int Conversion::toInt(void) const {
-	return (static_cast<int>(_double));
-};
-float Conversion::toFloat(void) const {
-	return (static_cast<float>(_double));
-};
-double Conversion::toDouble(void) const {
-	return (static_cast<double>(_double));
-};
-
 void Conversion::putChar() {
+	char c = static_cast<char>(_double);
+	double tmp = static_cast<double>(c);
+
 	std::cout << "char: ";
-	if (std::isnan(_double) || std::isinf(_double))
+	if (c > 0 ? floor(_double) == tmp : ceil(_double) == tmp) {
+		if (std::isprint(c))
+			std::cout << "'" << c << "'" << std::endl;
+		else
+			std::cout << "Non displayable" << std::endl;
+	} else
 		std::cout << "impossible" << std::endl;
-	else if (std::isprint(toChar()))
-		std::cout << "'" << toChar() << "'" << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
 }
 void Conversion::putInt() {
+	int d = static_cast<int>(_double);
+	double tmp = static_cast<double>(d);
+
 	std::cout << "int: ";
-	if (std::isnan(_double) || std::isinf(_double))
-		std::cout << "impossible" << std::endl;
+	if (d > 0 ? floor(_double) == tmp : ceil(_double) == tmp)
+		std::cout << d << std::endl;
 	else
-		std::cout << toInt() << std::endl;
+		std::cout << "impossible" << std::endl;
 }
 void Conversion::putFloat() {
+	float f = static_cast<float>(_double);
+
 	std::cout << "float: ";
-	if (std::isnan(_double) || std::isinf(_double))
-		std::cout << std::showpos << toFloat() << "f" <<  std::endl;
-	else if (toFloat() == static_cast<int>(toFloat()))
-		std::cout << toFloat() << ".0f" << std::endl;
+	if (isinf(f) && !isinf(_double))
+		std::cout << "impossible" << std::endl;
 	else
-		std::cout << toFloat() << "f" << std::endl;
+		std::cout << f << "f" << std::endl;
 }
 void Conversion::putDouble() {
-	std::cout << "double: ";
-	if (std::isnan(_double) || std::isinf(_double))
-		std::cout << std::showpos << toDouble() <<  std::endl;
-	else if (toDouble() == static_cast<int>(toDouble()))
-		std::cout << toDouble() << ".0" << std::endl;
-	else
-		std::cout << toDouble() << std::endl;
+	std::cout << "double: " << _double << std::endl;
 }
