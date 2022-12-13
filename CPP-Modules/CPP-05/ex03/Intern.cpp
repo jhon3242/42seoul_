@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:05:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/12/11 15:40:42 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/13 14:46:35 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
 	switch (i)
 	{
 		case 0:
+			std::cout << "Intern creates PresidentialPardonForm " << std::endl;
 			return new PresidentialPardonForm(target);
 		case 1:
+			std::cout << "Intern creates RobotomyRequestForm " << std::endl;
 			return new RobotomyRequestForm(target);
 		case 2:
+			std::cout << "Intern creates ShrubberyCreationForm " << std::endl;
 			return new ShrubberyCreationForm(target);
 	}
 	throw Intern::unknownFormException();
