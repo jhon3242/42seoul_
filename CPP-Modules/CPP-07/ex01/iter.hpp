@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 13:39:33 by wonjchoi          #+#    #+#             */
-/*   Updated: 2022/12/04 13:52:02 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2022/12/13 14:50:38 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 
 template <typename T>
 void iter (T* arr, int len, void (*f)(T&)) {
+	for (int i=0; i<len; i++)
+		f(arr[i]);
+}
+
+template <typename T>
+void iter (const T* arr, int len, void (*f)(const T&)) {
 	for (int i=0; i<len; i++)
 		f(arr[i]);
 }
