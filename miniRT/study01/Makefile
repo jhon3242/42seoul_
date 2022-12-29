@@ -14,7 +14,9 @@ SRC = $(SRC_DIR)/main.c\
 		$(SRC_DIR)/utils.c\
 		$(SRC_DIR)/sence/canvas.c\
 		$(SRC_DIR)/sence/sence.c\
-		$(SRC_DIR)/trace/ray.c
+		$(SRC_DIR)/sence/object_create.c\
+		$(SRC_DIR)/trace/ray/ray.c\
+		$(SRC_DIR)/trace/hit/hit_sphere.c\
 
 
 OBJ = $(SRC:.c=.o)

@@ -31,11 +31,17 @@ t_ray       ray_primary(t_camera *cam, double u, double v)
 }
 
 //광선이 최종적으로 얻게된 픽셀의 색상 값을 리턴.
-t_color3    ray_color(t_ray *r)
+t_color3    ray_color(t_ray *ray,  t_sphere *sphere)
 {
     double  t;
 
-    t = 0.5 * (r->dir.y + 1.0);
-    // (1-t) * 흰색 + t * 하늘색
-    return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(0.5, 0.7, 1.0), t)));
+    if (hit_sphere(sphere, ray))
+        return (color3(1, 0, 0));
+    else
+    {
+        //ray의 방향벡터의 y 값을 기준으로 그라데이션을 주기 위한 계수.
+        t = 0.5 * (ray->dir.y + 1.0);
+        // (1-t) * 흰색 + t * 하늘색
+        return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(0.5, 0.7, 1.0),     t)));
+    }
 }
