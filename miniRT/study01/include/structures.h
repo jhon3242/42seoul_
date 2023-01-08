@@ -11,10 +11,17 @@ typedef struct s_camera t_camera;
 typedef struct s_canvas t_canvas;
     // 3. 오브젝트 구조체
 typedef struct s_sphere t_sphere;
+typedef struct s_object t_object;
     // 4. 식별자 매크로
 typedef int             t_bool;
-    # define FALSE 0
-    # define TRUE 1
+# define FALSE 0
+# define TRUE 1
+
+typedef int             t_object_type;
+# define SP 0
+
+typedef struct s_hit_record t_hit_record;
+
 
 struct s_vec3
 {
@@ -53,6 +60,23 @@ struct s_sphere
     t_point3 center;
     double radius;
     double radius2;
+};
+
+struct s_hit_record
+{
+    t_point3    p;          // 교점의 좌표
+    t_vec3      normal;     // 교점의 법선벡터
+    double      tmin;
+    double      tmax;
+    double      t;          // 광선의 원점과 교점 사이의 거리
+    t_bool      front_face;
+};
+
+struct                      s_object
+{
+    t_object_type   type;
+    void            *element;
+    void            *next;
 };
 
 #endif
