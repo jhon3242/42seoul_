@@ -19,6 +19,7 @@ SRC = $(SRC_DIR)/main.c\
 		$(SRC_DIR)/trace/hit/hit.c\
 		$(SRC_DIR)/trace/hit/normal.c\
 		$(SRC_DIR)/trace/ray/ray.c\
+		$(SRC_DIR)/trace/ray/phong_lighting.c\
 		$(SRC_DIR)/utils/object_utils.c\
 		
 
