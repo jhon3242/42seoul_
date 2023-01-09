@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:24 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:23:39 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:39:09 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ int	get_file_size(char *filename)
 	}
 	close(fd);
 	return count;;
+}
+
+void	free_split(char **data)
+{
+	char	**cur;
+
+	cur = data;
+	while (*cur)
+	{
+		free(*cur);
+		cur++;
+	}
+	free(data);
 }

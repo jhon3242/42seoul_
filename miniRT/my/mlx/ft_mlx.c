@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 13:56:37 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:54:54 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	set_mlx(t_mlx *mlx)
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, \
 		&mlx->line_length, &mlx->endian);
 	mlx_key_hook(mlx->win, mlx_esc_exit, mlx); // ESC
-	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx); // TODO 창 닫으면 프로그램 종료 되기 위해
+	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx); 
 }

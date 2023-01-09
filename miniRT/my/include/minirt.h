@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 15:00:17 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:08:23 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@
 */
 void		exit_with_error(char *msg);
 int			get_file_size(char *filename);
+void		free_split(char **data);
+
+void		*ft_malloc(size_t size);
+int			ft_open(const char *path, int flags);
+
+/*
+			util_object.c
+*/
+t_vec3		parse_vec3(char *data);
+t_color3	parse_color(char *data);
+double		ft_atod(const char *str);
+
 
 /*
 			util_libft.c
@@ -47,5 +59,11 @@ void		set_mlx(t_mlx *mlx);
 			parser
 */
 void		parse(t_scene *scene, char *filename);
+
+/*
+			object
+*/
+void		ambient(t_scene *scene, char **data);
+
 
 #endif

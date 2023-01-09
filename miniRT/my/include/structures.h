@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:30:50 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:17:55 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 # define ESC				53
 # define X_EVENT_KEY_EXIT	17
 
-
+typedef struct s_vec3		t_vec3;
+typedef struct s_vec3		t_color3;
+typedef struct s_vec3		t_point3;
 typedef struct s_mlx		t_mlx;
 typedef struct s_scene		t_scene;
 typedef struct s_object		t_object;
+typedef struct s_ambient	t_ambient;
+typedef struct s_camera		t_camera;
 
 typedef enum	e_object_type
 {
@@ -34,6 +38,31 @@ typedef enum	e_object_type
 	LIGHT_POINT,
 	AMBIENT,
 }				t_object_type;
+
+struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+};
+
+struct s_ambient
+{
+	double		ambient;
+	t_color3	color;
+};
+
+struct s_camera
+{
+	t_point3	orig;
+	t_vec3		camera_dir;
+	double		focal_len;
+	double		viewport_h;
+	double		viewport_w;
+	t_vec3		horizontal;
+	t_vec3		vertical;
+	t_point3	left_top;
+};
 
 struct s_object
 {
@@ -58,9 +87,13 @@ struct s_mlx
 
 struct s_scene
 {
-	t_mlx		mlx;
-	t_object	*object_list;
-	t_object	*light_list;
+	t_mlx			mlx;
+	t_camera		camera;
+	t_object		*object_list;
+	t_object		*light_list;
+	t_ambient		ambient;
+	// t_ray			ray;
+	// t_hit_record	rec;
 };
 
 #endif

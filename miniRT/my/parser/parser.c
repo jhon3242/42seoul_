@@ -6,11 +6,20 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:27:36 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:18:26 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
+
+void	check_file_extension(char *filename)
+{
+	char	*extension;
+
+	extension = ft_strrchr(filename, '.');
+	if (!extension || ft_strcmp(extension, ".rt"))
+		exit_with_error("Invalid file extension\n");
+}
 
 char	**file_parser(char *filename)
 {
@@ -23,13 +32,20 @@ char	**file_parser(char *filename)
 	return 0;
 }
 
-void	check_file_extension(char *filename)
+void	object_parser(char **line, t_scene *scene)
 {
-	char	*extension;
+	char	**data;
 
-	extension = ft_strrchr(filename, '.');
-	if (!extension || ft_strcmp(extension, ".rt"))
-		exit_with_error("Invalid file extension\n");
+	while (*line)
+	{
+		data = ft_split(*line, ' ');
+		if (!ft_strcmp(data[0], "A"))
+			ambient(scene, data); // TODO
+		// else if (!ft_strcmp(data[0], "L"))
+		// 	light(scene, data);
+		// else if (!ft_strcmp(data[0], "C"))
+		// 	camera(scene, data);
+	}
 }
 
 void	parse(t_scene *scene, char *filename)
