@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 17:17:55 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:37:03 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # define MLX_WIDTH	800
 # define MLX_HEIGHT	600
 # define MLX_RATIO	1.333334
+# define EPSILON		1e-6
 
 # define ESC				53
 # define X_EVENT_KEY_EXIT	17
+
 
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_color3;

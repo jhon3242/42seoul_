@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/09 17:17:12 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/11 14:30:43 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ BASE :=  main.c \
 		utils/ft_malloc.c\
 		mlx/ft_mlx.c \
 		object/ambient.c \
-		# object/camera.c \
+		object/camera.c \
 		# object/cylinder.c \
 		# object/object.c \
 		# object/plane.c \

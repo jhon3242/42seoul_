@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 17:08:23 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:35:50 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 # include "structures.h"
 # include "ft_open.h"
 # include "mlx.h"
+# include "vector.h"
 
 /* 
 			util.c
@@ -64,6 +66,7 @@ void		parse(t_scene *scene, char *filename);
 			object
 */
 void		ambient(t_scene *scene, char **data);
+void		camera(t_scene *scene, char **data);
 
 
 #endif
