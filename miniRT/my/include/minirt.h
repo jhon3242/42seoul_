@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 14:52:02 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:05:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		parse(t_scene *scene, char *filename);
 void		ambient(t_scene *scene, char **data);
 void		camera(t_scene *scene, char **data);
 void		light(t_scene *scene, char **data);
+void		sphere(t_scene *scene, char **data);
 void		oadd(t_object **list, t_object *new_obj);
 t_object	*object(void *object, int type);
 

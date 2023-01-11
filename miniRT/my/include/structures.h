@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 14:40:10 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:05:30 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_object		t_object;
 typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
+typedef struct s_sphere		t_sphere;
 
 typedef enum	e_object_type
 {
@@ -72,6 +73,14 @@ struct s_light
 	t_point3	origin;
 	t_color3	light_color;
 	double		bright_ratio;
+};
+
+struct s_sphere
+{
+	t_point3	center;
+	t_color3	color;
+	double		radius;
+	double		radius_pow_2;
 };
 
 
