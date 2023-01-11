@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 15:09:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:17:12 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
+typedef struct s_cylinder	t_cylinder;
 
 typedef enum	e_object_type
 {
@@ -90,6 +91,16 @@ struct s_plane
 	t_vec3		normal;
 	t_color3	color;
 };
+
+struct s_cylinder
+{
+	t_point3	point;
+	t_vec3		normal;
+	t_color3	color;
+	double		radius;
+	double		height;
+};
+
 
 
 struct s_object

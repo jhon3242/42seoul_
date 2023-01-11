@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 15:07:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:12:58 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	object_parser(char **line, t_scene *scene)
 			sphere(scene, data);
 		else if (!ft_strcmp(data[0], "pl"))
 			plane(scene, data);
+		else if (!ft_strcmp(data[0], "cy"))
+			cylinder(scene, data);
+		free_split(data);
 	}
 }
 
