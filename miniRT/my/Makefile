@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/11 15:05:47 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/11 15:12:01 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ BASE :=  main.c \
 		object/camera.c \
 		object/light.c\
 		object/sphere.c\
+		object/plane.c \
 		# object/cylinder.c \
-		# object/plane.c \
 		# wrap/wrap_malloc.c \
 		# trace/hit_object.c \
 		# trace/ray.c \
