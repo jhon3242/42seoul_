@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:54:54 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:58:34 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,27 @@ void	set_mlx(t_mlx *mlx)
 		&mlx->line_length, &mlx->endian);
 	mlx_key_hook(mlx->win, mlx_esc_exit, mlx); // ESC
 	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx); 
+}
+
+void	drawing(t_scene *scene)
+{
+	t_color3	pixel_color;
+	int			i;
+	int			j;
+	double		u;
+	double		v;
+
+	j = -1;
+	while (++j < scene->mlx.height)
+	{
+		i = -1;
+		while (++i < scene->mlx.width)
+		{
+			u = (double)i / (scene->mlx.width - 1);
+			v = (double)j / (scene->mlx.height - 1);
+			scene->ray = ray_primary(&(scene->camera), u, v);
+			pixel_color = ray_color(scene);
+			// TODO
+		}
+	}
 }

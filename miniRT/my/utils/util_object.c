@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:15:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 17:16:42 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:27:28 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,18 @@ double	ft_atod(const char *str)
 		d *= 0.1;
 	}
 	return (ret * sign);
+}
+
+double	minf(double a, double b)
+{
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+double	maxf(double a, double b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/11 15:15:21 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/13 15:00:51 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ BASE :=  main.c \
 		object/sphere.c\
 		object/plane.c \
 		object/cylinder.c \
-		# wrap/wrap_malloc.c \
-		# trace/hit_object.c \
-		# trace/ray.c \
+		trace/hit_object.c \
+		trace/hit.c \
+		trace/ray.c \
 		# validator/valid_check.c \
 		# validator/valid_object.c \
 		# validator/valid_check_cnt.c \

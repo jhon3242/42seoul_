@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 15:17:12 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/13 13:58:41 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,29 @@
 # define ESC				53
 # define X_EVENT_KEY_EXIT	17
 
+# define FALSE		0
+# define TRUE		1
 
-typedef struct s_vec3		t_vec3;
-typedef struct s_vec3		t_color3;
-typedef struct s_vec3		t_point3;
-typedef struct s_mlx		t_mlx;
-typedef struct s_scene		t_scene;
-typedef struct s_object		t_object;
-typedef struct s_ambient	t_ambient;
-typedef struct s_camera		t_camera;
-typedef struct s_light		t_light;
-typedef struct s_sphere		t_sphere;
-typedef struct s_plane		t_plane;
-typedef struct s_cylinder	t_cylinder;
 
+typedef struct s_vec3			t_vec3;
+typedef struct s_vec3			t_color3;
+typedef struct s_vec3			t_point3;
+
+typedef struct s_object			t_object;
+typedef struct s_ambient		t_ambient;
+typedef struct s_camera			t_camera;
+typedef struct s_light			t_light;
+typedef struct s_sphere			t_sphere;
+typedef struct s_plane			t_plane;
+typedef struct s_cylinder		t_cylinder;
+
+typedef struct s_mlx			t_mlx;
+typedef struct s_ray			t_ray;
+typedef struct s_hit_record		t_hit_record;
+
+typedef struct s_scene			t_scene;
+
+typedef int						t_bool;
 typedef enum	e_object_type
 {
 	SP,
@@ -60,7 +69,7 @@ struct s_ambient
 
 struct s_camera
 {
-	t_point3	orig;
+	t_point3	origin;
 	t_vec3		camera_dir;
 	double		focal_len;
 	double		viewport_h;
@@ -124,6 +133,23 @@ struct s_mlx
 	double	canvas_ratio; // TODO ??
 };
 
+struct s_ray
+{
+	t_point3	origin;
+	t_vec3		dir;
+};
+
+struct s_hit_record
+{
+	t_point3	p;
+	t_color3	color;
+	t_vec3		normal;
+	double		t;
+	double		tmin;
+	double		tmax;
+};
+
+
 struct s_scene
 {
 	t_mlx			mlx;
@@ -131,8 +157,8 @@ struct s_scene
 	t_object		*object_list;
 	t_object		*light_list;
 	t_ambient		ambient;
-	// t_ray			ray;
-	// t_hit_record	rec;
+	t_ray			ray;
+	t_hit_record	rec;
 };
 
 #endif
