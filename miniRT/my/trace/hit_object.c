@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:00:51 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 14:52:51 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:23:53 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,27 @@ t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, rec->t);
 	rec->color = sp->color;
 	rec->normal = vunit(vminus(rec->p, sp->center));
+	return (TRUE);
+}
+
+t_bool	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
+{
+	t_plane	*pl;
+	double	denominator;
+	double	numerator;
+	double	root;
+
+	pl = pl_obj->element;
+	denominator = vdot(pl->normal, ray->dir);
+	if (fabs(denominator) < EPSILON)
+		return (FALSE);
+	numerator = vdot(vminus(pl->center, ray->origin), pl->normal);
+	root = numerator / denominator;
+	if (root < rec->tmin || rec->tmax < root)
+		return (FALSE);
+	rec->t = root;
+	rec->p = ray_at(ray, root);
+	rec->color = pl->color;
+	rec->normal = pl->normal;
 	return (TRUE);
 }
