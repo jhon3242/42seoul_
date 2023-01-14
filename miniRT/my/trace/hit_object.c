@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:00:51 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 15:23:53 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:29:55 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,9 @@ t_bool	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	rec->color = pl->color;
 	rec->normal = pl->normal;
 	return (TRUE);
+}
+
+t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
+{
+	
 }
