@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:47:05 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:27:58 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@ char	**file_parser(char *filename)
 	int		fd;
 	int		count;
 	char	**line;
+	char	*raw_data;
 
 	count = get_file_size(filename);
-
+	fd = ft_open(filename, O_RDONLY);
+	raw_data = (char *)ft_malloc(sizeof(char) * (count + 1));
+	read(fd, raw_data, count);
+	raw_data[count] = '\0';
+	validate_rt(raw_data);
+	// TODO
 	return 0;
 }
 
@@ -40,7 +46,7 @@ void	object_parser(char **line, t_scene *scene)
 	{
 		data = ft_split(*line, ' ');
 		if (!ft_strcmp(data[0], "A"))
-			ambient(scene, data); // TODO
+			ambient(scene, data);
 		else if (!ft_strcmp(data[0], "C"))
 			camera(scene, data);
 		else if (!ft_strcmp(data[0], "L"))

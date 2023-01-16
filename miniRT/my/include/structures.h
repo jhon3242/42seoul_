@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 12:54:20 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:05:11 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define TOP				1
 # define BOTTOM				-1
 
+# define DOUBLE_CHAR		"0123456789."
+# define COLOR_CHAR 		"0123456789,,"
 
 typedef struct s_vec3			t_vec3;
 typedef struct s_vec3			t_color3;

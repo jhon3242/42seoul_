@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/13 15:00:51 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/16 15:41:02 by chaeyhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,13 @@ BASE :=  main.c \
 		trace/hit_object.c \
 		trace/hit.c \
 		trace/ray.c \
-		# validator/valid_check.c \
-		# validator/valid_object.c \
+		validator/validator.c \
+		validator/valid_util.c \
+		validator/valid_object_cnt.c \
+		validator/valid_object_environment.c \
+		validator/valid_check.c \
 		# validator/valid_check_cnt.c \
-		# validator/valid_util.c \
+		
 
 SRC = \
 	$(BASE) \

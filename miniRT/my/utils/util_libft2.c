@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   util_libft2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:01:23 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 17:16:23 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:58:55 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-static size_t	get_word_cnt(const char *s, char c)
+static size_t	ft_get_word_cnt(const char *s, char c)
 {
 	size_t	cnt;
 
@@ -32,7 +32,7 @@ static size_t	get_word_cnt(const char *s, char c)
 	return (cnt);
 }
 
-static size_t	get_word_len(const char *s, char c)
+static size_t	ft_get_word_len(const char *s, char c)
 {
 	size_t	i;
 
@@ -53,13 +53,13 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	ret = ft_malloc(sizeof(char *) * (get_word_cnt(s, c) + 1));
+	ret = ft_malloc(sizeof(char *) * (ft_get_word_cnt(s, c) + 1));
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			word_len = get_word_cnt(s, c);
+			word_len = ft_get_word_len(s, c);
 			ret[i] = ft_malloc(word_len + 1);
 			ft_strlcpy(ret[i++], s, word_len + 1);
 			s += word_len - 1;
