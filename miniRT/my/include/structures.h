@@ -6,23 +6,26 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 13:58:41 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:54:20 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-# define MLX_WIDTH	800
-# define MLX_HEIGHT	600
-# define MLX_RATIO	1.333334
-# define EPSILON		1e-6
+# define MLX_WIDTH			800
+# define MLX_HEIGHT			600
+# define MLX_RATIO			1.333334
+# define EPSILON			1e-6
 
 # define ESC				53
 # define X_EVENT_KEY_EXIT	17
 
-# define FALSE		0
-# define TRUE		1
+# define FALSE				0
+# define TRUE				1
+
+# define TOP				1
+# define BOTTOM				-1
 
 
 typedef struct s_vec3			t_vec3;

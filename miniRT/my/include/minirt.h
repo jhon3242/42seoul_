@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 15:24:01 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:28:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ t_ray		ray_primary(t_camera *cam, double u, double v);
 t_color3	ray_color(t_scene *scene);
 t_bool		hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec);
 t_bool		hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec);
+t_bool		hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec);
 
 #endif

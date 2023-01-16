@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:14:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 14:59:57 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:45:51 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ t_color3	ray_color(t_scene *scene)
 {
 	scene->rec = record_init();
 	if (hit(scene->object_list, &(scene->ray), &(scene->rec)))
-		return color3(0,0,0); // TODO
+		return color3(25,25,25); // TODO
+	else
+		return color3(1, 1, 1);
 }
