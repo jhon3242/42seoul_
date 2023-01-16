@@ -6,7 +6,7 @@
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 15:27:58 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:24:09 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ char	**file_parser(char *filename)
 	read(fd, raw_data, count);
 	raw_data[count] = '\0';
 	validate_rt(raw_data);
-	// TODO
-	return 0;
+	close(fd);
+	line = ft_split(raw_data, '\n');
+	free(raw_data);
+	return (line);
 }
 
 void	object_parser(char **line, t_scene *scene)

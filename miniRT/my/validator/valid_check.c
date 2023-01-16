@@ -6,7 +6,7 @@
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:18:09 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 16:00:03 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:08:21 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	check_elements_cnt(char **elements, int cnt)
 		exit_with_error("Invalid elements count\n");
 }
 
-void	check_double(char *str, char *valid_char)
+void	check_double(char *str)
 {
 	int	filter[128];
 
-	set_filter(filter, valid_char);
+	set_filter(filter, DOUBLE_CHAR);
 	if (str[0] == '-')
 		str++;
 	while (*str)
@@ -41,14 +41,14 @@ void	check_double(char *str, char *valid_char)
 	}
 }
 
-void	check_color3(char *str, char *valid_char)
+void	check_color3(char *str)
 {
 	char	**color3;
 	int		filter[128];
 	int		i;
 	int		tmp;
 
-	set_filter(filter, valid_char);
+	set_filter(filter, COLOR_CHAR);
 	i = -1;
 	while (str[++i])
 	{
@@ -67,4 +67,17 @@ void	check_color3(char *str, char *valid_char)
 			exit_with_error("Invalid RGB number\n");
 	}
 	free_split(color3);
+}
+
+void	check_vec3(char *str)
+{
+	char	**vec3;
+	int		i;
+
+	vec3 = ft_split(str, ',');
+	check_elements_cnt(vec3, 3);
+	i = -1;
+	while (++i < 3)
+		check_double(vec3[i]);
+	free_split(vec3);
 }

@@ -6,7 +6,7 @@
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:56:21 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 15:59:18 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:19:18 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,18 @@ static void parse_object(char *str)
 	{
 		if (line[i][0] == 'A')
 			check_object_ambient(line[i]);
-		
+		else if (line[i][0] == 'C')
+			check_object_camera(line[i]);
+		else if (line[i][0] == 'L')
+			check_object_light(line[i]);
+		else if (line[i][0] == 's' && line[i][1] == 'p')
+			check_object_sp(line[i]);
+		else if (line[i][0] == 'p' && line[i][1] == 'l')
+			check_object_pl(line[i]);
+		else if (line[i][0] == 'c' && line[i][1] == 'y')
+			check_object_cy(line[i]);
+		else
+			exit_with_error("Invalid object\n");
 	}
 }
 

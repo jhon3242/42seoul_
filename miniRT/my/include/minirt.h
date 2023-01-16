@@ -6,7 +6,7 @@
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 15:43:00 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:18:58 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,17 @@ int 		count_light(void);
 int 		count_camera(void);
 
 void		check_elements_cnt(char **elements, int cnt);
-void		check_double(char *str, char *valid_char);
-void		check_color3(char *str, char *valid_char);
+void		check_double(char *str);
+void		check_color3(char *str);
+void		check_vec3(char *str);
 
 void		check_object_ambient(char *str);
+void		check_object_camera(char *str);
+void		check_object_light(char *str);
 
+void		check_object_sp(char *str);
+void		check_object_pl(char *str);
+void		check_object_cy(char *str);
 
 /*
 			trace
