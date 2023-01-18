@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 13:29:33 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:59:30 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define TOP				1
 # define BOTTOM				-1
-
+# define LUMEN 2
 # define DOUBLE_CHAR		"0123456789."
 # define COLOR_CHAR 		"0123456789,,"
 
@@ -140,7 +140,7 @@ struct s_mlx
 
 struct s_ray
 {
-	t_point3	origin;
+	t_point3	orig;
 	t_vec3		dir;
 };
 

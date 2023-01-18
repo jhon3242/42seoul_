@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 13:34:58 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:56:08 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_color3	parse_color(char *data);
 double	a_to_d(const char *str);
 void	*wrap_malloc(size_t size);
 int	ft_atoi(const char *str);
+t_ray	ray(t_point3 orig, t_vec3 dir);
 /* 
 			util.c
 */
@@ -69,7 +70,7 @@ void		plane(t_scene *scene, char **data);
 void		cylinder(t_scene *scene, char **data);
 void		oadd(t_object **list, t_object *new_obj);
 t_object	*object(void *object, int type);
-
+t_color3	phong_lighting(t_scene *scene);
 
 /*
 			mlx
@@ -78,6 +79,7 @@ int 		mlx_esc_exit(int keycode, t_mlx *mlx);
 int			mlx_exit(t_mlx *mlx);
 void		set_mlx(t_mlx *mlx);
 void		drawing(t_scene *scene);
+// void	pixel_put(t_scene *scene);
 
 /*
 			parser

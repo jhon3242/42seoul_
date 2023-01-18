@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/18 13:00:57 by chaeyhan         ###   ########.fr        #
+#    Updated: 2023/01/18 13:54:21 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =  main.c \
 		object/sphere.c\
 		trace/hit_object.c \
 		trace/hit.c \
+		trace/phong_lighting.c \
 		trace/ray.c \
 		validator/valid_check.c \
 		validator/valid_object_cnt.c \

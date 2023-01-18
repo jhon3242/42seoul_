@@ -1,16 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   hit.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 13:54:29 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:29:05 by wonjchoi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/minirt.h"
+
+void	set_face_normal(t_ray *r, t_hit_record *rec)
+{
+	t_bool	front_face;
+
+	front_face = vdot(r->dir, rec->normal) < 0;
+	if (!front_face)
+		rec->normal = vmult_k(rec->normal, -1);
+}
 
 t_bool	hit_obj(t_object *object_list, t_ray *ray, t_hit_record *rec)
 {
@@ -28,18 +25,18 @@ t_bool	hit_obj(t_object *object_list, t_ray *ray, t_hit_record *rec)
 
 t_bool	hit(t_object *object_list, t_ray *ray, t_hit_record *rec)
 {
-	t_hit_record	tmp_rec;
 	t_bool			hit_anything;
-	
-	tmp_rec = *rec;
+	t_hit_record	temp_rec;
+
+	temp_rec = *rec;
 	hit_anything = FALSE;
 	while (object_list)
 	{
-		if (hit_obj(object_list, ray, &tmp_rec))
+		if (hit_obj(object_list, ray, &temp_rec))
 		{
 			hit_anything = TRUE;
-			tmp_rec.tmax = tmp_rec.t;
-			*rec = tmp_rec;
+			temp_rec.tmax = temp_rec.t;
+			*rec = temp_rec;
 		}
 		object_list = object_list->next;
 	}

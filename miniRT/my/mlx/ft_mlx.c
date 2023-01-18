@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 12:48:12 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:51:12 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	set_mlx(t_mlx *mlx)
 	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx);
 }
 
-void	put_pixel(t_mlx *mlx, int x, int y, t_color3 color)
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, t_color3 color)
 {
 	char	*dst;
 
-	dst = mlx->addr + ((x * mlx->line_length) + (y * mlx->bits_per_pixel / 8));
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = (int)(color.x * 255) << 16 \
 		| (int)(color.y * 255) << 8 \
 		| (int)(color.z * 255);
@@ -61,17 +61,19 @@ void	drawing(t_scene *scene)
 	double		u;
 	double		v;
 
-	j = -1;
-	while (++j < scene->mlx.height)
+	j = 0;
+	while (j < scene->mlx.height)
 	{
-		i = -1;
-		while (++i < scene->mlx.width)
+		i = 0;
+		while (i < scene->mlx.width)
 		{
 			u = (double)i / (scene->mlx.width - 1);
 			v = (double)j / (scene->mlx.height - 1);
 			scene->ray = ray_primary(&(scene->camera), u, v);
 			pixel_color = ray_color(scene);
-			put_pixel(&(scene->mlx), i, j, pixel_color);
+			my_mlx_pixel_put(&(scene->mlx), i, j, pixel_color);
+			++i;
 		}
+		++j;
 	}
 }
