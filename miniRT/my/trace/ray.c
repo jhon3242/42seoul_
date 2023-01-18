@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:14:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:45:51 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:50:14 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ static t_hit_record	record_init(void)
 	record.tmin = EPSILON;
 	record.tmax = INFINITY;
 	return (record);
+}
+
+t_ray	ray(t_point3 origin, t_vec3 dir)
+{
+	t_ray	ray;
+
+	ray.origin = origin;
+	ray.dir = vunit(dir);
+	return (ray);
 }
 
 t_point3	ray_at(t_ray *ray, double t)
@@ -44,7 +53,7 @@ t_color3	ray_color(t_scene *scene)
 {
 	scene->rec = record_init();
 	if (hit(scene->object_list, &(scene->ray), &(scene->rec)))
-		return color3(25,25,25); // TODO
+		return (phong_lighting(scene));
 	else
-		return color3(1, 1, 1);
+		return (color3(0, 0, 0));
 }

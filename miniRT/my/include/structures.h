@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 15:05:11 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:12:11 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define MLX_HEIGHT			600
 # define MLX_RATIO			1.333334
 # define EPSILON			1e-6
+# define LUMEN				3
 
 # define ESC				53
 # define X_EVENT_KEY_EXIT	17
