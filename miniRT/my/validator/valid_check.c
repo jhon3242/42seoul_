@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:18:09 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 16:08:21 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:32:24 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,41 @@ void	check_elements_cnt(char **elements, int cnt)
 	}
 	if (i != cnt)
 		exit_with_error("Invalid elements count\n");
+}
+
+void	check_object_position(char *str)
+{
+	const char	*valid_char = "0123456789.,- ";
+	int			filter[128];
+
+	set_filter(filter, valid_char);
+	while (*str)
+	{
+		if (filter[(int)*str] == 0)
+			exit_with_error("invalid .rt format\n");
+		str++;
+	}
+}
+
+void	check_column_cnt(char **column, int column_cnt)
+{
+	int	cnt;
+
+	cnt = 0;
+	while (column[cnt])
+		cnt++;
+	if (cnt != column_cnt)
+		exit_with_error("invalid .rt format\n");
+}
+
+void	check_theta(char *str)
+{
+	double	theta;
+
+	check_double(str);
+	theta = a_to_d(str);
+	if (theta < 0 || theta > 180)
+		exit_with_error("theta must be 0 <= theta <= 180\n");
 }
 
 void	check_double(char *str)

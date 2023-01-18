@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:24 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:39:09 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:36:15 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_file_size(char *filename)
 	int		count;
 	char	buff[1024];
 
-	fd = ft_open(filename, O_RDONLY);
+	fd = wrap_open(filename, O_RDONLY);
 	read_byte = 1;
 	while (read_byte)
 	{

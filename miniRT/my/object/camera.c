@@ -1,24 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 16:44:12 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 13:21:56 by wonjchoi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/minirt.h"
 
 static t_point3	get_left_top(t_camera *camera, t_vec3 w)
 {
 	t_point3	left_top;
+
+	left_top = vminus(vminus(vminus(camera->orig, \
+							vdivide_k(camera->horizontal, 2)), \
+							vdivide_k(camera->vertical, 2)), w);
 	
-	left_top = vminus(vminus(vminus(camera->origin, \
-				vdivide_k(camera->horizontal, 2)), \
-				vdivide_k(camera->vertical, 2)), w);
 	return (left_top);
 }
 
@@ -26,21 +15,21 @@ void	camera(t_scene *scene, char **data)
 {
 	t_camera	camera;
 	double		degree;
-	t_vec3		w;
-	t_vec3		u;
-	t_vec3		v;
+	t_vec3		w;	// 카메라의 z
+	t_vec3		u;	// 카메라의 x
+	t_vec3		v;	// 카메라의 y
 
-	camera.origin = parse_vec3(data[1]);
-	camera.camera_dir = vunit(parse_vec3(data[2]));
-	degree = ft_atod(data[3]);
+	camera.orig = str_to_vec3(data[1]);
+	camera.camera_dir = vunit(str_to_vec3(data[2]));
+	degree = a_to_d(data[3]);
 	w = vunit(vmult_k(camera.camera_dir, -1));
-	u = vcross(vec3(EPSILON, 1, 0), w);
+	u = vunit(vcross(vec3(EPSILON, 1, 0), w)); // TODO 왜 0 근사값(EPSILON)을 사용했을까
 	v = vmult_k(vcross(w, u), -1);
-	camera.viewport_h = 2.0 * tan(degree / 360 * M_PI);
+	camera.viewport_h = 2.0 * tan(degree / 360 * M_PI); // tan(라디안) 값을 넣어야함 각도 / 180 인데 각도가 화각이므로 1/2 화각이 필요하니까 각도 / 360
 	camera.viewport_w = camera.viewport_h * MLX_RATIO;
 	camera.focal_len = 1;
-	camera.horizontal = vmult_k(u, camera.viewport_w);
-	camera.vertical = vmult_k(v, camera.viewport_h);
+	camera.horizontal = vmult_k(u, camera.viewport_w);	// 수평길이 벡터
+	camera.vertical = vmult_k(v, camera.viewport_h);	// 수직길이 벡터
 	camera.left_top = get_left_top(&camera, w);
 	scene->camera = camera;
 }

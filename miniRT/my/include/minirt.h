@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:18:58 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:34:58 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 # include "mlx.h"
 # include "vector.h"
 
+void	check_object_position(char *str);
+void	check_column_cnt(char **column, int column_cnt);
+void	check_theta(char *str);
+t_vec3	str_to_vec3(char *data);
+t_color3	parse_color(char *data);
+double	a_to_d(const char *str);
+void	*wrap_malloc(size_t size);
+int	ft_atoi(const char *str);
 /* 
 			util.c
 */
@@ -30,15 +38,12 @@ void		exit_with_error(char *msg);
 int			get_file_size(char *filename);
 void		free_split(char **data);
 
-void		*ft_malloc(size_t size);
-int			ft_open(const char *path, int flags);
+// int			ft_open(const char *path, int flags);
+int wrap_open(const char *path, int flags);
 
 /*
 			util_object.c
 */
-t_vec3		parse_vec3(char *data);
-t_color3	parse_color(char *data);
-double		ft_atod(const char *str);
 double		maxf(double a, double b);
 double		minf(double a, double b);
 
@@ -48,7 +53,6 @@ double		minf(double a, double b);
 */
 size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
-int			ft_atoi(const char *str);
 int			ft_strcmp(char *line, char *c);
 char		*ft_strrchr(const char *s, int c);
 char		**ft_split(char const *s, char c);

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:14:04 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:45:51 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:30:44 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 {
 	t_ray	ray;
 
-	ray.origin = cam->origin;
+	ray.origin = cam->orig;
 	ray.dir = vunit(vminus(vplus(vplus(cam->left_top, \
 		vmult_k(cam->horizontal, u)), \
-		vmult_k(cam->vertical, v)), cam->origin));
+		vmult_k(cam->vertical, v)), cam->orig));
 	return (ray);
 }
 

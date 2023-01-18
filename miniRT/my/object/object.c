@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   object.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:45:22 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 14:52:37 by wonjchoi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/minirt.h"
 
 void	oadd(t_object **list, t_object *new_obj)
@@ -19,7 +7,7 @@ void	oadd(t_object **list, t_object *new_obj)
 	if (*list == NULL)
 	{
 		*list = new_obj;
-		return;
+		return ;
 	}
 	cur = *list;
 	while (cur->next)
@@ -29,11 +17,11 @@ void	oadd(t_object **list, t_object *new_obj)
 
 t_object	*object(void *object, int type)
 {
-	t_object	*new;
+	t_object	*obj;
 
-	new = ft_malloc(sizeof(t_object));
-	new->element = object;
-	new->next = NULL;
-	new->type = type;
-	return (new);
+	obj = wrap_malloc(sizeof(t_object));
+	obj->element = object;
+	obj->type = type;
+	obj->next = 0;
+	return (obj);
 }

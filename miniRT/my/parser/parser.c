@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:24:09 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:39:20 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ char	**file_parser(char *filename)
 {
 	int		fd;
 	int		count;
-	char	**line;
 	char	*raw_data;
+	char	**line;
 
 	count = get_file_size(filename);
-	fd = ft_open(filename, O_RDONLY);
-	raw_data = (char *)ft_malloc(sizeof(char) * (count + 1));
+	fd = wrap_open(filename, O_RDONLY);
+	raw_data = (char *)wrap_malloc(sizeof(char) * (count + 1));
 	read(fd, raw_data, count);
 	raw_data[count] = '\0';
 	validate_rt(raw_data);
@@ -47,6 +47,7 @@ void	object_parser(char **line, t_scene *scene)
 	while (*line)
 	{
 		data = ft_split(*line, ' ');
+		line++;
 		if (!ft_strcmp(data[0], "A"))
 			ambient(scene, data);
 		else if (!ft_strcmp(data[0], "C"))
