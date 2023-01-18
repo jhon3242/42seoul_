@@ -6,7 +6,7 @@
 #    By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/16 16:19:36 by chaeyhan         ###   ########.fr        #
+#    Updated: 2023/01/18 13:00:57 by chaeyhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,42 +26,31 @@ INCLUDE = -I./include
 
 SRC_DIR = ./
 
-BASE :=  main.c \
-		utils/util.c \
+SRC =  main.c \
+		parser/parser.c \
+		utils/ft_malloc.c\
+		utils/ft_open.c\
 		utils/util_libft.c \
 		utils/util_libft2.c \
 		utils/util_object.c \
-		utils/ft_open.c\
-		utils/ft_malloc.c\
+		utils/util.c \
 		mlx/ft_mlx.c \
-		object/object.c \
 		object/ambient.c \
 		object/camera.c \
-		object/light.c\
-		object/sphere.c\
-		object/plane.c \
 		object/cylinder.c \
+		object/light.c\
+		object/object.c \
+		object/plane.c \
+		object/sphere.c\
 		trace/hit_object.c \
 		trace/hit.c \
 		trace/ray.c \
-		validator/validator.c \
-		validator/valid_util.c \
-		validator/valid_object.c \
-		validator/valid_object_environment.c \
-		validator/valid_object_cnt.c \
 		validator/valid_check.c \
-		# validator/valid_check_cnt.c \
-		
-
-SRC = \
-	$(BASE) \
-	parser/parser.c \
-	# object/light.c \
-	# object/sphere.c \
-	# validator/valid_object_must.c \
-	# validator/validator.c \
-	# trace/hit.c \
-	# trace/phong_lighting.c \
+		validator/valid_object_cnt.c \
+		validator/valid_object_environment.c \
+		validator/valid_object.c \
+		validator/valid_util.c \
+		validator/validator.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:56:21 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 16:19:18 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:54:38 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void parse_object(char *str)
 		else
 			exit_with_error("Invalid object\n");
 	}
+	free_split(line);
 }
 
 void	check_invalid_char(char *str, char *valid_char)
@@ -57,6 +58,6 @@ void	validate_rt(char *str)
 {
 	check_invalid_char(str, "ACLsplcy0123456789.,- \n");
 	parse_object(str);
-	if (count_ambient() != 1)
+	if (count_ambient() != 1) // TODO
 		exit_with_error("Invalid object count\n");
 }

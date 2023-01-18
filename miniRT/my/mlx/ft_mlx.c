@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:46:43 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:48:12 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,18 @@ void	set_mlx(t_mlx *mlx)
 	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "miniRT");
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, \
 		&mlx->line_length, &mlx->endian);
-	mlx_key_hook(mlx->win, mlx_esc_exit, mlx); // ESC
-	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx); 
+	mlx_key_hook(mlx->win, mlx_esc_exit, mlx);
+	mlx_hook(mlx->win, X_EVENT_KEY_EXIT, 0, &mlx_exit, mlx);
+}
+
+void	put_pixel(t_mlx *mlx, int x, int y, t_color3 color)
+{
+	char	*dst;
+
+	dst = mlx->addr + ((x * mlx->line_length) + (y * mlx->bits_per_pixel / 8));
+	*(unsigned int *)dst = (int)(color.x * 255) << 16 \
+		| (int)(color.y * 255) << 8 \
+		| (int)(color.z * 255);
 }
 
 void	drawing(t_scene *scene)
@@ -61,7 +71,7 @@ void	drawing(t_scene *scene)
 			v = (double)j / (scene->mlx.height - 1);
 			scene->ray = ray_primary(&(scene->camera), u, v);
 			pixel_color = ray_color(scene);
-			// TODO
+			put_pixel(&(scene->mlx), i, j, pixel_color);
 		}
 	}
 }
