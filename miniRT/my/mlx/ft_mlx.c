@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 12:48:12 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:10:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	put_pixel(t_mlx *mlx, int x, int y, t_color3 color)
 {
 	char	*dst;
 
-	dst = mlx->addr + ((x * mlx->line_length) + (y * mlx->bits_per_pixel / 8));
+	dst = mlx->addr + ((y * mlx->line_length) + (x * mlx->bits_per_pixel / 8));
 	*(unsigned int *)dst = (int)(color.x * 255) << 16 \
 		| (int)(color.y * 255) << 8 \
 		| (int)(color.z * 255);

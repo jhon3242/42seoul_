@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:00:51 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:30:36 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:08:34 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_bool	set_root(double a, double half_b, double c, t_hit_record *rec)
 		return (FALSE);
 	sqrtd = sqrt(discriminant);
 	root = minf((-half_b - sqrtd) / a, (-half_b + sqrtd) / a);
-	if (root < rec->tmin || rec->tmax > root)
+	if (root < rec->tmin || rec->tmax < root)
 	{
 		root = maxf((-half_b - sqrtd) / a, (-half_b + sqrtd) / a);
 		if (root < rec->tmin || root > rec->tmax)
