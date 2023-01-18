@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:14:19 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 15:20:15 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:44:14 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	cylinder(t_scene *scene, char **data)
 	cylinder->radius = ft_atod(data[3]) / 2;
 	cylinder->height = ft_atod(data[4]);
 	cylinder->color = parse_color(data[5]);
-	oadd(&(scene->object_list), object(light, CY));
+	oadd(&(scene->object_list), object(cylinder, CY));
 }

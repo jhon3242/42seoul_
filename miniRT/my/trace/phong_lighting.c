@@ -33,6 +33,7 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 
 	light_vec = vminus(light->origin, scene->rec.p);
 	light_dir = vunit(light_vec);
+	
 	if (in_shadow(scene, light_vec))
 		return (color3(0, 0, 0));
 	diffuse = get_diffuse(scene, light, light_dir);
@@ -57,6 +58,3 @@ t_color3	phong_lighting(t_scene *scene)
 	}
 	return (vmin(vmult(light_color, scene->rec.color), color3(1, 1, 1)));
 }
-
-
-

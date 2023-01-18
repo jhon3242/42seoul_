@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:15:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/13 14:27:28 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:23:30 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,18 @@ double	ft_atod(const char *str)
 	double	ret;
 	double	d;
 	int		sign;
-	
+
 	ret = 0;
 	sign = 1;
 	while (*str == ' ' || (9 <= *str && *str <= 13))
-		str++;
+		++str;
 	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
+		if (*str++ == '-')
 			sign = -1;
-		str++;
-	}
 	while ('0' <= *str && *str <= '9')
-		ret = ret * 10 + (*str-- - '0');
+		ret = ret * 10 + (*str++ - '0');
 	if (*str == '.')
-		str++;
+		++str;
 	d = 0.1;
 	while ('0' <= *str && *str <= '9')
 	{
