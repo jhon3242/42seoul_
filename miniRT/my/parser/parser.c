@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 16:24:09 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:42:31 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	object_parser(char **line, t_scene *scene)
 	while (*line)
 	{
 		data = ft_split(*line, ' ');
+		line++;
 		if (!ft_strcmp(data[0], "A"))
 			ambient(scene, data);
 		else if (!ft_strcmp(data[0], "C"))
