@@ -1,24 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 13:39:20 by wonjchoi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/minirt.h"
 
-void	check_file_extension(char *filename)
+void	object_parser(char **line, t_scene *scene)
 {
-	char	*extension;
+	char	**data;
 
-	extension = ft_strrchr(filename, '.');
-	if (!extension || ft_strcmp(extension, ".rt"))
-		exit_with_error("Invalid file extension\n");
+	while (*line)
+	{
+		data = ft_split(*line, ' ');
+		line++;
+		if (!ft_strcmp(data[0], "A"))
+			ambient(scene, data); // TODO 주변광
+		else if (!ft_strcmp(data[0], "L"))
+			light(scene, data);
+		else if (!ft_strcmp(data[0], "C"))
+			camera(scene, data);
+		else if (!ft_strcmp(data[0], "pl"))
+			plane(scene, data);
+		else if (!ft_strcmp(data[0], "sp"))
+			sphere(scene, data);
+		else if (!ft_strcmp(data[0], "cy"))
+			cylinder(scene, data);
+		free_split(data);
+	}
 }
 
 char	**file_parser(char *filename)
@@ -40,36 +43,21 @@ char	**file_parser(char *filename)
 	return (line);
 }
 
-void	object_parser(char **line, t_scene *scene)
+void	check_file_extension(char *filename)
 {
-	char	**data;
+	char	*extension;
 
-	while (*line)
-	{
-		data = ft_split(*line, ' ');
-		line++;
-		if (!ft_strcmp(data[0], "A"))
-			ambient(scene, data);
-		else if (!ft_strcmp(data[0], "C"))
-			camera(scene, data);
-		else if (!ft_strcmp(data[0], "L"))
-			light(scene, data);
-		else if (!ft_strcmp(data[0], "sp"))
-			sphere(scene, data);
-		else if (!ft_strcmp(data[0], "pl"))
-			plane(scene, data);
-		else if (!ft_strcmp(data[0], "cy"))
-			cylinder(scene, data);
-		free_split(data);
-	}
+	extension = ft_strrchr(filename, '.');
+	if (!extension || ft_strcmp(extension, ".rt"))
+		exit_with_error("Invalid file extension\n");
 }
 
 void	parse(t_scene *scene, char *filename)
 {
 	char	**line;
-	
-	scene->object_list = 0;
+
 	scene->light_list = 0;
+	scene->object_list = 0;
 	check_file_extension(filename);
 	line = file_parser(filename);
 	object_parser(line, scene);

@@ -5,34 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 01:44:16 by mher              #+#    #+#             */
-/*   Updated: 2023/01/18 13:12:42 by chaeyhan         ###   ########.fr       */
+/*   Created: 2023/01/16 13:56:21 by chaeyhan          #+#    #+#             */
+/*   Updated: 2023/01/18 12:54:38 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-void	check_invalid_char(char *str, char *valid_char)
-{
-	int		filter[128];
-
-	set_filter(filter, valid_char);
-	while (*str)
-	{
-		if (filter[(int)*str] == 0)
-			exit_with_error("invalid .rt format\n");
-		str++;
-	}
-}
-
-void	parse_object(char *str)
+static void parse_object(char *str)
 {
 	char	**line;
 	int		i;
 
-	i = 0;
+	
 	line = ft_split(str, '\n');
-	while (line[i])
+	i = -1;
+	while (line[++i])
 	{
 		if (line[i][0] == 'A')
 			check_object_ambient(line[i]);
@@ -47,18 +35,29 @@ void	parse_object(char *str)
 		else if (line[i][0] == 'c' && line[i][1] == 'y')
 			check_object_cy(line[i]);
 		else
-			exit_with_error("invalid object\n");
-		i++;
+			exit_with_error("Invalid object\n");
 	}
 	free_split(line);
 }
+
+void	check_invalid_char(char *str, char *valid_char)
+{
+	int	filter[128];
+
+	set_filter(filter, valid_char);
+	while (*str)
+	{
+		if (filter[(int)*str] == 0)
+			exit_with_error("Invalid .rt format\n");
+		str++;
+	}
+}
+
 
 void	validate_rt(char *str)
 {
 	check_invalid_char(str, "ACLsplcy0123456789.,- \n");
 	parse_object(str);
-	if (check_cnt_ambient() != 1
-		|| check_cnt_camera() != 1
-		|| check_cnt_light() != 1)
-		exit_with_error("invalid object count\n");
+	if (count_ambient() != 1) // TODO
+		exit_with_error("Invalid object count\n");
 }

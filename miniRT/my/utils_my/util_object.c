@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util_object.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/09 15:15:54 by wonjchoi          #+#    #+#             */
+/*   Updated: 2023/01/18 13:33:53 by wonjchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minirt.h"
 
 t_vec3	str_to_vec3(char *data)
@@ -17,7 +29,7 @@ t_color3	parse_color(char *data)
 {
 	t_color3	vec;
 	char		**raw_data;
-
+	
 	raw_data = ft_split(data, ',');
 	vec.x = a_to_d(raw_data[0]) / 255.999;
 	vec.y = a_to_d(raw_data[1]) / 255.999;

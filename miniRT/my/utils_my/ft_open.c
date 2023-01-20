@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 13:58:13 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 16:47:31 by wonjchoi         ###   ########.fr       */
+/*   Created: 2023/01/09 14:17:56 by wonjchoi          #+#    #+#             */
+/*   Updated: 2023/01/18 13:34:54 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../include/ft_open.h"
 
-int main(int ac, char **av)
+int wrap_open(const char *path, int flags)
 {
-	t_scene	scene;
+	int	fd;
 
-	if (ac != 2)
-		exit_with_error("Wrong argument format\n");
-	set_mlx(&scene.mlx);
-	parse(&scene, av[1]);
-	drawing(&scene);
-	// pixel_put(&scene);
-	mlx_put_image_to_window(scene.mlx.mlx, scene.mlx.win, scene.mlx.img, 0, 0);
-	mlx_loop(scene.mlx.mlx);
+	fd = open(path, flags);
+	if (fd == -1)
+		exit_with_error("File open fail\n");
+	return (fd);
 }

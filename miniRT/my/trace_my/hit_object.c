@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_object.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 14:00:51 by wonjchoi          #+#    #+#             */
+/*   Updated: 2023/01/20 16:18:35 by wonjchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minirt.h"
 
-t_bool	set_root(double a, double half_b, double c, t_hit_record *rec)
+static t_bool	set_root(double a, double half_b, double c, t_hit_record *rec)
 {
-	double	root;
 	double	discriminant;
 	double	sqrtd;
+	double	root;
 
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0)
@@ -14,12 +26,40 @@ t_bool	set_root(double a, double half_b, double c, t_hit_record *rec)
 	if (root < rec->tmin || rec->tmax < root)
 	{
 		root = maxf((-half_b - sqrtd) / a, (-half_b + sqrtd) / a);
-		if (root < rec->tmin || rec->tmax < root)
+		if (root < rec->tmin || root > rec->tmax)
 			return (FALSE);
 	}
 	rec->t = root;
 	return (TRUE);
 }
+
+static t_bool	hit_circle(const t_cylinder *cy,
+					t_ray *ray, t_hit_record *rec, int position)
+{
+	double		denominator;
+	double		numerator;
+	double		root;
+	t_vec3		normal;
+	t_point3	center;
+
+	normal = vmult_k(cy->normal, position);
+	center = vplus(cy->point, vmult_k(normal, cy->height / 2));
+	denominator = vdot(normal, ray->dir);
+	if (fabs(denominator) < EPSILON)
+		return (FALSE);
+	numerator = vdot(vminus(center, ray->orig), normal);
+	root = numerator / denominator;
+	if (root < rec->tmin || rec->tmax < root)
+		return (FALSE);
+	rec->t = root;
+	rec->p = ray_at(ray, root);
+	rec->color = cy->color;
+	rec->normal = normal;
+	if (vlength(vminus(rec->p, center)) - cy->radius > EPSILON)
+		return (FALSE);
+	return (TRUE);
+}
+
 
 t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 {
@@ -64,33 +104,6 @@ t_bool	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	return (TRUE);
 }
 
-t_bool	hit_circle(const t_cylinder *cy,
-					t_ray *ray, t_hit_record *rec, int position)
-{
-	double		denominator;
-	double		numerator;
-	double		root;
-	t_vec3		normal;
-	t_point3	center;
-
-	normal = vmult_k(cy->normal, position);
-	center = vplus(cy->point, vmult_k(normal, cy->height / 2));
-	denominator = vdot(normal, ray->dir);
-	if (fabs(denominator) < EPSILON)
-		return (FALSE);
-	numerator = vdot(vminus(center, ray->orig), normal);
-	root = numerator / denominator;
-	if (root < rec->tmin || rec->tmax < root)
-		return (FALSE);
-	rec->t = root;
-	rec->p = ray_at(ray, root);
-	rec->color = cy->color;
-	rec->normal = normal;
-	if (vlength(vminus(rec->p, center)) - cy->radius > EPSILON)
-		return (FALSE);
-	return (TRUE);
-}
-
 t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 {
 	const t_cylinder	*cy = cy_obj->element;
@@ -113,3 +126,4 @@ t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 	rec->color = cy->color;
 	return (TRUE);
 }
+

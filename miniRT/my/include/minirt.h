@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 13:56:08 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:46:33 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ double	a_to_d(const char *str);
 void	*wrap_malloc(size_t size);
 int	ft_atoi(const char *str);
 t_ray	ray(t_point3 orig, t_vec3 dir);
+int	check_cnt_ambient(void);
+int	check_cnt_light(void);
+int	check_cnt_camera(void);
 /* 
 			util.c
 */
@@ -94,9 +97,11 @@ void		set_filter(int *filter, const char *valid_str);
 void		check_invalid_char(char *str, char *valid_char);
 void		validate_rt(char *str);
 
-int 		count_ambient(void);
-int 		count_light(void);
-int 		count_camera(void);
+// int 		count_ambient(void);
+// int 		count_light(void);
+// int 		count_camera(void);
+
+
 
 void		check_elements_cnt(char **elements, int cnt);
 void		check_double(char *str);
