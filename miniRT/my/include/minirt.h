@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 15:41:15 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:39:29 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ void		check_object_cy(char *str);
 /*
 			trace
 */
+
+void		set_face_normal(t_ray *r, t_hit_record *rec);
+
 t_color3	phong_lighting(t_scene *scene);
 
 t_bool		hit_obj(t_object *object_list, t_ray *ray, t_hit_record *rec);

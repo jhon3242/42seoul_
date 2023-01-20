@@ -6,7 +6,7 @@
 #    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/18 15:40:03 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/20 17:39:12 by wonjchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC =  main.c \
 		object/object.c \
 		object/plane.c \
 		object/sphere.c\
+		trace/hit_object_util.c \
 		trace/hit_object.c \
 		trace/hit.c \
 		trace/phong_lighting.c \

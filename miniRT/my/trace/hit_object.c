@@ -39,6 +39,7 @@ t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, rec->t);
 	rec->color = sp->color;
 	rec->normal = vunit(vminus(rec->p, sp->center));
+	set_face_normal(ray, rec);
 	return (TRUE);
 }
 
@@ -61,6 +62,7 @@ t_bool	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	rec->color = pl->color;
 	rec->normal = pl->normal;
+	set_face_normal(ray, rec);
 	return (TRUE);
 }
 
@@ -88,6 +90,7 @@ t_bool	hit_circle(const t_cylinder *cy,
 	rec->normal = normal;
 	if (vlength(vminus(rec->p, center)) - cy->radius > EPSILON)
 		return (FALSE);
+	set_face_normal(ray, rec);
 	return (TRUE);
 }
 
@@ -112,6 +115,7 @@ t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 			|| hit_circle(cy, ray, rec, BOTTOM));
 	rec->normal = vunit(vminus(cp, vmult_k(cy->normal, vdot(cp, cy->normal))));
 	rec->color = cy->color;
+	set_face_normal(ray, rec);
 	return (TRUE);
 }
 
