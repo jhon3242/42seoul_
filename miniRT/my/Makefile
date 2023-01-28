@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 13:58:19 by wonjchoi          #+#    #+#              #
-#    Updated: 2023/01/20 17:39:12 by wonjchoi         ###   ########.fr        #
+#    Updated: 2023/01/28 14:17:12 by chaeyhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= miniRT
 
 CC		= cc
-CFLAGS	= #-Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 MFLAGS	= -framework OpenGL -framework AppKit
 
 MLX_DIR	= ./lib/libmlx

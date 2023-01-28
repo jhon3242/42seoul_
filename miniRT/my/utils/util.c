@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:24 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:39:09 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:18:29 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	get_file_size(char *filename)
 
 	fd = ft_open(filename, O_RDONLY);
 	read_byte = 1;
+	count = 0;
 	while (read_byte)
 	{
 		read_byte = read(fd, buff, 1024);
