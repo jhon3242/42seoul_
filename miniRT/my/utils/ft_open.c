@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:17:56 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:18:54 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:51:25 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_open.h"
 
-int ft_open(const char *path, int flags)
+int	ft_open(const char *path, int flags)
 {
 	int	fd;
 

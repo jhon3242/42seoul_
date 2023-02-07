@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:54:29 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 13:29:05 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:45:24 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_bool	hit(t_object *object_list, t_ray *ray, t_hit_record *rec)
 {
 	t_hit_record	tmp_rec;
 	t_bool			hit_anything;
-	
+
 	tmp_rec = *rec;
 	hit_anything = FALSE;
 	while (object_list)

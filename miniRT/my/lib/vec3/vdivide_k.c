@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:59:11 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:59:12 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:36:00 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ t_vec3	vdivide_k(t_vec3 vec, double t)
 	vec.x *= 1 / t;
 	vec.y *= 1 / t;
 	vec.z *= 1 / t;
-	return vec;
+	return (vec);
 }

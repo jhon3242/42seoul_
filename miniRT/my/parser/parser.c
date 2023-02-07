@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:09 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 13:42:31 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:37:59 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	object_parser(char **line, t_scene *scene)
 void	parse(t_scene *scene, char *filename)
 {
 	char	**line;
-	
+
 	scene->object_list = 0;
 	scene->light_list = 0;
 	check_file_extension(filename);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_libft2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:01:23 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/16 15:58:55 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:49:47 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	ft_get_word_cnt(const char *s, char c)
 			while (*s && *s != c)
 				++s;
 			if (!*s)
-				break; 
+				break ;
 		}
 		++s;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_object_environment.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:16:42 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 16:16:58 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:52:45 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:39 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/20 17:39:29 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:34:43 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ double		ft_atod(const char *str);
 double		maxf(double a, double b);
 double		minf(double a, double b);
 
-
 /*
 			util_libft.c
 */
@@ -52,7 +51,6 @@ int			ft_atoi(const char *str);
 int			ft_strcmp(char *line, char *c);
 char		*ft_strrchr(const char *s, int c);
 char		**ft_split(char const *s, char c);
-
 
 /*
 			object
@@ -66,11 +64,10 @@ void		cylinder(t_scene *scene, char **data);
 void		oadd(t_object **list, t_object *new_obj);
 t_object	*object(void *object, int type);
 
-
 /*
 			mlx
 */
-int 		mlx_esc_exit(int keycode, t_mlx *mlx);
+int			mlx_esc_exit(int keycode, t_mlx *mlx);
 int			mlx_exit(t_mlx *mlx);
 void		set_mlx(t_mlx *mlx);
 void		drawing(t_scene *scene);
@@ -88,9 +85,9 @@ void		set_filter(int *filter, const char *valid_str);
 void		check_invalid_char(char *str, char *valid_char);
 void		validate_rt(char *str);
 
-int 		count_ambient(void);
-int 		count_light(void);
-int 		count_camera(void);
+int			count_ambient(void);
+int			count_light(void);
+int			count_camera(void);
 
 void		check_elements_cnt(char **elements, int cnt);
 void		check_double(char *str);

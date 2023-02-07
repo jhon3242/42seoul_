@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:36 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/28 15:58:44 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:34:06 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef struct s_hit_record		t_hit_record;
 typedef struct s_scene			t_scene;
 
 typedef int						t_bool;
-typedef enum	e_object_type
+
+typedef enum e_object_type
 {
 	SP,
 	PL,
@@ -116,8 +117,6 @@ struct s_cylinder
 	double		height;
 };
 
-
-
 struct s_object
 {
 	t_object_type	type;
@@ -136,7 +135,7 @@ struct s_mlx
 	int		width;
 	int		height;
 	int		line_length;
-	double	canvas_ratio; // TODO ??
+	double	canvas_ratio;
 };
 
 struct s_ray
@@ -154,7 +153,6 @@ struct s_hit_record
 	double		tmin;
 	double		tmax;
 };
-
 
 struct s_scene
 {

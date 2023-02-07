@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:18:09 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/16 16:08:21 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:52:36 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 void	check_elements_cnt(char **elements, int cnt)
 {
 	int	i;
-	
+
 	i = 0;
-	while(elements[i]){
+	while (elements[i])
 		i++;
-	}
 	if (i != cnt)
 		exit_with_error("Invalid elements count\n");
 }

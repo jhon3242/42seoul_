@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:13 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 14:10:59 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:53:51 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_scene	scene;
 

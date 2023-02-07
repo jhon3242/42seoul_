@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:56:21 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/18 12:54:38 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:52:06 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-static void parse_object(char *str)
+static void	parse_object(char *str)
 {
 	char	**line;
 	int		i;
 
-	
 	line = ft_split(str, '\n');
 	i = -1;
 	while (line[++i])
@@ -53,11 +52,10 @@ void	check_invalid_char(char *str, char *valid_char)
 	}
 }
 
-
 void	validate_rt(char *str)
 {
 	check_invalid_char(str, "ACLsplcy0123456789.,- \n");
 	parse_object(str);
-	if (count_ambient() != 1) // TODO
+	if (count_ambient() != 1)
 		exit_with_error("Invalid object count\n");
 }

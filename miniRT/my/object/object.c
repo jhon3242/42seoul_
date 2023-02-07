@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:45:22 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/11 14:52:37 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:37:42 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	oadd(t_object **list, t_object *new_obj)
 	if (*list == NULL)
 	{
 		*list = new_obj;
-		return;
+		return ;
 	}
 	cur = *list;
 	while (cur->next)

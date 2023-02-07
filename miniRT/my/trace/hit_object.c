@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:21 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/28 14:16:23 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:46:15 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 	double		c;
 
 	sp = sp_obj->element;
-	oc = vminus(ray->origin, sp->center); // 방정식 결과의  o - cr
+	oc = vminus(ray->origin, sp->center);
 	a = vlength2(ray->dir);
-	half_b = vdot(oc, ray->dir); // 내적
+	half_b = vdot(oc, ray->dir);
 	c = vlength2(oc) - sp->radius_pow_2;
 	if (!set_root(a, half_b, c, rec))
 		return (FALSE);
@@ -106,12 +106,12 @@ t_bool	hit_circle(const t_cylinder *cy,
 	return (TRUE);
 }
 
-
 t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 {
 	const t_cylinder	*cy = cy_obj->element;
 	const t_vec3		uo_c = vcross(ray->dir, cy->normal);
-	const t_vec3		po_c = vcross(vminus(ray->origin, cy->point), cy->normal);
+	const t_vec3		po_c = vcross(vminus(ray->origin, cy->point), \
+												cy->normal);
 	t_vec3				cp;
 
 	if (!set_root(
@@ -130,4 +130,3 @@ t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 	set_face_normal(ray, rec);
 	return (TRUE);
 }
-

@@ -6,13 +6,13 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:45:01 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:02:42 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:36:44 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-int mlx_esc_exit(int keycode, t_mlx *mlx)
+int	mlx_esc_exit(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
 	{

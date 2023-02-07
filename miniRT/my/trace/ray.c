@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:41 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/28 14:16:44 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:43:59 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 
 	ray.origin = cam->origin;
 	ray.dir = vunit(vminus(vplus(vplus(cam->left_top, \
-		vmult_k(cam->horizontal, u)), vmult_k(cam->vertical, v)), cam->origin));	// 레이저 위치 - 카메라 원점 = (카메라 -> 레이저 위치)의 벡터
+		vmult_k(cam->horizontal, u)), vmult_k(cam->vertical, v)), cam->origin));
 	return (ray);
 }
 

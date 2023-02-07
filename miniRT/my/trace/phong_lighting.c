@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_lighting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:16:28 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/01/28 15:36:31 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:43:29 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ t_bool	in_shadow(t_scene *scene, t_vec3 light_vec)
 	t_ray			light_ray;
 	double			light_len;
 	t_hit_record	tmp_rec;
-	
+
 	light_len = vlength(light_vec);
 	light_ray = ray(vplus(scene->rec.p, \
-					vmult_k(scene->rec.normal, EPSILON)), light_vec); // TODO ??
+					vmult_k(scene->rec.normal, EPSILON)), light_vec);
 	tmp_rec.tmin = 0;
 	tmp_rec.tmax = light_len;
 	if (hit(scene->object_list, &light_ray, &tmp_rec))
@@ -45,14 +45,12 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 
 	light_vec = vminus(light->origin, scene->rec.p);
 	light_dir = vunit(light_vec);
-	
 	if (in_shadow(scene, light_vec))
 		return (color3(0, 0, 0));
 	diffuse = get_diffuse(scene, light, light_dir);
 	brightness = light->bright_ratio * LUMEN;
 	return (vmult_k(diffuse, brightness));
 }
-
 
 t_color3	phong_lighting(t_scene *scene)
 {

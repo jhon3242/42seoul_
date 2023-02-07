@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:15:54 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/18 16:23:30 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:49:38 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_color3	parse_color(char *data)
 {
 	t_color3	vec;
 	char		**raw_data;
-	
+
 	raw_data = ft_split(data, ',');
 	vec.x = ft_atod(raw_data[0]) / 255.999;
 	vec.y = ft_atod(raw_data[1]) / 255.999;

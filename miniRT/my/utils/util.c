@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:58:24 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/01/28 14:18:29 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:51:16 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 
-void exit_with_error(char *msg)
+void	exit_with_error(char *msg)
 {
 	write(2, "Error\n", 6);
 	write(2, msg, ft_strlen(msg));
@@ -35,7 +35,7 @@ int	get_file_size(char *filename)
 		count += read_byte;
 	}
 	close(fd);
-	return count;;
+	return (count);
 }
 
 void	free_split(char **data)
