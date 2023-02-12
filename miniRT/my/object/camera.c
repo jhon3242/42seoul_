@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:44:12 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/02/07 13:37:14 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:48:15 by chaeyhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	camera(t_scene *scene, char **data)
 	camera.camera_dir = vunit(parse_vec3(data[2]));
 	degree = ft_atod(data[3]);
 	w = vunit(vmult_k(camera.camera_dir, -1));
-	u = vcross(vec3(EPSILON, 1, 0), w);
+	u = vunit(vcross(vec3(EPSILON, 1, 0), w));
 	v = vmult_k(vcross(w, u), -1);
 	camera.viewport_h = 2.0 * tan(degree / 360 * M_PI);
 	camera.viewport_w = camera.viewport_h * MLX_RATIO;
