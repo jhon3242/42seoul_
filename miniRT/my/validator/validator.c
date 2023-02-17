@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chaeyhan <chaeyhan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:56:21 by chaeyhan          #+#    #+#             */
-/*   Updated: 2023/02/12 15:28:21 by chaeyhan         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:09:56 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void	validate_rt(char *str)
 {
 	check_invalid_char(str, "ACLsplcy0123456789.,- \n");
 	parse_object(str);
-	if (count_ambient() != 1
-			|| count_camera() != 1
-			|| count_light() != 1)
+	if (count_ambient() != 1 \
+			|| count_camera() != 1)
 		exit_with_error("Invalid object count\n");
 }
