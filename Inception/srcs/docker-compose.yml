@@ -11,6 +11,8 @@ services:
       - wordpress
     volumes:
       - wp_volume:/var/www/html/wordpress
+    env_file:
+      - .env
     networks:
       - inception_network
 
@@ -24,6 +26,8 @@ services:
       - wp_volume:/var/www/html/wordpress
     expose:
       - "9000"
+    env_file:
+      - .env
     networks:
       - inception_network
     
@@ -34,12 +38,15 @@ services:
     restart: always
     expose:
       - "3306"
+    volumes:
+      - db_volume:/var/lib/mysql/
     env_file:
       - .env
     networks:
       - inception_network
 
 volumes:
+  db_volume:
   wp_volume:
      driver: local
      driver_opts:
