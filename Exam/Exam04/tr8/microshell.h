@@ -1,11 +1,11 @@
 #ifndef MICROSHELL_H
 #define MICROSHELL_H
 
-#include <stdio.h>
-#include <unistd.h>
 #include <string.h>
-#include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 enum e_cmd_type
 {

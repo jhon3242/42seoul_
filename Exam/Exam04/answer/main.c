@@ -1,14 +1,46 @@
-#include "microshell.h"
+#include "myshell.h"
 
-int init_cmd_info(char **av, t_cmd_info *info, int i)
+/**
+ * utils
+ */
+
+static int	ft_strlen(const char* str)
+{
+	int len = 0;
+
+	while (*str)
+	{
+		str++;
+		len++;
+	}
+	return len;
+}
+
+static void	write_err(const char* str)
+{
+	write(2, str, ft_strlen(str));
+}
+
+static void	system_err()
+{
+	write_err("error: fatal\n");
+	exit(1);
+}
+
+
+/**
+ * main logics
+ */
+
+int	init_cmd_info(char** av, t_cmd_info* info, int i)
 {
 	info->path = av[i];
 	info->av = &av[i];
 	info->prev_type = info->curr_type;
 	while (1) {
 		if (av[i + 1] == NULL \
-		|| strncmp(av[i + 1], "|", 2) == 0 \
-		|| strncmp(av[i + 1], ";", 2) == 0)
+			|| strncmp(av[i + 1], "|", 2) == 0 \
+			|| strncmp(av[i + 1], ";", 2) == 0)
 		{
 			if (av[i + 1] == NULL)
 				info->curr_type = kNull;
@@ -22,32 +54,15 @@ int init_cmd_info(char **av, t_cmd_info *info, int i)
 		}
 		i++;
 	}
-	return (i);
+	return i;
 }
 
-int ft_strlen(const char *str)
-{
-	int i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
-void write_err(const char *str)
-{
-	write(2, str, ft_strlen(str));
-}
-
-void system_err()
-{
-	write_err("error: fatal\n");
-	exit(1);
-}
-
-void wait_all_process(int cnt)
+void	wait_all_process(int process_cnt)
 {
 	int ret;
-	for (int i=0; i<cnt; i++)
+
+	for (int i = 0; i < process_cnt; i++)
 	{
 		ret = waitpid(-1, NULL, 0);
 		if (ret == -1)
@@ -55,10 +70,10 @@ void wait_all_process(int cnt)
 	}
 }
 
-void ft_cd(t_cmd_info *info)
+void	ft_cd(t_cmd_info* info)
 {
-	int i = 0;
-	int ret;
+	int	i = 0;
+	int	ret;
 
 	while (1)
 	{
@@ -69,7 +84,7 @@ void ft_cd(t_cmd_info *info)
 	if (i != 1)
 	{
 		write_err("error: cd: bad arguments\n");
-		return ;
+		return;
 	}
 	ret = chdir(info->av[1]);
 	if (ret == -1)
@@ -80,7 +95,7 @@ void ft_cd(t_cmd_info *info)
 	}
 }
 
-void safe_dup2_and_close(int old, int new)
+void	safe_dup2_and_close(int old, int new)
 {
 	int ret;
 
@@ -90,7 +105,7 @@ void safe_dup2_and_close(int old, int new)
 	close(old);
 }
 
-void do_it_child(t_cmd_info *info, t_pipe *pipe_info)
+void	do_it_child(t_cmd_info* info, t_pipe_info* pipe_info)
 {
 	if (info->curr_type == kPipe)
 	{
@@ -108,7 +123,7 @@ void do_it_child(t_cmd_info *info, t_pipe *pipe_info)
 	exit(1);
 }
 
-void do_it_parent(t_cmd_info *info, t_pipe *pipe_info)
+void	do_it_parent(t_cmd_info* info, t_pipe_info* pipe_info)
 {
 	if (info->prev_type == kPipe)
 	{
@@ -121,9 +136,9 @@ void do_it_parent(t_cmd_info *info, t_pipe *pipe_info)
 	}
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char* av[], char* env[])
 {
-	t_cmd_info info = 
+	t_cmd_info	info =
 	{
 		NULL,
 		NULL,
@@ -131,14 +146,15 @@ int main(int ac, char **av, char **env)
 		kNull,
 		kNull
 	};
-	t_pipe pipe_info = {{0, 1}, 0};
-	int i = 1;
-	int ret;
-	int cnt_process = 0;
-	pid_t pid;
+	int		i = 1; // av[0] 은 프로그램 명
+	int		ret;
+	pid_t	pid;
+	t_pipe_info	pipe_info = {{0, 1}, 0};
+	int		process_cnt = 0;
 
 	if (ac < 2)
-		return (0);
+		return 0;
+	
 	while (ac > i)
 	{
 		if (strncmp(av[i], ";", 2) == 0)
@@ -146,20 +162,23 @@ int main(int ac, char **av, char **env)
 			i++;
 			continue;
 		}
-		i = init_cmd_info(av, &info, i);
 
+		i = init_cmd_info(av, &info, i);
+		
 		if (strncmp(info.path, "cd", 3) != 0 \
-		&& info.curr_type == kPipe)
+			&& info.curr_type == kPipe)
 		{
 			ret = pipe(pipe_info.curr_pipe);
 			if (ret == -1)
 				system_err();
 		}
+
 		if (info.prev_type == kSemicolon)
 		{
-			wait_all_process(cnt_process);
-			cnt_process = 0;
+			wait_all_process(process_cnt);
+			process_cnt = 0;
 		}
+
 		if (strncmp(info.path, "cd", 3) == 0)
 		{
 			ft_cd(&info);
@@ -174,8 +193,8 @@ int main(int ac, char **av, char **env)
 			do_it_child(&info, &pipe_info);
 		do_it_parent(&info, &pipe_info);
 
-		cnt_process++;
+		process_cnt++;
 		i++;
 	}
-	wait_all_process(cnt_process);
+	wait_all_process(process_cnt);
 }

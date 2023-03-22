@@ -1,78 +1,183 @@
 #include "microshell.h"
 
-int write_err(char *str, char *av)
+int init_cmd_info(char **av, t_cmd_info *info, int i)
 {
-	while (str && *str)
-		write(2, str++, 1);
-	if (av)
-		while (av && *av) // av
-			write(2, av++, 1);
-	write(2, "\n", 1);
-	return (1);
+	info->path = av[i];
+	info->av = &av[i];
+	info->prev_type = info->curr_type;
+	while (1)
+	{
+		if (av[i + 1] == NULL \
+		|| strncmp(av[i + 1], "|", 2) == 0 \
+		|| strncmp(av[i + 1], ";", 2) == 0)
+		{
+			if (av[i + 1] == NULL)
+				info->curr_type = kNull;
+			else if (strncmp(av[i + 1], "|", 2) == 0)
+				info->curr_type = kPipe;
+			else
+				info->curr_type = kSemicolon;
+			av[i + 1] = NULL;
+			i++;
+			break;
+		}
+		i++;
+	}
+	return (i);
 }
 
-int ft_exe(char **av, int i, int t_fd, char **env)
+int ft_strlen(const char *str)
 {
-	av[i] = NULL;
-	dup2(t_fd, STDIN_FILENO);
-	close(t_fd);
-	execve(av[0], av, env); // av[0]
-	return (write_err("error: cannot execute ", av[0]));
+	int i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
+
+void write_err(const char *str)
+{
+	write(2, str, ft_strlen(str));
+}
+
+void system_err()
+{
+	write_err("error: fatal\n");
+	exit(1);
+}
+
+void wait_all_process(int cnt)
+{
+	int ret;
+
+	for (int i=0; i<cnt; i++)
+	{
+		ret = waitpid(-1, NULL, 0);
+		if (ret == -1)
+			system_err();
+	}
+}
+
+void ft_cd(t_cmd_info *info)
+{
+	int i = 0;
+	int ret;
+	while (1)
+	{
+		if (info->av[i + 1] == NULL)
+			break;
+		i++;
+	}
+	if (i != 1)
+	{
+		write_err("error: cd: bad arguments\n");
+		return ;
+	}
+	ret = chdir(info->av[1]);
+	if (ret == -1)
+	{
+		write_err("error: cd: cannot change directory to ");
+		write_err(info->av[1]);
+		write_err("\n");
+	}
+}
+
+void safe_dup2_and_close(int old, int new)
+{
+	int ret;
+
+	ret = dup2(old, new);
+	if(ret == -1)
+		system_err();
+	close(old);
+}
+
+void do_it_child(t_cmd_info *info, t_pipe_info *pipe_info)
+{
+	if (info->curr_type == kPipe)
+	{
+		close(pipe_info->curr_pipe[0]);
+		safe_dup2_and_close(pipe_info->curr_pipe[1], 1);
+	}
+	if (info->prev_type == kPipe)
+	{
+		safe_dup2_and_close(pipe_info->prev_read_pipe, 0);
+	}
+	execve(info->path, info->av, info->env);
+	write_err("error: cannot execute ");
+	write_err(info->path);
+	write_err("\n");
+	exit(1);
+}
+
+void do_it_parent(t_cmd_info *info, t_pipe_info *pipe_info)
+{
+	if (info->prev_type == kPipe)
+	{
+		close(pipe_info->prev_read_pipe);
+	}
+	if (info->curr_type == kPipe)
+	{
+		close(pipe_info->curr_pipe[1]);
+		pipe_info->prev_read_pipe = pipe_info->curr_pipe[0];
+	}
+}
+	
 
 int main(int ac, char **av, char **env)
 {
-	int fd[2];
-	int i;
-	int t_fd;
-	(void)ac;
-
-	i = 0;
-	t_fd = dup(STDIN_FILENO);
-	while (av[i] && av[i + 1])
+	int i = 1;
+	int ret;
+	int cnt_process = 0;
+	pid_t pid;
+	t_pipe_info pipe_info = {{0, 1}, 0};
+	t_cmd_info info = 
 	{
-		av = &av[i + 1];
-		i = 0;
-		while (av[i] && strcmp(av[i], ";") && strcmp(av[i], "|"))
+		NULL,
+		NULL,
+		env,
+		kNull,
+		kNull
+	};
+
+	if (ac < 2)
+		return (0);
+	while (ac > i)
+	{
+		if (strncmp(av[i], ";", 2) == 0)
+		{
 			i++;
-		if (strcmp(av[0], "cd") == 0)
-		{
-			if (i != 2)
-				write_err("error: cd: bad arguments", NULL);
-			else if (chdir(av[1]) != 0)
-				write_err("error: cd: cannot change directory to ", av[1]);
+			continue;
 		}
-		else if (i != 0 && (av[i] == NULL || strcmp(av[i], ";") == 0))
+		i = init_cmd_info(av, &info, i);
+
+		if (strncmp(info.path, "cd", 3) != 0 \
+		&& info.curr_type == kPipe)
 		{
-			if (fork() == 0)
-			{
-				if (ft_exe(av, i, t_fd, env))
-					return (0);
-			} else {
-				close(t_fd);
-				// 대부분틀렸었음
-				while (waitpid(-1, NULL, WUNTRACED) != -1)
-					;
-				t_fd = dup(STDIN_FILENO);
-			}
-		} else if (i != 0 && strcmp(av[i], "|") == 0)
-		{
-			pipe(fd);
-			if (fork() == 0)
-			{
-				dup2(fd[1], STDOUT_FILENO); // STDOUT
-				close(fd[0]);
-				close(fd[1]);
-				if (ft_exe(av, i, t_fd, env))
-					return (0);
-			} else {
-				// 대부분틀림
-				close(fd[1]);
-				close(t_fd);
-				t_fd = fd[0];
-			}
+			ret = pipe(pipe_info.curr_pipe);
+			if (ret == -1)
+				system_err();
 		}
+		if (info.prev_type == kSemicolon)
+		{
+			wait_all_process(cnt_process);
+			cnt_process = 0;
+		}
+		if (strncmp(info.path, "cd", 3) == 0)
+		{
+			ft_cd(&info);
+			i++;
+			continue;
+		}
+
+		pid = fork();
+		if (pid == -1)
+			system_err();
+		if (pid == 0)
+			do_it_child(&info, &pipe_info);
+		do_it_parent(&info, &pipe_info);
+
+		cnt_process++;
+		i++;
 	}
-	close(t_fd);
-	return (0);
+	wait_all_process(cnt_process);
 }

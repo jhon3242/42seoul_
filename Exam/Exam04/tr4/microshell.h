@@ -3,9 +3,30 @@
 
 #include <unistd.h>
 #include <string.h>
-#include <sys/wait.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
-int write_error(char *string, char *argv);
-int	ft_exe(char **argv, int i, int temporary_file_descriptor, char **environment_variables);
+enum e_cmd_type
+{
+	kNull,
+	kPipe,
+	kSemicolon
+};
 
-#endif // MICROSHELL_H
+typedef struct s_cmd_info
+{
+	char *path;
+	char **av;
+	char **env;
+	enum e_cmd_type curr_type;
+	enum e_cmd_type prev_type;
+} t_cmd_info;
+
+typedef struct s_pipe_info
+{
+	int curr_pipe[2];
+	int prev_read_pipe;
+} t_pipe_info;
+
+#endif

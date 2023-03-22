@@ -1,11 +1,11 @@
 #ifndef MICROSHELL_H
 #define MICROSHELL_H
 
-#include <stdio.h>
 #include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <fcntl.h>
 
 enum e_cmd_type
 {
@@ -27,6 +27,6 @@ typedef struct s_pipe_info
 {
 	int curr_pipe[2];
 	int prev_read_pipe;
-} t_pipe_info;
+}	t_pipe_info;
 
 #endif

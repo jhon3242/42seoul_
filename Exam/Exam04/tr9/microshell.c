@@ -7,8 +7,8 @@ int init_cmd_info(char **av, t_cmd_info *info, int i)
 	info->prev_type = info->curr_type;
 	while (1) {
 		if (av[i + 1] == NULL \
-		|| strncmp(av[i + 1], "|", 2) == 0 \
-		|| strncmp(av[i + 1], ";", 2) == 0)
+			|| strncmp(av[i + 1], "|", 2) == 0\
+			|| strncmp(av[i + 1], ";", 2) == 0)
 		{
 			if (av[i + 1] == NULL)
 				info->curr_type = kNull;
@@ -20,9 +20,9 @@ int init_cmd_info(char **av, t_cmd_info *info, int i)
 			i++;
 			break;
 		}
-		i++;
+		i++; // TODO
 	}
-	return (i);
+	return (i); // TODO ??
 }
 
 int ft_strlen(const char *str)
@@ -47,7 +47,7 @@ void system_err()
 void wait_all_process(int cnt)
 {
 	int ret;
-	for (int i=0; i<cnt; i++)
+	for (int i =0; i<cnt; i++)
 	{
 		ret = waitpid(-1, NULL, 0);
 		if (ret == -1)
@@ -68,7 +68,7 @@ void ft_cd(t_cmd_info *info)
 	}
 	if (i != 1)
 	{
-		write_err("error: cd: bad arguments\n");
+		write_err("error: cd: bad arguments\n"); // TODO \n;
 		return ;
 	}
 	ret = chdir(info->av[1]);
@@ -90,7 +90,7 @@ void safe_dup2_and_close(int old, int new)
 	close(old);
 }
 
-void do_it_child(t_cmd_info *info, t_pipe *pipe_info)
+void do_it_child(t_cmd_info *info, t_pipe_info *pipe_info)
 {
 	if (info->curr_type == kPipe)
 	{
@@ -101,6 +101,7 @@ void do_it_child(t_cmd_info *info, t_pipe *pipe_info)
 	{
 		safe_dup2_and_close(pipe_info->prev_read_pipe, 0);
 	}
+	// TODO
 	execve(info->path, info->av, info->env);
 	write_err("error: cannot execute ");
 	write_err(info->path);
@@ -108,7 +109,7 @@ void do_it_child(t_cmd_info *info, t_pipe *pipe_info)
 	exit(1);
 }
 
-void do_it_parent(t_cmd_info *info, t_pipe *pipe_info)
+void do_it_parent(t_cmd_info *info, t_pipe_info *pipe_info)
 {
 	if (info->prev_type == kPipe)
 	{
@@ -117,12 +118,17 @@ void do_it_parent(t_cmd_info *info, t_pipe *pipe_info)
 	if (info->curr_type == kPipe)
 	{
 		close(pipe_info->curr_pipe[1]);
-		pipe_info->prev_read_pipe = pipe_info->curr_pipe[0];
+		pipe_info->prev_read_pipe = pipe_info->curr_pipe[0]; // TODO 0 ->
 	}
 }
 
 int main(int ac, char **av, char **env)
 {
+	int i = 1;
+	int ret;
+	int process_cnt = 0;
+	pid_t pid;
+
 	t_cmd_info info = 
 	{
 		NULL,
@@ -131,25 +137,31 @@ int main(int ac, char **av, char **env)
 		kNull,
 		kNull
 	};
-	t_pipe pipe_info = {{0, 1}, 0};
-	int i = 1;
-	int ret;
-	int cnt_process = 0;
-	pid_t pid;
+	t_pipe_info pipe_info = {{0, 1}, 0};
 
 	if (ac < 2)
 		return (0);
 	while (ac > i)
 	{
+		// TODO
+		// while (1)
+		// {
+		// 	if (strncmp(av[i], ";", 2) == 0)
+		// 		break;
+		// 	i++;
+		// 	continue;
+		// }
+
 		if (strncmp(av[i], ";", 2) == 0)
 		{
 			i++;
 			continue;
 		}
+
 		i = init_cmd_info(av, &info, i);
 
 		if (strncmp(info.path, "cd", 3) != 0 \
-		&& info.curr_type == kPipe)
+			&& info.curr_type == kPipe)
 		{
 			ret = pipe(pipe_info.curr_pipe);
 			if (ret == -1)
@@ -157,8 +169,8 @@ int main(int ac, char **av, char **env)
 		}
 		if (info.prev_type == kSemicolon)
 		{
-			wait_all_process(cnt_process);
-			cnt_process = 0;
+			wait_all_process(process_cnt);
+			process_cnt = 0;
 		}
 		if (strncmp(info.path, "cd", 3) == 0)
 		{
@@ -173,9 +185,8 @@ int main(int ac, char **av, char **env)
 		if (pid == 0)
 			do_it_child(&info, &pipe_info);
 		do_it_parent(&info, &pipe_info);
-
-		cnt_process++;
+		process_cnt++;
 		i++;
 	}
-	wait_all_process(cnt_process);
+	wait_all_process(process_cnt);
 }
