@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:40:32 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/03/22 15:59:29 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:41:40 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void process(int ac, char *av[]) {
 	container_fill(arrV, ac, av);
 	container_fill(arrDq, ac, av);
 	print_container(arrV , "vector" , true);
-    print_container(arrDq , "deque" , false);
+	print_container(arrDq , "deque" , false);
 }

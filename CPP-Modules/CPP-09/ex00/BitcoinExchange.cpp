@@ -6,11 +6,21 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:08:45 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/03/22 13:48:00 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:25:14 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+int ft_stoi(const std::string &str)
+{
+	return atoi(str.c_str());
+}
+
+double ft_stod(std::string &str)
+{
+	return atof(str.c_str());
+}
 
 BitcoinExchange::BitcoinExchange(){};
 
@@ -41,14 +51,14 @@ void BitcoinExchange::csvParser() {
 	while (std::getline(_db_file, line)) {
 		std::string key = line.substr(0, line.find(','));
 		std::string value = line.substr(line.find(',') + 1, line.length());
-		_data[key] = std::stod(value);
+		_data[key] = ft_stod(value);
 	}
 }
 
 BitcoinExchange::~BitcoinExchange() {
-    _input_file.close();
-    _db_file.close();
-    _data.clear();
+	_input_file.close();
+	_db_file.close();
+	_data.clear();
 }
 
 std::string ft_trim(std::string str) {
@@ -73,17 +83,16 @@ bool isDate(std::string date) {
 		if (!isdigit(date[i]))
 			return false;
 	}
+	int year = ft_stoi(date.substr(0, 4));
+	int month = ft_stoi(date.substr(5, 2));
+	int day = ft_stoi(date.substr(8, 2));
 
-	int year = std::stoi(date.substr(0, 4));
-    int month = std::stoi(date.substr(5, 2));
-    int day = std::stoi(date.substr(8, 2));
-
-    if (year < 2008 || year > 2023)
-        return false;
-    if (month < 1 || month > 12)
-        return false;
-    if (day < 1 || day > 31)
-        return false;
+	if (year < 2008 || year > 9999)
+		return false;
+	if (month < 1 || month > 12)
+		return false;
+	if (day < 1 || day > 31)
+		return false;
 	
 	if (month <= 7 && month % 2 == 0 && day > 30)
 		return false;
@@ -92,27 +101,27 @@ bool isDate(std::string date) {
 	if (month == 2 && day > 29)
 		return false;
 
-    return true;
+	return true;
 }
 
 bool isPositive(std::string value) {
 	while (value[0] == ' ')
 		value = value.substr(1, value.length());
 	if (value[0] == '-')
-        return false;
-    if (value.empty())
-        return false;
+		return false;
+	if (value.empty())
+		return false;
 	return true;
 }
 
 bool isInRange(std::string value) {
 	try {
-		if (std::stod(value) >= 0.0 && std::stod(value) <= 1000.0)
+		if (ft_stod(value) >= 0.0 && ft_stod(value) <= 1000.0)
 			return true;
 		return false;
 	} catch (const std::exception &e) {
-        return false;
-    }
+		return false;
+	}
 }
 
 double BitcoinExchange::getExchangeRate(std::string date, std::string value) {
@@ -121,17 +130,17 @@ double BitcoinExchange::getExchangeRate(std::string date, std::string value) {
 	if (!isPositive(value))
 		throw "Error: not a positive number.";
 	if (value.empty())
-        throw "Error: bad format empty value.";
+		throw "Error: bad format empty value.";
 	if (!isInRange(value))
 		throw "Error: too large a number.";
 	
 	std::map<std::string, double>::const_iterator it = _data.upper_bound(date);
-    if (it == _data.begin()) {
-        throw "Error: no matched date.";
-    } else {
-        --it;
-        return std::stod(value) * it->second;
-    }
+	if (it == _data.begin()) {
+		throw "Error: no matched date.";
+	} else {
+		--it;
+		return ft_stod(value) * it->second;
+	}
 }
 
 void BitcoinExchange::printData(){
