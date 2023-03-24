@@ -6,7 +6,7 @@
 /*   By: wonjchoi <wonjchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:08:45 by wonjchoi          #+#    #+#             */
-/*   Updated: 2023/03/23 14:25:14 by wonjchoi         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:46:46 by wonjchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj) {
 
 BitcoinExchange::BitcoinExchange(std::string fileName) {
 	_db_file.open("db/data.csv");
-	_input_file.open(fileName);
+	_input_file.open(fileName.c_str());
 	if (!_db_file.is_open() || !_input_file.is_open()) {
 		std::cout << "Error: could not open file." << std::endl;
 		return ;
@@ -76,7 +76,7 @@ bool isDate(std::string date) {
 
 	if (date[4] != '-' || date[7] != '-')
 		return false;
-
+	
 	for (int i = 0; i < 10; i++) {
 		if (i == 4 || i == 7)
 			continue;
@@ -93,14 +93,12 @@ bool isDate(std::string date) {
 		return false;
 	if (day < 1 || day > 31)
 		return false;
-	
 	if (month <= 7 && month % 2 == 0 && day > 30)
 		return false;
 	if (month > 7 && month % 2 == 1 && day > 30)
 		return false;
 	if (month == 2 && day > 29)
 		return false;
-
 	return true;
 }
 
@@ -124,8 +122,25 @@ bool isInRange(std::string value) {
 	}
 }
 
+bool isNumber(std::string value) {
+	bool hasDecinam  = false;
+	for (u_int i = 0; i < value.length(); i++) {
+		if (i == 0 && value[i] == '-')
+			continue;
+		if (value[i] == '.' && !hasDecinam) {
+			hasDecinam = true;
+			continue;
+		}
+		if (!isdigit(value[i]))
+			return false;
+	}
+	return true;
+}
+
 double BitcoinExchange::getExchangeRate(std::string date, std::string value) {
 	if (!isDate(date))
+		throw "Error: bad input";
+	if (!isNumber(value))
 		throw "Error: bad input";
 	if (!isPositive(value))
 		throw "Error: not a positive number.";
@@ -154,7 +169,7 @@ void BitcoinExchange::printData(){
 			std::cout << date << " => " << value << " = " << exchangeRate << std::endl;
 		} catch (const char *e) {
 			if (std::string(e) == "Error: bad input")
-				std::cout << e << " => " << date << std::endl;
+				std::cout << e << " => " << line << std::endl;
 			else
 				std::cout << e <<std::endl;
 		}
