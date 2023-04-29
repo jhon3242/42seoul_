@@ -47,11 +47,17 @@ services:
 
 volumes:
   db_volume:
+    driver: local
+    driver_opts:
+      type: volume
+      device: /home/vboxuser/Inception/srcs/requirements/tools/mariadb
+      o: bind
+
   wp_volume:
      driver: local
      driver_opts:
        type: volume
-       device: /Users/min/project/42Cursus/Inception/srcs/requirements/tools/wordpress
+       device: /home/vboxuser/Inception/srcs/requirements/tools/wordpress
        o: bind
 
 networks:

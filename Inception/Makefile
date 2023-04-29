@@ -1,6 +1,6 @@
 NAME = inception
 
-VOLUME_PATH	:=	/home/wonjchoi/data
+VOLUME_PATH	:=	/home/vboxuser/data
 HOST_LINK	:=	"127.0.0.1	wonjchoi.42.fr" > /etc/hosts
 
 all			:	$(NAME)
